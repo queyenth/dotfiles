@@ -1,21 +1,22 @@
 #! /bin/sh
 
-
 bspc config split_ratio         0.50
 bspc config border_width        1
-bspc config window_gap          7
+bspc config window_gap          6
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
 bspc config top_padding 16
 
-bspc monitor -d main www gvim osu five
+bspc monitor -d main www gvim osu music
 
 bspc rule -a Gimp follow=on floating=on
-bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
+(cd ~/.config/bspwm && ./panel) &
+(cd ~/.config/bspwm && ./bspanel.sh) &
 feh --bg-scale ~/wallpapers/680283-1366x768.jpg
-stalonetray --geometry 4x1-0+0 --icon-gravity E --grow-gravity E -bg "#262626" -i 14 -d all &
-sh ~/.config/bspwm/bspanel.sh 2> /dev/null
+xxkb &
+dropboxd &
+stalonetray --geometry 10x1-0+0 --icon-gravity E --grow-gravity E -bg "#262626" -i 14 -d all &
 

@@ -1,22 +1,6 @@
 #!/bin/bash
 
 function statusbar {
-  function desk() {
-    DESKTOP=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
-    case $DESKTOP in
-      0) echo "main"
-        ;;
-      1) echo "www"
-        ;;
-      2) echo "gvim"
-        ;;
-      3) echo "osu"
-        ;;
-      4) echo "five"
-        ;;
-      *) echo "error"
-    esac
-  }
 
   function clock() {
     time=$(date "+%e.%m %R")
@@ -43,12 +27,54 @@ function statusbar {
     echo $ami
   }
 
-  function ncc() {
-  #  mus=$(ncmpcpp --now-playing)
-    echo "TODO"
+  function batt() {
+    bat=$(cat /sys/class/power_supply/BAT0/capacity)
+    s="«"
+    bar=""
+    case $bat in
+      100)
+        bar=""
+        ;;
+      [0-5])
+        bar="\f8$s$s$s$s$s$s$s$s$s"
+        ;;
+      [5-9])
+        bar="\f3$s\f8$s$s$s$s$s$s$s$s"
+        ;;
+      [1-2]*)
+        bar="$s$s\f8$s$s$s$s$s$s$s"
+        ;;
+      3*)
+        bar="$s$s$s\f8$s$s$s$s$s$s"
+        ;;
+      4*)
+        bar="$s$s$s$s\f8$s$s$s$s$s"
+        ;;
+      5*)
+        bar="$s$s$s$s$s\f8$s$s$s$s"
+        ;;
+      6*)
+        bar="$s$s$s$s$s$s\f8$s$s$s"
+        ;;
+      7*)
+        bar="$s$s$s$s$s$s$s\f8$s$s"
+        ;;
+      8*)
+        bar="$s$s$s$s$s$s$s$s\f8$s"
+        ;;
+      *)
+        bar="$s$s$s$s$s$s$s$s$s"
+        ;;
+    esac
+    echo "$bar"
   }
 
-  echo "^fg(#8A2F58)bspwm $(desk) ^fg(#AAAAAA) ^fg(#287373) ^fg(#914E89) ram $(mem)M ^fg(#97CBFE) sda $(sda) ^fg(#AAAAAA) ^fg(#2B7694) cpu $(temp) C ^fg(#AAAAAA) ^fg(#E5B0FF) now playing: $(ncc) ^fg(#395573) ^fg(#AAAAAA) ^fg(#47959E) vol: $(vol) ^fg(#AAAAAA) // ^fg(#FFFFFF) $(clock) ^fg(#AAAAAA)"
+  function ncc() {
+    mus=$(mpc current)
+    echo $mus
+  }
+
+  echo "^fg(#AAAAAA) ^fg(#914E89) ram $(mem)M ^fg(#97CBFE) sda $(sda) ^fg(#AAAAAA) ^fg(#2B7694) cpu $(temp) C ^fg(#AAAAAA) ^fg(#E5B0FF) now playing: $(ncc) ^fg(#395573) ^fg(#AAAAAA) ^fg(#47959E) vol: $(vol) ^fg(#AAAAAA) ^fg(#5E468C) bat: $(batt) ^fg(#AAAAAA) // ^fg(#FFFFFF) $(clock) ^fg(#AAAAAA)"
 
 }
 
@@ -56,4 +82,4 @@ while true
 do
   echo "$(statusbar)"
   sleep 0.5
-done | dzen2 -bg '#262626' -fn 'meslo_lg_m-8-' -h 16 -ta r -p -w 1310 &
+done | dzen2 -bg '#262626' -fn '-bitstream-meslo lg m-medium-r-normal--8-*-*-*-*-*-*-*' -h 16 -ta c -p -dock -w 1050 -x 160 &

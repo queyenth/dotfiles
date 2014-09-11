@@ -1,0 +1,18 @@
+#! /bin/sh
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+  printf "%s\n" "The panel is already running." >&2
+  exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc control --subscribe > "$PANEL_FIFO" &
+
+. ./panel_colors
+FONT_FAMILY='-bitstream-meslo lg m-medium-r-normal--8-*-*-*-*-*-*-*'
+FONT_SIZE=8
+cat "$PANEL_FIFO" | ./panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -h 16 -w 160 -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND"
