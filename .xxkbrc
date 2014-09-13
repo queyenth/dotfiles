@@ -1,0 +1,15 @@
+XXkb.image.path: /usr/share/xxkb/
+XXkb.mainwindow.type: tray
+XXkb.mainwindow.label.enable: yes
+XXkb.mainwindow.enable: yes
+XXkb.mainwindow.appicon: no
+XXkb.mainwindow.geometry: 16x16+0+0
+XXkb.mainwindow.label.background: #262626
+XXkb.mainwindow.label.foreground: #e6e6e6
+XXkb.mainwindow.label.font: -bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*
+XXkb.mainwindow.label.text.1: En
+XXkb.mainwindow.label.text.2: Ru
+XXkb.controls.add_when_start: yes
+XXkb.controls.two_state: no
+Xxkb.controls.mainwindow_delete: no
+XXkb.button.enable: no
