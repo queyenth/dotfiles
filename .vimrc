@@ -143,7 +143,8 @@ scriptencoding utf-8
 set ls=2
 set go-=T
 set go-=m
-set go-=rRlLbh
+set go-=r
+set go-=L
 
 " Default filetype - unix
 set ffs=unix,dos,mac
@@ -243,7 +244,7 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme molokai
+colorscheme gruvbox
 
 au VimResized * exe "normal! \<c-w>="
 
@@ -252,7 +253,7 @@ set nobackup
 set nowb
 set noswapfile
 
-set guifont=Meslo\ LG\ M\ for\ Powerline\ 8
+set guifont=Monaco\ for\ Powerline\ 8
 
 set wildmenu
 set wildmode=list:longest,full
