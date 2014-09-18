@@ -45,4 +45,4 @@ while true
 do
   echo "$(statusbar)"
   sleep 0.5
-done | dzen2 -bg '#262626' -fn '-bitstream-meslo lg m-medium-r-normal--8-*-*-*-*-*-*-*' -h 16 -ta c -p -dock -w 1050 -x 160 &
+done | dzen2 -bg '#262626' -fn '-bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*' -h 16 -ta c -p -dock -w 1050 -x 160 &
