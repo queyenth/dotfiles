@@ -24,4 +24,4 @@ stalonetray --geometry 20x1-0+0 --icon-gravity E --grow-gravity E -bg "#262626" 
 feh --bg-scale ~/wallpapers/131118-1920x1080.jpg
 xxkb &
 dropboxd &
-
+compton -D1 -cCGfzb
