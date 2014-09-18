@@ -1,0 +1,27 @@
+#include "/home/queyenth/.colors/hal1"
+
+urxvt*perl-lib: /usr/lib/urxvt/perl
+urxvt*perl-ext-common: default,matcher,clipboard,font-size
+urxvt*perl-matcher: 1
+urxvt*matcher-button: 3
+urxvt*url-launcher: /usr/bin/firefox
+urxvt*depth: 32
+urxvt*dynamicColors: on
+urxvt*scrollBar: false
+urxvt*geometry: 95x15
+urxvt*cursorBlink: false
+urxvt*cursorUnderline: false
+urxvt*internalBorder: 3
+urxvt.urgentOnBell: true
+
+urxvt*font: xft:monaco for powerline:size=8.5:dpi=96
+urxvt*boldFont: xft:monaco for powerline:style=Bold:size=8.5:dpi=96
+urxvt*letterSpace: -2 
+
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
