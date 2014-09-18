@@ -1,0 +1,84 @@
+#!/bin/sh
+
+BG="#262626"
+FG="#d9d9d9"
+COLOR="#FF8000"
+CURE='-bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*'
+SNAP='-bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*'
+
+BAR_OPS="-fg #d9d9d9 -bg #555555 -h 7 -w 25 -s o -ss 1 -sw 2"
+
+CLOCK="$HOME/.dzen/xbm/clock.xbm"
+BAT_EMP="$HOME/.dzen/xbm/bat_empty_01.xbm"
+BAT_LOW="$HOME/.dzen/xbm/bat_low_01.xbm"
+BAT_FUL="$HOME/.dzen/xbm/bat_full_01.xbm"
+VOL="$HOME/.dzen/xbm/spkr_01.xbm"
+
+CPU="$HOME/.dzen/xbm/cpu.xbm"
+MEM="$HOME/.dzen/xbm/mem.xbm"
+FS="$HOME/.dzen/xbm/fs_02.xbm"
+
+MAIL="$HOME/.dzen/xbm/mail.xbm"
+INFO="$HOME/.dzen/xbm/info_03.xbm"
+MUSIC="$HOME/.dzen/xbm/note.xbm"
+TEMP="$HOME/.dzen/xbm/temp.xbm"
+USB="$HOME/.dzen/xbm/usb_02.xbm"
+PACMAN="$HOME/.dzen/xbm/pacman.xbm"
+
+NET_DOWN="$HOME/.dzen/xbm/net_down_02.xbm"
+NET_UP="$HOME/.dzen/xbm/net_up_02.xbm"
+WIFI="$HOME/.dzen/xbm/wifi_02.xbm"
+
+space() {
+  echo "^fn($SNAP)^fg(#555555) | ^fg()^fn()"
+}
+
+disk() {
+  free=$(free -m | grep buffers | awk '{print $3}' | awk '/[0-9]/')
+  echo "^fg($COLOR)^i($MEM)^fg() $free Mb"
+
+  SDA2=$(df -h | grep "/dev/sda2" | awk '{print $3}')
+  echo -n "^fg($COLOR)^i($FS)^fg() $(echo $SDA2)"
+}
+
+bat() {
+  BATPROC=$(cat /sys/class/power_supply/BAT0/capacity)
+  BATSTATE=$(cat /sys/class/power_supply/BAT0/status)
+  BATBAR=`echo $BATPROC | gdbar $BAR_OPS -max 100`
+
+  if [[ $BATPROC > 70 ]]; then
+    echo "^fg($COLOR)^i($BAT_FUL)^fg() $BATBAR $BATPROC"
+  elif [[ $BATPROC < 30 ]]; then
+    echo "^fg($COLOR)^i($BAT_EMP)^fg() $BATBAR $BATPROC"
+  else
+    echo "^fg($COLOR)^i($BAT_LOW)^fg() $BATBAR $BATPROC"
+  fi
+  echo "%"
+}
+
+music() {
+  MUS=$(mpc current)
+  echo "^fg($COLOR)^i($MUSIC)^fg() $MUS"
+}
+
+vol() {
+  ismute=`amixer get Master | grep -m 1 % | awk '{print $6}' | sed 's/\[//g' | sed 's/\]//g'`
+  if [[ "$ismute" == "off" ]]; then
+    VBS="0"
+  else
+    VBS=`amixer get Master | awk '/Front Left:/ {print $5}' | tr -d "[]"`
+  fi
+  VBAR=`echo "$VBS" | gdbar $BAR_OPS | awk '{ print $1 }'`
+  echo "^fg($COLOR)^i($VOL)^fg() $VBAR"
+}
+
+Time() {
+  DATE=`date +"%b %d %A,"`
+  TIME=`date +"%I:%M:%S"`
+  echo "^fg($COLOR)^i($CLOCK)^fg() $DATE $TIME"
+}
+
+while true ; do
+  echo $(disk)$(space)$(bat)$(space)$(vol)$(space)$(Time)
+  sleep 0.5
+done | dzen2 -h 16 -fg "$FG" -bg "$BG" -fn "$CURE" -dock -ta c -p -w 950 -x 260 &
