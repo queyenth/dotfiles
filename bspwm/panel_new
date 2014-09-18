@@ -72,8 +72,8 @@ vol() {
 }
 
 Time() {
-  DATE=`date +"%b %d %A,"`
-  TIME=`date +"%I:%M:%S"`
+  DATE=`date +"%A %d %b,"`
+  TIME=`date +"%H:%M:%S"`
   echo "^fg($COLOR)^i($CLOCK)^fg() $DATE $TIME"
 }
 
