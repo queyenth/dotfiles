@@ -6,7 +6,7 @@ XXkb.mainwindow.appicon: no
 XXkb.mainwindow.geometry: 16x16+0+0
 XXkb.mainwindow.label.background: #262626
 XXkb.mainwindow.label.foreground: #e6e6e6
-XXkb.mainwindow.label.font: -bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*
+XXkb.mainwindow.label.font: xft:monaco:size=8
 XXkb.mainwindow.label.text.1: En
 XXkb.mainwindow.label.text.2: Ru
 XXkb.controls.add_when_start: yes

@@ -2,11 +2,10 @@
 
 BG="#262626"
 FG="#d9d9d9"
-COLOR="#FF8000"
-CURE='-bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*'
-SNAP='-bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*'
+COLOR="#FB6E52"
+CURE='xft:monaco:size=8'
 
-BAR_OPS="-fg #d9d9d9 -bg #555555 -h 7 -w 25 -s o -ss 1 -sw 2"
+BAR_OPS="-fg #d9d9d9 -bg #555555 -h 10 -w 40 -s o -ss 1 -sw 2"
 
 CLOCK="$HOME/.dzen/xbm/clock.xbm"
 BAT_EMP="$HOME/.dzen/xbm/bat_empty_01.xbm"
@@ -30,7 +29,7 @@ NET_UP="$HOME/.dzen/xbm/net_up_02.xbm"
 WIFI="$HOME/.dzen/xbm/wifi_02.xbm"
 
 space() {
-  echo "^fn($SNAP)^fg(#555555) | ^fg()^fn()"
+  echo "^fn($CURE)^fg(#555555) | ^fg()^fn()"
 }
 
 disk() {

@@ -9,7 +9,7 @@ bspc config focus_by_distance   true
 bspc config normal_border_color none
 bspc config active_border_color "#504339"
 bspc config urgent_border_color "#504339"
-bspc config focused_border_color "#FF8000"
+bspc config focused_border_color "#FB6E52"
 bspc config presel_border_color none
 bspc config top_padding 16
 

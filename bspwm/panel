@@ -13,6 +13,5 @@ mkfifo "$PANEL_FIFO"
 bspc control --subscribe > "$PANEL_FIFO" &
 
 . ./panel_colors
-FONT_FAMILY='-bitstream-meslo lg m-medium-r-normal--10-*-*-*-*-*-*-*'
-FONT_SIZE=10
-cat "$PANEL_FIFO" | ./panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -h 16 -w 260 -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND"
+FONT_FAMILY='xft:monaco:size=8'
+cat "$PANEL_FIFO" | ./panel_dzen2 -f "$FONT_FAMILY" | dzen2 -h 16 -w 260 -dock -ta l -title-name panel -fn "${FONT_FAMILY}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND"
