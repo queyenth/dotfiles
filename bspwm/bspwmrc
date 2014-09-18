@@ -20,7 +20,7 @@ bspc rule -a Screenkey manage=off
 
 (cd ~/.config/bspwm && ./panel_new) &
 (cd ~/.config/bspwm && ./panel) &
-stalonetray --geometry 10x1-0+0 --icon-gravity E --grow-gravity E -bg "#262626" -i 14 -d all &
+stalonetray --geometry 20x1-0+0 --icon-gravity E --grow-gravity E -bg "#262626" -i 14 -d all &
 feh --bg-scale ~/wallpapers/131118-1920x1080.jpg
 xxkb &
 dropboxd &

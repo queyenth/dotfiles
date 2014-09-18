@@ -81,4 +81,4 @@ Time() {
 while true ; do
   echo $(disk)$(space)$(bat)$(space)$(vol)$(space)$(Time)
   sleep 0.5
-done | dzen2 -h 16 -fg "$FG" -bg "$BG" -fn "$CURE" -dock -ta c -p -w 950 -x 260 &
+done | dzen2 -h 16 -fg "$FG" -bg "$BG" -fn "$CURE" -dock -ta c -p -w 846 -x 260 &
