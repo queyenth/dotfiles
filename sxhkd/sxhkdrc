@@ -3,7 +3,7 @@
 #
 
 super + ctrl + q
-	bspc quit
+	pkill panel; pkill panel_new; killall dzen2; bspc quit
 
 super + w
 	bspc window -c
