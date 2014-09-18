@@ -18,10 +18,10 @@ bspc monitor -d main www gvim osu music
 bspc rule -a Gimp follow=on floating=on
 bspc rule -a Screenkey manage=off
 
+(cd ~/.config/bspwm && ./panel_new) &
 (cd ~/.config/bspwm && ./panel) &
-(cd ~/.config/bspwm && ./bspanel.sh) &
 stalonetray --geometry 10x1-0+0 --icon-gravity E --grow-gravity E -bg "#262626" -i 14 -d all &
-feh --bg-scale ~/wallpapers/680283-1366x768.jpg
+feh --bg-scale ~/wallpapers/131118-1920x1080.jpg
 xxkb &
 dropboxd &
 
