@@ -273,7 +273,7 @@ let g:airline_linecolumn_prefix ='¶'
 let g:airline_paste_symbol = 'ρ'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='molokai'
+let g:airline_theme='ubaryd'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine
