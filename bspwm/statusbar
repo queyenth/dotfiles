@@ -12,6 +12,11 @@ get_mus() {
   fi
 }
 
+get_layout() {
+  CURRENT=`xkb-switch`
+  echo "^fg($PANEL_COLOR_ICON)$CURRENT"
+}
+
 get_vol() {
   AMASTER=`amixer get Master | grep Left | egrep -o "[0-9]+%" | sed s/\%//`
   ICON="spkr_01.xbm"
@@ -20,7 +25,7 @@ get_vol() {
 }
 
 while true ; do
-  echo "S $(get_vol)  ^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/cal.xbm) ^fg($PANEL_COLOR_TEXT)$(date +"%a %d %b")  ^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/clock.xbm) ^fg($PANEL_COLOR_TEXT)$(date +"%I:%M %p")"
+  echo "S $(get_layout)  $(get_vol) ^fg($PANEL_COLOR_TEXT)$(date +"%a %d %b")  ^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/clock.xbm) ^fg($PANEL_COLOR_TEXT)$(date +"%I:%M %p")"
   echo "I $(get_mus)"
   sleep 1
 done

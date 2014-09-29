@@ -3,9 +3,10 @@ Dotfiles
 
 Latest dotfiles
 
-Screenshot
+Screenshots
 ----------
 ![](https://dl.dropboxusercontent.com/u/52598071/current-screenshot.png)
+![](https://dl.dropboxusercontent.com/u/52598071/clear_screenshot.png)
 
 
 Details

@@ -73,5 +73,5 @@ while read -r line ; do
   right_indent=$((SCREENWIDTH - right_width))
   avilable_center=$((SCREENWIDTH - (left_width + right_width)))
   center_indent=$(( (avilable_center + center_width) / 2))
-  printf "%s\n" "^pa($left_indent) I $mpd_infos^pa($center_indent)$wm_infos^pa($right_indent)$sys_infos"
+  printf "%s\n" "^pa($left_indent) ^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/arch.xbm) $mpd_infos^pa($center_indent)$wm_infos^pa($right_indent)$sys_infos"
 done
