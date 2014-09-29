@@ -1,0 +1,53 @@
+#! /bin/sh
+
+source ~/.config/bspwm/panel_colors
+
+num_mon=$(bspc query -M | wc -l)
+
+while read -r line ; do
+  case $line in
+    S*)
+      sys_infos="${line#?}"
+      ;;
+    T*)
+      title="${line#?}"
+      ;;
+    I*)
+      wifi="${line#?}"
+      ;;
+    W*)
+      wm_infos=""
+      IFS=':'
+      set -- ${line#?}
+      while [ $# -gt 0 ]; do
+        item=$1
+        name=${item#?}
+        case $item in
+          O*)
+            wm_infos="${wm_infos}%{F$FOCUSED_OCCUPIED_FG}%{B$FOCUSED_OCCUPIED_BG}%{U$FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+            ;;
+          F*)
+            wm_infos="${wm_infos}%{F$FOCUSED_FREE_FG}%{B$FOCUSED_FREE_BG}%{U$FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+            ;;
+          U*)
+            wm_infos="${wm_infos}%{F$FOCUSED_URGENT_FG}%{B$FOCUSED_URGENT_BG}%{U$FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+            ;;
+          o*)
+            wm_infos="${wm_infos}%{F$OCCUPIED_FG}%{B$OCCUPIED_BG} ${name} %{B-}%{F-}"
+            ;;
+          f*)
+            wm_infos="${wm_infos}%{F$FREE_FG}%{B$FREE_BG} ${name} %{B-}%{F-}"
+            ;;
+          u*)
+            wm_infos="${wm_infos}%{F$URGENT_FG}%{B$URGENT_BG} ${name} %{B-}%{F-}"
+            ;;
+          L*)
+            wm_infos="${wm_infos} %{F$LAYOUT_FG}%{B$LAYOUT_BG} ${name} %{B-}%{F-}"
+            ;;
+        esac
+        shift
+      done
+      ;;
+  esac
+  printf "%s\n" "%{l} %{F#FF${BLUE}} ⮗ $title %{c} $wm_infos %{r} $wifi %{F#FF${YELLOW}} $sys_infos"
+done

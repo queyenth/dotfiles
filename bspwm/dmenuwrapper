@@ -1,0 +1,18 @@
+#!/bin/sh
+
+SCREENWIDTH=$(xrandr -q | grep Screen | awk '{print $8}')
+SCREENHEIGHT=$(xrandr -q | grep Screen | awk '{print $10}' | sed s/,//)
+
+EDGEWIDTH=50
+DMENUWIDTH=$(($SCREENWIDTH - $(($EDGEWIDTH + $EDGEWIDTH))))
+
+XPOS=$EDGEWIDTH
+YPOS=$(($(($SCREENHEIGHT / 2)) - 15))
+
+FGSELECT="#4FC0E8"
+BGSELECT="#4FC0E8"
+FG="#FFFFFF"
+BG="#262626"
+FONT="xft:monaco:size=10"
+
+dmenu_run -w $DMENUWIDTH -x $XPOS -y $YPOS -fn ${FONT} -nb $BG -nf $FG -sb $BGSELECT -dim 0.75

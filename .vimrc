@@ -70,6 +70,9 @@ NeoBundle 'tpope/vim-leiningen'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'guns/vim-clojure-highlight'
 
+" Rust
+NeoBundle 'wting/rust.vim'
+
 " Text edition {
 " Autocompletion of (, [, {, ', ", ...
 NeoBundle 'Raimondi/delimitMate'
@@ -244,7 +247,7 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme gruvbox
+colorscheme hybrid
 
 au VimResized * exe "normal! \<c-w>="
 
@@ -273,7 +276,7 @@ let g:airline_linecolumn_prefix ='¶'
 let g:airline_paste_symbol = 'ρ'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='ubaryd'
+let g:airline_theme='hybrid'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine

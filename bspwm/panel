@@ -1,5 +1,7 @@
 #! /bin/sh
 
+source ~/.config/bspwm/panel_colors
+
 if [ $(pgrep -cx panel) -gt 1 ] ; then
   printf "%s\n" "The panel is already running." >&2
   exit 1
@@ -12,6 +14,38 @@ mkfifo "$PANEL_FIFO"
 
 bspc control --subscribe > "$PANEL_FIFO" &
 
-. ./panel_colors
-FONT_FAMILY='xft:monaco:size=8'
-cat "$PANEL_FIFO" | ./panel_dzen2 -f "$FONT_FAMILY" | dzen2 -h 16 -w 260 -dock -ta l -title-name panel -fn "${FONT_FAMILY}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND"
+music() {
+  MUS=$(mpc current)
+  if [[ $MUS != "" ]]; then
+    printf "%s\n" ${MUS}
+  fi
+}
+
+vol() {
+  if ! amixer get Master | egrep Left &>/dev/null; then
+    x=$(amixer get Master | egrep -o "[0-9]+%")
+  else
+    l=$(amixer get Master | grep Left | egrep -o "[0-9]+%" | sed s/\%//)
+    r=$(amixer get Master | grep Right | egrep -o "[0-9]+%" | sed s/\%//)
+    x=$(($(($l + $r)) / 2))
+  fi
+  printf "%s\n" ${x}\%
+}
+
+layout() {
+  LAY=`xkb-switch`
+  printf "%s\n" ${LAY}
+}
+
+Time() {
+  printf "%s\n" $(date +"%H:%M")
+}
+
+while true ; do
+  echo "I%{F${FOREGROUND}} ⮞ %{F#FF${BOLD_WHITE}}$(music)% %{F${FOREGROUND}}$(vol)% %{F#FF${MAGENTA}}$(layout)% %{F#FF${BLUE}}$(Time)" > "$PANEL_FIFO" &
+  sleep 0.5s
+done &
+
+cat "$PANEL_FIFO" | ~/.config/bspwm/panel_bar | bar -g ${BARWIDTH}x${BARHEIGHT}+${EDGEWIDTH} -f "$PANEL_FONT_FAMILY" -F "$FOREGROUND" -B "$BACKGROUND" &
+
+wait

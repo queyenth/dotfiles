@@ -1,4 +1,4 @@
-#include "/home/queyenth/.colors/hal1"
+#include "/home/queyenth/.colors/hybrid"
 
 urxvt*perl-lib: /usr/lib/urxvt/perl
 urxvt*perl-ext-common: default,matcher,clipboard,font-size
@@ -16,7 +16,7 @@ urxvt.urgentOnBell: true
 
 urxvt*font: xft:monaco for powerline:size=8.5:dpi=96
 urxvt*boldFont: xft:monaco for powerline:style=Bold:size=8.5:dpi=96
-urxvt*letterSpace: -2 
+urxvt*letterSpace: -1
 
 Xft.antialias: 1
 Xft.autohint: 0

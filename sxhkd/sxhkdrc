@@ -84,7 +84,7 @@ super + Return
 	urxvt
 
 super + r
-	dmenu_run
+	~/.config/bspwm/dmenuwrapper
 
 alt + Up
   amixer -q set Master 5%+
