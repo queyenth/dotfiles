@@ -13,39 +13,8 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 mkfifo "$PANEL_FIFO"
 
 bspc control --subscribe > "$PANEL_FIFO" &
+~/.config/bspwm/statusbar > "$PANEL_FIFO" &
 
-music() {
-  MUS=$(mpc current)
-  if [[ $MUS != "" ]]; then
-    printf "%s\n" ${MUS}
-  fi
-}
-
-vol() {
-  if ! amixer get Master | egrep Left &>/dev/null; then
-    x=$(amixer get Master | egrep -o "[0-9]+%")
-  else
-    l=$(amixer get Master | grep Left | egrep -o "[0-9]+%" | sed s/\%//)
-    r=$(amixer get Master | grep Right | egrep -o "[0-9]+%" | sed s/\%//)
-    x=$(($(($l + $r)) / 2))
-  fi
-  printf "%s\n" ${x}\%
-}
-
-layout() {
-  LAY=`xkb-switch`
-  printf "%s\n" ${LAY}
-}
-
-Time() {
-  printf "%s\n" $(date +"%H:%M")
-}
-
-while true ; do
-  echo "I%{F${FOREGROUND}} ⮞ %{F#FF${BOLD_WHITE}}$(music)% %{F${FOREGROUND}}$(vol)% %{F#FF${MAGENTA}}$(layout)% %{F#FF${BLUE}}$(Time)" > "$PANEL_FIFO" &
-  sleep 0.5s
-done &
-
-cat "$PANEL_FIFO" | ~/.config/bspwm/panel_bar | bar -g ${BARWIDTH}x${BARHEIGHT}+${EDGEWIDTH} -f "$PANEL_FONT_FAMILY" -F "$FOREGROUND" -B "$BACKGROUND" &
+cat "$PANEL_FIFO" | ~/.config/bspwm/panel_bar | dzen2 -x ${EDGEWIDTH} -y ${EDGEWIDTH} -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${PANEL_FONT_FAMILY}" -fg "$FOREGROUND" -bg "$BACKGROUND" -w "${BARWIDTH}" &
 
 wait

@@ -2,52 +2,76 @@
 
 source ~/.config/bspwm/panel_colors
 
-num_mon=$(bspc query -M | wc -l)
+adaptive_centering=0
+NORMIFS=$IFS
+FIELDIFS=':'
+PADDING=' '
 
 while read -r line ; do
   case $line in
     S*)
-      sys_infos="${line#?}"
+      sys_infos="^fg($FOREGROUND)^bg($BACKGROUND)${PADDING}${line#?}${PADDING}^fg()^bg()${PADDING}"
       ;;
     T*)
-      title="${line#?}"
+      title="^fg($COLOR_TITLE_FG)^bg($COLOR_TITLE_BG)${PADDING}${line#?}${PADDING}^fg()^bg()"
       ;;
     I*)
-      wifi="${line#?}"
+      mpd_infos="${line#?}"
       ;;
     W*)
       wm_infos=""
-      IFS=':'
+      IFS=$FIELDIFS
       set -- ${line#?}
       while [ $# -gt 0 ]; do
         item=$1
-        name=${item#?}
         case $item in
-          O*)
-            wm_infos="${wm_infos}%{F$FOCUSED_OCCUPIED_FG}%{B$FOCUSED_OCCUPIED_BG}%{U$FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+          [OoFfUu]*)
+            name=${item#?}
+            case $item in
+            O*)
+              FG=$FOCUSED_OCCUPIED_FG
+              BG=$FOCUSED_OCCUPIED_BG
             ;;
-          F*)
-            wm_infos="${wm_infos}%{F$FOCUSED_FREE_FG}%{B$FOCUSED_FREE_BG}%{U$FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+            F*)
+              FG=$FOCUSED_FREE_FG
+              BG=$FOCUSED_FREE_BG
             ;;
-          U*)
-            wm_infos="${wm_infos}%{F$FOCUSED_URGENT_FG}%{B$FOCUSED_URGENT_BG}%{U$FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+            U*)
+              FG=$FOCUSED_URGENT_FG
+              BG=$FOCUSED_URGENT_BG
             ;;
-          o*)
-            wm_infos="${wm_infos}%{F$OCCUPIED_FG}%{B$OCCUPIED_BG} ${name} %{B-}%{F-}"
+            o*)
+              FG=$OCCUPIED_FG
+              BG=$OCCUPIED_BG
             ;;
-          f*)
-            wm_infos="${wm_infos}%{F$FREE_FG}%{B$FREE_BG} ${name} %{B-}%{F-}"
+            f*)
+              FG=$FREE_FG
+              BG=$FREE_BG
             ;;
-          u*)
-            wm_infos="${wm_infos}%{F$URGENT_FG}%{B$URGENT_BG} ${name} %{B-}%{F-}"
+            u*)
+              FG=$URGENT_FG
+              BG=$URGENT_BG
+            ;;
+            esac
+            wm_infos="${wm_infos}^fg(${FG})^bg(${BG})^ca(1, bspc desktop -f ${name})^ca(2, bspc window -d ${name})${PADDING}${name}${PADDING}^ca()^ca()"
             ;;
           L*)
-            wm_infos="${wm_infos} %{F$LAYOUT_FG}%{B$LAYOUT_BG} ${name} %{B-}%{F-}"
+            layout=$(printf "%s" "${item#?}" | sed 's/^\(.\).*/\U\1/')
+            wm_infos="${wm_infos}^fg()^bg()${PADDING}${PADDING}^fg($LAYOUT_FG)^bg($LAYOUT_BG)^ca(1, bspc desktop -l next)${PADDING}$layout${PADDING}^ca()"
             ;;
         esac
         shift
       done
+      IFS=$NORMIFS
       ;;
   esac
-  printf "%s\n" "%{l} %{F#FF${BLUE}} ⮗ $title %{c} $wm_infos %{r} $wifi %{F#FF${YELLOW}} $sys_infos"
+  set -- $(printf '%s\0$s\0%s' "$mpd_infos" "$wm_infos" "$sys_infos" | sed 's/\^[a-z]\+([^)]*)//g' | xargs -0 txtw -f "$PANEL_FONT_FAMILY" -s 6)
+  left_width=$1
+  center_width=$2
+  right_width=$3
+  left_indent=5
+  right_indent=$((SCREENWIDTH - right_width))
+  avilable_center=$((SCREENWIDTH - (left_width + right_width)))
+  center_indent=$(( (avilable_center + center_width) / 2))
+  printf "%s\n" "^pa($left_indent) I $mpd_infos^pa($center_indent)$wm_infos^pa($right_indent)$sys_infos"
 done

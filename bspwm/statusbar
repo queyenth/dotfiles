@@ -1,0 +1,26 @@
+#! /bin/sh
+
+source ~/.config/bspwm/panel_colors
+
+get_mus() {
+  CURRENT=`mpc current`
+
+  if [ "$CURRENT" = "" ]; then
+      echo "^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/phones.xbm) mpd ^fg($PANEL_COLOR_TEXT)stopped"
+  else
+      echo "^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/phones.xbm)^fg($PANEL_COLOR_TEXT) `mpc current | awk '{split($0,a," - "); print a[1]" ^fg('$PANEL_COLOR_ICON')>^fg('$PANEL_COLOR_TEXT') "a[2]}'`"
+  fi
+}
+
+get_vol() {
+  AMASTER=`amixer get Master | grep Left | egrep -o "[0-9]+%" | sed s/\%//`
+  ICON="spkr_01.xbm"
+  ICON="^i($PANEL_ICON_DIR/$ICON)"
+  echo "^fg($PANEL_COLOR_ICON)$ICON ^fg($PANEL_COLOR_TEXT)$AMASTER%"
+}
+
+while true ; do
+  echo "S $(get_vol)  ^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/cal.xbm) ^fg($PANEL_COLOR_TEXT)$(date +"%a %d %b")  ^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/clock.xbm) ^fg($PANEL_COLOR_TEXT)$(date +"%I:%M %p")"
+  echo "I $(get_mus)"
+  sleep 1
+done
