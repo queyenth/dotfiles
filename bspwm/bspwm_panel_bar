@@ -1,0 +1,66 @@
+#! /bin/sh
+
+NORMIFS=$IFS
+FIELDIFS=':'
+PAD='  '
+LPAD='                '
+
+source ~/.config/bspwm/panel_colors
+
+while read -r line; do
+  case $line in
+    S*)
+      sys_infos="${line#?}"
+      ;;
+    I*)
+      mpd_infos="${line#?}"
+      ;;
+    W*)
+      wm_infos=""
+      IFS=$FIELDIFS
+      set -- ${line#?}
+      while [ $# -gt 0 ]; do
+        item=$1
+        case $item in
+          [OoFfUu]*)
+            name=${item#?}
+            case $item in
+              O*)
+                FG="$FOCUSED_OCCUPIED_FG"
+                BG="$FOCUSED_OCCUPIED_BG"
+              ;;
+              F*)
+                FG="$FOCUSED_FREE_FG"
+                BG="$FOCUSED_FREE_BG"
+              ;;
+              U*)
+                FG="$FOCUSED_URGENT_FG"
+                BG="$FOCUSED_URGENT_BG"
+              ;;
+              o*)
+                FG="$OCCUPIED_FG"
+                BG="$OCCUPIED_BG"
+              ;;
+              f*)
+                FG="$FREE_FG"
+                BG="$FREE_BG"
+              ;;
+              u*)
+                FG="$URGENT_FG"
+                BG="$URGENT_BG"
+              ;;
+            esac
+            wm_infos="${wm_infos}%{F$FG B$BG A:bspc desktop -f ${name}:}${PAD}${name}${PAD}%{A B- F-}"
+            ;;
+          # L*)
+          #   layout=$(printf "[%s]" $(echo "${item#?}" | sed 's/6\(.\).*/\U\1/'))
+          #   wm_infos="${wm_infos}%{F$BG B$LAYOUT_BG}%{F$LAYOUT_FG A:bspc desktop -l next:} $layout %{A F$LAYOUT_BG B-}%"
+          #   ;;
+        esac
+        shift
+      done
+      IFS=$NORMIFS
+      ;;
+    esac
+    printf "%s\n" "%{l}$mpd_infos %{c}$wm_infos %{r}$sys_infos "
+done

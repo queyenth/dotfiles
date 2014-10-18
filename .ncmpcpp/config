@@ -24,17 +24,17 @@ ncmpcpp_directory = ~/.ncmpcpp
 #
 ##### connection settings #####
 #
-#mpd_host = localhost
+mpd_host = localhost
 #
-#mpd_port = 6600
+mpd_port = 6600
 #
-#mpd_connection_timeout = 5
+mpd_connection_timeout = 5
 #
 ## Needed for tag editor and file operations to work.
 ##
 mpd_music_dir = ~/Music
 #
-#mpd_crossfade_time = 5
+mpd_crossfade_time = 5
 #
 ##### music visualizer #####
 ##
@@ -112,11 +112,11 @@ visualizer_look = ●▮
 ## Time of inactivity (in seconds) after playlist
 ## highlighting will be disabled (0 = always on).
 ##
-#playlist_disable_highlight_delay = 5
+playlist_disable_highlight_delay = 0
 #
 ## Defines how long messages are supposed to be visible.
 ##
-#message_delay_time = 5
+message_delay_time = "4"
 #
 ##### song format #####
 ##
@@ -171,9 +171,9 @@ visualizer_look = ●▮
 ## Note: colors can be nested.
 ##
 #
-song_list_format = {$4%a$9 - }{$8%t$9}|{$0%f$9} - {$7(%l)$9}
-song_library_format = {$4%n$9 - }{$0%t$9}|{$4%f$9}
-tag_editor_album_format = {$4(%y)$9 }$7%b$9
+song_list_format = "$7{(%l) }$5{%a - }$3{%t}"
+song_library_format = {%n - }{%t}|{%f}
+tag_editor_album_format = {(%y) }%b
 #
 ##
 ## Note: Below variables are used for sorting songs in browser.
@@ -498,4 +498,4 @@ data_fetching_delay = yes
 #window_border_color = green
 #
 #active_window_border = red
-#
+##

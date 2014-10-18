@@ -88,6 +88,12 @@ NeoBundle 'tpope/vim-characterize'
 NeoBundle 'kshenoy/vim-signature'
 
 NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'whatyouhide/vim-gotham'
+NeoBundle 'reedes/vim-colors-pencil'
+NeoBundle 'gregsexton/Muon'
+NeoBundle 'MaxSt/FlatColor'
+NeoBundle 'mopp/mopkai.vim'
+NeoBundle 'larssmit/vim-getafe'
 " }
 
 " A better looking status line
@@ -247,7 +253,7 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme hybrid
+colorscheme queyenth
 
 au VimResized * exe "normal! \<c-w>="
 
@@ -256,7 +262,7 @@ set nobackup
 set nowb
 set noswapfile
 
-set guifont=Monaco\ for\ Powerline\ 8
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 9
 
 set wildmenu
 set wildmode=list:longest,full
@@ -264,6 +270,11 @@ set wildignore=*.o,*~,*.pyc,*.sw?,*.luac,*.jar,*.stats
 
 " PLUGINS SETUP
 " =======================================
+"
+" YouCompleteMe
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+
 " Airline settings
 set noshowmode
 if !exists('g:airline_symbols')
@@ -276,7 +287,7 @@ let g:airline_linecolumn_prefix ='¶'
 let g:airline_paste_symbol = 'ρ'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='hybrid'
+let g:airline_theme='pencil'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine

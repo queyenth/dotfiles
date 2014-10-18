@@ -5,7 +5,8 @@ ZSH=~/.oh-my-zsh/
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="minimal"
+# af-magic, bira, gozilla
+ZSH_THEME="queyenth"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +52,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:~/scripts
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -96,11 +97,11 @@ autoload -U promptinit
 promptinit
 
 streaming() {
-     INRES="1440x900" # input resolution
-     OUTRES="1440x900" # output resolution
-     FPS="15" # target FPS
-     GOP="30" # i-frame interval, should be double of FPS, 
-     GOPMIN="15" # min i-frame interval, should be equal to fps, 
+     INRES="1920x1080" # input resolution
+     OUTRES="1920x1080" # output resolution
+     FPS="25" # target FPS
+     GOP="50" # i-frame interval, should be double of FPS, 
+     GOPMIN="25" # min i-frame interval, should be equal to fps, 
      THREADS="2" # max 6
      CBR="1000k" # constant bitrate (should be between 1000k - 3000k)
      QUALITY="ultrafast"  # one of the many FFMPEG preset

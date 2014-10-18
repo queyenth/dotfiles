@@ -65,13 +65,12 @@ while read -r line ; do
       IFS=$NORMIFS
       ;;
   esac
-  set -- $(printf '%s\0$s\0%s' "$mpd_infos" "$wm_infos" "$sys_infos" | sed 's/\^[a-z]\+([^)]*)//g' | xargs -0 txtw -f "$PANEL_FONT_FAMILY" -s 6)
-  left_width=$1
-  center_width=$2
-  right_width=$3
+  left_width=300
+  center_width=155
+  right_width=165
+  # echo "$left_width" "$center_width" "$right_width"
   left_indent=5
+  center_indent=$(( (SCREENWIDTH - center_width) / 2))
   right_indent=$((SCREENWIDTH - right_width))
-  avilable_center=$((SCREENWIDTH - (left_width + right_width)))
-  center_indent=$(( (avilable_center + center_width) / 2))
   printf "%s\n" "^pa($left_indent) ^fg($PANEL_COLOR_ICON)^i($PANEL_ICON_DIR/arch.xbm) $mpd_infos^pa($center_indent)$wm_infos^pa($right_indent)$sys_infos"
 done
