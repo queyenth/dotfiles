@@ -5,14 +5,10 @@ URxvt*colorUL: #FFFFFF
 URxvt*colorBD: #AAD80F
 
 URxvt*foreground: #D3D3D3
-!URxvt*background: #000000
 URxvt*background: #111111
 !black
 URxvt*color0: #666666
 URxvt*color8: #666666
-!!black
-!URxvt*color0: #181818
-!URxvt*color8: #181818
 !red
 URxvt*color1: #D7D7D7
 URxvt*color9: #D7D7D7

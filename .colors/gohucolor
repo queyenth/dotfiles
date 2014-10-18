@@ -1,8 +1,6 @@
 ! Colors.
 urxvt*background: #0D131A
 urxvt*foreground: #8A9499
-!urxvt*background: #000000
-!urxvt*foreground: #FFFFFF
  
 ! black
 urxvt*color0:     #0D131A

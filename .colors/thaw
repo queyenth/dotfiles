@@ -5,7 +5,6 @@
 ! THAW COLORS
 ! #########################################
 urxvt*background:       #170F0D
-!urxvt*foreground:       #746C48
 urxvt*foreground:       #bea492
 urxvt*cursorColor:      #AF652F
 urxvt*colorBD:          #C8B984

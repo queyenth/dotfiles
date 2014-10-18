@@ -8,18 +8,12 @@ urxvt*colorBD: #6fa5df
 urxvt*color0: #4a4a4a
 urxvt*color8: #777777
 
-!urxvt*color1: #c29198
-!urxvt*color9: #a0616a
 urxvt*color1: #df6f6f
 urxvt*color9: #eba8a8
 
-!urxvt*color2: #abd8a5
-!urxvt*color10: #80a27b
 urxvt*color2: #6fdfa4
 urxvt*color10: #a8ebc8
 
-!urxvt*color3: #acacac
-!urxvt*color11: #858585
 urxvt*color3: #dfdc6f
 urxvt*color11: #ebeaa8
 

@@ -1,9 +1,4 @@
-! Colors - dotshare.it/dots/16/ ----------------------------------------------
-
-! *foreground:#a0a0a0
  *foreground:#333333
-! *background:#1b1d1e
-! *background:#ccccc6
 *background:#bebeb4
 
 *color0: #3d3e3d

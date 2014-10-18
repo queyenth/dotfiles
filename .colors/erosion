@@ -19,8 +19,6 @@ urxvt*color3: #bfba92
 urxvt*color11: #fafac0
 
 !! blue dark/light
-! urxvt*color4: #293033
-! urxvt*color12: #303b40
 urxvt*color4: #646a6d
 urxvt*color12: #626e74
 

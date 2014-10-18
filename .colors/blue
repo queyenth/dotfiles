@@ -1,8 +1,3 @@
-! vim:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
-!
-! #########################################
-! BLUE AWESOME COLORS
-! #########################################
 urxvt*cursorColor: #b2b2b2
 urxvt*colorIT:	#927d9e
 urxvt*colorUL:  #6e98b8

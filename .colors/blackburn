@@ -1,5 +1,3 @@
-!*background: #020202
-
 URxvt*background: [95]#262626
 URxvt*.foreground: #F2F1F0
 URxvt*.cursorColor: #F67730
@@ -22,9 +20,7 @@ URxvt*color11: #F07746
 
 !blue
 URxvt*color4: #7DC1CF
-!*color4: #66AABB
 URxvt*color12: #4E9FB1
-!*color12: #AACCBB
 
 !magenta
 URxvt*color5: #B7416E

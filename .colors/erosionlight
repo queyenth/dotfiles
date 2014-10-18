@@ -1,6 +1,5 @@
 urxvt*background: #e0daac
 urxvt*foreground: #856a2a
-!!urxvt*foreground: #ffdcc4
 urxvt*cursorColor: #93a1a1
 urxvt*colorIT: #8c644c
 urxvt*colorUL: #646a6dy
@@ -21,13 +20,9 @@ urxvt*color11: #E0DAAC
 urxvt*color4: #646a6d
 urxvt*color12: #777E82
 !magenta dark/light
-!!urxvt*color5: #6d6871
-!!urxvt*color13: #756f7b
 urxvt*color5: #766782
 urxvt*color13: #897796
 !cyan dark/light
-!!urxvt*color6: #3b484a
-!!urxvt*color14: #444d4e
 urxvt*color6: #4B5C5E
 urxvt*color14: #556D70
 !white dark/light

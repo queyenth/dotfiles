@@ -1,8 +1,6 @@
 !-- colors --!
 urxvt*background:         #140c0b
-!urxvt*foreground:         #cdcdcd
-!urxvt*foreground:         #FFFFFF
-!urxvt*background:         #000000
+urxvt*foreground:         #cdcdcd
 ! black
 !*color0:             #403f3e
 urxvt*color0:             #242323
