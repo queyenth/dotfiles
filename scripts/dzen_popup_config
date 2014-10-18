@@ -1,0 +1,19 @@
+#!/bin/bash
+
+FONT="-misc-termsyn.icons-medium-r-normal--11-79-100-100-c-60-iso8859-1"
+PAD='   '
+ACT='onstart=uncollapse;button1=exit;button3=exit'
+YPOS='20'
+TIME='4'
+
+FG="#99D1CE"
+BG="#0A0F14"
+
+bar_bg="#444444"
+bar_fg="#75691C"
+label="#185466"
+highlight="#185466"
+highlight2="#0A0A0A"
+warn="#C23127"
+
+OPTIONS="-bg ${BG} -fg ${FG} -y ${YPOS} -e ${ACT} -ta 'c'"
