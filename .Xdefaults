@@ -1,4 +1,5 @@
-#include "/home/queyenth/.colors/hybrid"
+#include "/home/queyenth/.colors/queyenth"
+# fallac, fresh, hybrid, jmbi, smooth, venam
 
 urxvt*perl-lib: /usr/lib/urxvt/perl
 urxvt*perl-ext-common: default,matcher,clipboard,font-size
@@ -14,9 +15,13 @@ urxvt*cursorUnderline: false
 urxvt*internalBorder: 3
 urxvt.urgentOnBell: true
 
-urxvt*font: xft:monaco for powerline:size=8.5:dpi=96
-urxvt*boldFont: xft:monaco for powerline:style=Bold:size=8.5:dpi=96
+urxvt*font: xft:ubuntu mono derivative powerline:size=9:dpi=96
+urxvt*boldFont: xft:ubuntu mono derivative powerline:style=Bold:size=9:dpi=96
 urxvt*letterSpace: -1
+
+/* urxvt*font: -misc-tamzen-medium-r-normal--11-0-100-100-c-0-iso8859-1 */
+/* urxvt*boldFont: -misc-tamzen-medium-r-normal--11-0-100-100-c-0-iso8859-1 */
+/* urxvt*letterSpace: 1 */
 
 Xft.antialias: 1
 Xft.autohint: 0
