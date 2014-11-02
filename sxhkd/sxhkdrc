@@ -86,6 +86,9 @@ super + Return
 super + r
 	~/.config/bspwm/dmenuwrapper
 
+super + shift + s
+  scrot '%H-%M-%S_%d-%m-%Y_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
+
 alt + Up
   amixer -q set Master 5%+
 

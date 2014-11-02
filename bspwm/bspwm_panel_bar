@@ -24,33 +24,32 @@ while read -r line; do
         case $item in
           [OoFfUu]*)
             name=${item#?}
+            FG=$FOREGROUND
+            BG=$BACKGROUND
             case $item in
               O*)
-                FG="$FOCUSED_OCCUPIED_FG"
-                BG="$FOCUSED_OCCUPIED_BG"
+                symbol=
+                FG=$BOLD_GREEN
               ;;
               F*)
-                FG="$FOCUSED_FREE_FG"
-                BG="$FOCUSED_FREE_BG"
+                symbol=
+                FG=$BOLD_GREEN
               ;;
               U*)
-                FG="$FOCUSED_URGENT_FG"
-                BG="$FOCUSED_URGENT_BG"
+                symbol=
+                FG=$BOLD_GREEN
               ;;
               o*)
-                FG="$OCCUPIED_FG"
-                BG="$OCCUPIED_BG"
+                symbol=
               ;;
               f*)
-                FG="$FREE_FG"
-                BG="$FREE_BG"
+                symbol=
               ;;
               u*)
-                FG="$URGENT_FG"
-                BG="$URGENT_BG"
+                symbol=
               ;;
             esac
-            wm_infos="${wm_infos}%{F$FG B$BG A:bspc desktop -f ${name}:}${PAD}${name}${PAD}%{A B- F-}"
+            wm_infos="${wm_infos}%{F$FG B$BG A:bspc desktop -f ${name}:}${PAD}${symbol}${PAD}%{A B- F-}"
             ;;
           # L*)
           #   layout=$(printf "[%s]" $(echo "${item#?}" | sed 's/6\(.\).*/\U\1/'))
@@ -64,3 +63,8 @@ while read -r line; do
     esac
     printf "%s\n" "%{l}$mpd_infos %{c}$wm_infos %{r}$sys_infos "
 done
+
+
+
+
+

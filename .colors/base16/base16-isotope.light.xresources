@@ -1,0 +1,24 @@
+! Base16 Isotope
+! Scheme: Jan T. Sott
+
+*.foreground:   #606060
+*.background:   #ffffff
+*.cursorColor:  #606060
+
+*.color0:       #000000
+*.color1:       #ff0000
+*.color2:       #33ff00
+*.color3:       #ff0099
+*.color4:       #0066ff
+*.color5:       #cc00ff
+*.color6:       #00ffff
+*.color7:       #d0d0d0
+
+*.color8:       #808080
+*.color9:       #ff0000
+*.color10:      #33ff00
+*.color11:      #ff0099
+*.color12:      #0066ff
+*.color13:      #cc00ff
+*.color14:      #00ffff
+*.color15:      #ffffff

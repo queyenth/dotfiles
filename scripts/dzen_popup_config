@@ -6,14 +6,14 @@ ACT='onstart=uncollapse;button1=exit;button3=exit'
 YPOS='20'
 TIME='4'
 
-FG="#CCCCDC"
-BG="#141414"
+FG="#FFFFFF"
+BG="#2D2D2D"
 
-bar_bg="#444444"
-bar_fg="#27B2DB"
-label="#BD25B4"
-highlight="#BD25B4"
-highlight2="#1C1C1C"
+bar_bg="#525252"
+bar_fg="#8e8e8e"
+label="#7C7C7C"
+highlight="#7C7C7C"
+highlight2="#333333"
 warn="#C23127"
 
 OPTIONS="-bg ${BG} -fg ${FG} -y ${YPOS} -e ${ACT} -ta 'c'"

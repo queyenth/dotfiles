@@ -1,0 +1,22 @@
+! Base16 Pop
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+*.foreground:   #303030
+*.background:   #ffffff
+*.cursorColor:  #303030
+*.color0:       #202020
+*.color1:       #eb008a
+*.color2:       #37b349
+*.color3:       #f8ca12
+*.color4:       #0e5a94
+*.color5:       #7a2d00
+*.color6:       #00aabb
+*.color7:       #e0e0e0
+*.color8:       #000000
+*.color9:       #f29333
+*.color10:      #303030
+*.color11:      #505050
+*.color12:      #b0b0b0
+*.color13:      #b31e8d
+*.color14:      #d0d0d0
+*.color15:      #ffffff

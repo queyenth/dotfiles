@@ -12,8 +12,8 @@ out_to_x no
 
 TEXT
 S\
-%{A:dzen_popup_toggle.sh sysinfo:}%{F\#FF7D153A}  cpu%{F-} ${cpu cpu0}%%%{A}\
-%{A:dzen_popup_toggle.sh diskinfo:}%{F\#FF7D153A}  ram%{F-} ${mem} %{A}\
-%{F\#FF808080}|%{F\#FF7D153A}  ati%{F-} ${execi 3 sensors radeon-pci-0100 | grep 'temp1' | cut -c16-17}\
-%{F\#FF808080}|%{F\#FF7D153A A:dzen_popup_toggle.sh calendar:}  %{F-}${time %d %a} ${time %H:%M}%{A}\
+%{A:dzen_popup_toggle.sh sysinfo:}%{F\#FF746C48}  cpu%{F-} ${cpu cpu0}%%%{A}\
+%{A:dzen_popup_toggle.sh diskinfo:}%{F\#FF746C48}  ram%{F-} ${mem} %{A}\
+%{F\#FF808080}|%{F\#FF746C48}  ati%{F-} ${execi 3 sensors radeon-pci-0100 | grep 'temp1' | cut -c16-17}\
+%{F\#FF808080}|%{F\#FF746C48 A:dzen_popup_toggle.sh calendar:}  %{F-}${time %d %a} ${time %H:%M}%{A}\
 

@@ -1,5 +1,123 @@
 ﻿" No to the total compatibility with the ancient vi
 set nocompatible
+set nolist
+set nowrap
+
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+set mouse=a
+set mousemodel=popup
+
+set laststatus=2
+set splitright
+set splitbelow
+set autochdir
+
+" No backups, 2014, you know
+set nobackup
+set nowb
+set noswapfile
+
+set wildmenu
+set wildmode=list:longest,full
+set wildignore=*.o,*~,*.pyc,*.sw?,*.luac,*.jar,*.stats
+
+" For additional shortcuts
+let mapleader = ","
+let maplocalleader = ","
+
+" Keymap settings for changing language in vim using Ctrl+^
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+
+set completeopt=menuone,menu,longest,preview
+set complete=""
+set complete+=.
+set complete+=k
+set complete+=b
+set complete+=t
+
+" Always show ruler
+set ruler
+" Show some data about selected lines,chars
+set showcmd
+
+set number
+set cursorline
+set scrolljump=7
+set scrolloff=7
+
+" Disabling annoying vim beep-beep
+
+" Set utf-8 encoding
+set encoding=utf-8
+set termencoding=utf-8
+scriptencoding utf-8
+
+" Default filetype - unix
+set ffs=unix,dos,mac
+set mousehide
+set ch=1
+
+" Better screen redraw
+set ttyfast
+" Set terminal title to the current file
+set title
+" Update a open file edited outside of Vim
+set autoread
+" Toggle between modes almost instantly
+set ttimeoutlen=0
+
+set history=1000
+set undofile
+set undodir=~/.vim/tmp/undo/
+set undolevels=1000
+set undoreload=1000
+
+" Lazy redraw than preprocessing macros, useful for performance
+set lazyredraw
+
+" No highlight search results (looks ugly)
+set nohlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" To make backspace works, like it should works
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+
+" Expand tab into spaces, and set it to 2 spaces
+set smarttab
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+set smartindent
+
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set sessionoptions=resize,winpos,winsize,buffers,tabpages,folds,curdir,help
+
+set formatoptions+=cr
+set guioptions=i
+
+set magic
+set showmatch
+set mat=2
+
+" To return on current line after closing vim
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+set viminfo^=%
+
+au VimResized * exe "normal! \<c-w>="
+
+autocmd! BufWritePost vimrc source %
 
 " Auto installing NeoBundle
 let iCanHazNeoBundle=1
@@ -94,6 +212,7 @@ NeoBundle 'gregsexton/Muon'
 NeoBundle 'MaxSt/FlatColor'
 NeoBundle 'mopp/mopkai.vim'
 NeoBundle 'larssmit/vim-getafe'
+NeoBundle 'chriskempson/base16-vim'
 " }
 
 " A better looking status line
@@ -118,106 +237,23 @@ NeoBundleCheck
 
 filetype plugin indent on
 
-" For additional shortcuts
-let mapleader = ","
-let maplocalleader = ","
+" Enabling syntax highlithing
+syntax enable
+set background=dark
+set t_Co=256
 
-" Keymap settings for changing language in vim using Ctrl+^
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-set completeopt=menuone,menu,longest,preview
+if has("gui_running")
+  set guicursor+=a:block-blinkon0
+end
+colorscheme erosion
 
-" Always show ruler
-set ruler
-set showcmd
-
-" Show lines numbers
-set nu
-set incsearch
-set scrolljump=7
-set scrolloff=7
-
-" Disabling annoying vim beep-beep
-set novisualbell
-set t_vb=
-set tm=500
-set mouse=a
-set mousemodel=popup
-
-" Set utf-8 encoding
-set encoding=utf-8
-set termencoding=utf-8
-scriptencoding utf-8
-set ls=2
-set go-=T
-set go-=m
-set go-=r
-set go-=L
-
-" Default filetype - unix
-set ffs=unix,dos,mac
-set hidden
-set ch=1
-set mousehide
-set cursorline
-
-" Better screen redraw
-set ttyfast
-" Set terminal title to the current file
-set title
-" Update a open file edited outside of Vim
-set autoread
-" Toggle between modes almost instantly
-set ttimeoutlen=0
-
-set history=1000
-set undofile
-set undodir=~/.vim/tmp/undo/
-set undoreload=1000
-
-" Lazy redraw than preprocessing macros, useful for performance
-set lazyredraw
-
-" No highlight search results (looks ugly)
-set nohlsearch
-
-" Magic - on
-set magic
-set showmatch
-set mat=2
-
-" To make backspace works, like it should works
-set backspace=indent,eol,start whichwrap+=<,>,[,]
-
-" Expand tab into spaces, and set it to 2 spaces
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
-" Nice indent :3
-set autoindent
-set smartindent
-
-set fo+=cr
-set sessionoptions=resize,winpos,winsize,buffers,tabpages,folds,curdir,help
+set guifont=Tewi\ 9
 
 " Useful maping
 map <C-j> <C-W>j
 map <C-h> <C-W>h
 map <C-k> <C-W>k
 map <C-l> <C-W>l
-
-" To return on current line after closing vim
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
-set viminfo^=%
-
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
@@ -237,37 +273,6 @@ map <Leader>P :set invpaste<CR>
 command! ToggleQuickfix call <SID>QuickfixToggle()
 nnoremap <silent> <Leader>q :ToggleQuickfix<CR>
 
-autocmd! BufWritePost vimrc source %
-
-set complete=""
-set complete+=.
-set complete+=k
-set complete+=b
-set complete+=t
-
-" Enabling syntax highlithing
-syntax enable
-set background=dark
-set t_Co=256
-
-if has("gui_running")
-  set guicursor+=a:block-blinkon0
-end
-colorscheme queyenth
-
-au VimResized * exe "normal! \<c-w>="
-
-" No backups, 2014, you know
-set nobackup
-set nowb
-set noswapfile
-
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 9
-
-set wildmenu
-set wildmode=list:longest,full
-set wildignore=*.o,*~,*.pyc,*.sw?,*.luac,*.jar,*.stats
-
 " PLUGINS SETUP
 " =======================================
 "
@@ -280,14 +285,16 @@ set noshowmode
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_enable_branch=1
-let g:airline_enable_syntatic=1
-let g:airline_detect_paste=1
-let g:airline_linecolumn_prefix ='¶'
-let g:airline_paste_symbol = 'ρ'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='pencil'
+
+let g:airline_theme='hybrid'
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
+let g:Powerline_symbols = 'fancy'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine
@@ -295,6 +302,7 @@ xmap <Leader>c <Plug>Commentary
 
 " delimitMate
 let delimitMate_expand_space = 1
+au FileType vim let b:delimitMate_quotes = "\' "
 
 " Fugitive
 nnoremap <Leader>gn :Git! init<CR>
