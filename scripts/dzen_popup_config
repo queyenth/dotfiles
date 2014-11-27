@@ -1,18 +1,18 @@
 #!/bin/bash
 
-FONT="-misc-termsyn.icons-medium-r-normal--11-79-100-100-c-60-iso8859-1"
+FONT="-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 PAD='   '
 ACT='onstart=uncollapse;button1=exit;button3=exit'
 YPOS='20'
 TIME='4'
 
-FG="#FFFFFF"
-BG="#2D2D2D"
+FG="#a5a5a5"
+BG="#1b1d20"
 
 bar_bg="#525252"
 bar_fg="#8e8e8e"
-label="#7C7C7C"
-highlight="#7C7C7C"
+label="#82444c"
+highlight="#82444c"
 highlight2="#333333"
 warn="#C23127"
 

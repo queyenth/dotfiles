@@ -245,7 +245,7 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme erosion
+colorscheme queyenth
 
 set guifont=Tewi\ 9
 
@@ -286,7 +286,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-let g:airline_theme='hybrid'
+let g:airline_theme = 'raven'
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'

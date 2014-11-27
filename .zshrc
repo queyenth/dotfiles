@@ -6,7 +6,7 @@ ZSH=~/.oh-my-zsh/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # af-magic, bira, gozilla
-ZSH_THEME="queyenth"
+ZSH_THEME="Soliah"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,4 +114,9 @@ streaming() {
        -s $OUTRES -preset $QUALITY -tune film -acodec libmp3lame -threads $THREADS -strict normal \
        -bufsize $CBR "rtmp://$SERVER.twitch.tv/app/$STREAM_KEY"
  }
+
+alias rec="ffmpeg -f x11grab -video_size 1920x1080 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac $1"
+alias enc_to_webm="ffmpeg -i $1 -acodec libvorbis -aq 7 -ac 2 -qmax 30 -threads 2 $2"
+alias grep="grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
+export GREP_OPTIONS=""
 # End of lines added by compinstall

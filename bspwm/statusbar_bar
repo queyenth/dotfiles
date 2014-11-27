@@ -10,33 +10,33 @@ get_mus() {
       echo -e "\ue057 mpd stopped"
   else
       if [ "$STATUS" = "playing" ]; then
-        echo -e "%{F$BOLD_GREEN}\ue058%{F-} `mpc current | awk '{split($0,a," - "); printf "%s %s %s", a[1], "'%{F$BOLD_GREEN}'>'%{F-}'", a[2];}'`"
+        echo -e "%{F$RED}\ue058%{F-} `mpc current | awk '{split($0,a," - "); printf "%s %s %s", a[1], "'%{F$RED}'>'%{F-}'", a[2];}'`"
       else
-        echo -e "%{F$BOLD_GREEN}\ue059%{F-} `mpc current | awk '{split($0,a," - "); printf "%s %s %s", a[1], "'%{F$BOLD_GREEN}'>'%{F-}'", a[2];}'`"
+        echo -e "%{F$RED}\ue059%{F-} `mpc current | awk '{split($0,a," - "); printf "%s %s %s", a[1], "'%{F$RED}'>'%{F-}'", a[2];}'`"
       fi
   fi
 }
 
 get_layout() {
   CURRENT=`xkb-switch`
-  echo -e "%{F$BOLD_GREEN}\ue0b1%{F-} $CURRENT"
+  echo -e "%{F$RED}\ue0b1%{F-} $CURRENT"
 }
 
 get_vol() {
-  AMASTER=`amixer get Master | grep Left | egrep -o "[0-9]+%" | sed s/\%//`
-  ASTATUS=`amixer get Master | grep Left | egrep -o "\[[a-z]+\]" | sed 's/\[//;s/\]//'`
+  AMASTER=`amixer get Master | grep Mono | egrep -o "[0-9]+%" | sed s/\%//`
+  ASTATUS=`amixer get Master | grep Mono | egrep -o "\[[a-z]+\]" | sed 's/\[//;s/\]//'`
   if [ "$ASTATUS" = "off" ]; then
-    echo -e "%{F$BOLD_GREEN }\ue04f%{F-} $AMASTER"
+    echo -e "%{F$RED }\ue04f%{F-} $AMASTER"
   else
     if [[ "$AMASTER" -gt 75 ]]; then
-      echo -e "%{F$BOLD_GREEN }\ue05d%{F-} $AMASTER"
+      echo -e "%{F$RED }\ue05d%{F-} $AMASTER"
     else
-      echo -e "%{F$BOLD_GREEN }\ue050%{F-} $AMASTER"
+      echo -e "%{F$RED }\ue050%{F-} $AMASTER"
     fi
   fi
 }
 
 while true ; do
-  echo "I $(get_mus) $(get_vol) $(get_layout)"
+  echo "I $(get_mus)"
   sleep 1
 done
