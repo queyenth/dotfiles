@@ -244,10 +244,12 @@ set t_Co=256
 
 if has("gui_running")
   set guicursor+=a:block-blinkon0
+  colorscheme queyenth
+else
+  colorscheme default
 end
-colorscheme queyenth
 
-set guifont=Tewi\ 9
+set guifont=orp\ Medium\ Semi-Condensed\ 9
 
 " Useful maping
 map <C-j> <C-W>j
