@@ -3,7 +3,7 @@
 #
 
 super + ctrl + q
-	pkill panel; pkill panel_new; killall dzen2; bspc quit
+	killall tinyclock; killall bar; bspc quit
 
 super + w
 	bspc window -c
@@ -81,7 +81,7 @@ super + @button{1-3}
 #
 
 super + Return
-	urxvt
+	urxvtc
 
 super + r
 	~/.config/bspwm/dmenuwrapper
@@ -90,16 +90,16 @@ super + shift + s
   scrot '%H-%M-%S_%d-%m-%Y_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
 
 alt + Up
-  amixer -q set Master 5%+
+  volumenotify + 3
 
 alt + Down
-  amixer -q set Master 5%-
+  volumenotify - 3
 
 alt + m
-  amixer -q set Master playback toggle
+  volumenotify !
 
 alt + ctrl + m
-  amixer -q set Master playback 100%
+  mpdnotify -t
 
 # make sxhkd reload its configuration files:
 super + Escape
