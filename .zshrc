@@ -5,8 +5,8 @@ ZSH=~/.oh-my-zsh/
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# af-magic, bira, gozilla
-ZSH_THEME="Soliah"
+# cloud, fwalch, kolo
+ZSH_THEME="kolo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
