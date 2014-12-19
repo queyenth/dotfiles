@@ -1,0 +1,2 @@
+#!/bin/sh
+cd ~/build/twitch_desktop_notification_system && python2 main.py
