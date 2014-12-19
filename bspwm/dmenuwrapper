@@ -1,17 +1,14 @@
 #!/bin/sh
 
-source $(dirname $0)/panel_colors
+source $(dirname $0)/config
 
-EDGEWIDTH=50
-DMENUWIDTH=$(($SCREENWIDTH - $(($EDGEWIDTH + $EDGEWIDTH))))
+DMENUWIDTH=1900
+DMENUHEIGHT=5
+XPOS=10
+YPOS=0
 
-XPOS=$EDGEWIDTH
-YPOS=$(($(($SCREENHEIGHT / 2)) - 15))
+BGSELECT="#82444C"
+FG="#A5A5A5"
+BG="#1B1D20"
 
-FGSELECT="#746C48"
-BGSELECT="#746C48"
-FG="#BEA492"
-BG="#181512"
-FONT="xft:tewi:size=9"
-
-dmenu_run -w $DMENUWIDTH -x $XPOS -y $YPOS -fn ${FONT} -nb $BG -nf $FG -sb $BGSELECT -dim 0.6
+dmenu_run -w $DMENUWIDTH -h $DMENUHEIGHT -x $XPOS -y $YPOS -fn ${FONT2} -nb $BG -nf $FG -sb $BGSELECT
