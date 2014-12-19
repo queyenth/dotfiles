@@ -1,0 +1,11 @@
+#!/bin/sh
+
+source ~/.config/bspwm/config
+
+(echo " $@"; sleep $DURATION)\
+| bar \
+      -f "$FONT1","$FONT2"\
+      -F "$FOREGROUND"\
+      -B "$BACKGROUND"\
+      -g "$NOTIFY_GEOMETRY"\
+      -u $LINEHEIGHT
