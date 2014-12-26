@@ -7,7 +7,7 @@
 # author
 #   Windelicato - http://github.com/windelicato
 
-source ~/.config/bspwm/panel_colors
+source ~/.config/bspwm/config
 
 err() {
   echo "$1"
@@ -69,11 +69,10 @@ do
   if [[ `state` != "on" ]]; then
     bar+=" "
   elif [ $i -lt $current ]; then
-    bar+="%{F$FOCUSED_OCCUPIED_FG}${BAR_CHAR}%{F-}"
+    bar+="%{F$RED}${BAR_CHAR}%{F-}"
   else
-    bar+="%{F$OCCUPIED_FG}${BAR_CHAR}%{F-}"
+    bar+="%{F$WHITE}${BAR_CHAR}%{F-}"
   fi
 done
 
 $(dirname $0)/notify "%{F$PANEL_COLOR_ICON}$icon%{F-} [$bar]" &
-mplayer2 "$CLIP" >/dev/null&

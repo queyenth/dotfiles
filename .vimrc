@@ -244,7 +244,7 @@ set t_Co=256
 
 if has("gui_running")
   set guicursor+=a:block-blinkon0
-  colorscheme queyenth
+  colorscheme molokai
 else
   colorscheme default
 end

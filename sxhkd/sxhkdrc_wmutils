@@ -1,0 +1,48 @@
+super + Return
+	urxvtc
+
+super + r
+	~/.config/bspwm/dmenuwrapper
+
+super + shift + s
+  scrot '%H-%M-%S_%d-%m-%Y_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
+
+alt + {Up,Down}
+  volumenotify {+,-} 3
+
+alt + m
+  volumenotify !
+
+alt + ctrl + m
+  mpdnotify -t
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+
+#  _____ _   _ ___ ____    ___ ____    _   _  _____        __ __   _____  _   _  __        ____  __
+# |_   _| | | |_ _/ ___|  |_ _/ ___|  | | | |/ _ \ \      / / \ \ / / _ \| | | | \ \      / /  \/  |
+#   | | | |_| || |\___ \   | |\___ \  | |_| | | | \ \ /\ / /   \ V / | | | | | |  \ \ /\ / /| |\/| |
+#   | | |  _  || | ___) |  | | ___) | |  _  | |_| |\ V  V /     | || |_| | |_| |   \ V  V / | |  | |
+#   |_| |_| |_|___|____/  |___|____/  |_| |_|\___/  \_/\_/      |_| \___/ \___/     \_/\_/  |_|  |_|
+
+super + {h,j,k,l}
+  wmv {-10 0, 0 +10, 0 -10, +10 0} $(pfw)
+
+super + shift + {h,j,k,l}
+  wmv {-40 0, 0 +40, 0 -40, +40 0} $(pfw)
+
+super + alt + {h,j,k,l}
+  wrs {-10 0, 0 +10, 0 -10, +10 0} $(pfw)
+
+super + alt + shift + {h,j,k,l}
+  wrs {-40 0, 0 +40, 0 -40, +40 0} $(pfw)
+
+super + w
+  killw $(pfw)
+
+super + s
+  chwso -i $(pfw)
+
+# Here will be work with groups
