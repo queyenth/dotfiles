@@ -245,10 +245,8 @@ set t_Co=256
 
 if has("gui_running")
   set guicursor+=a:block-blinkon0
-  colorscheme molokai
-else
-  colorscheme default
 end
+colorscheme base16-grayscale
 
 set guifont=Source\ Code\ Pro\ for\ Powerline\ 8
 
@@ -288,16 +286,6 @@ set noshowmode
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-
-let g:airline_theme = 'raven'
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
-let g:Powerline_symbols = 'fancy'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine
