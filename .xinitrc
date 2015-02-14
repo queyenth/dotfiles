@@ -1,5 +1,4 @@
 #!/bin/sh
-source ~/.config/bspwm/config
 
 setxkbmap -model pc104 -layout us,ru -option grp:caps_toggle &
 wmname LG3D
@@ -8,11 +7,12 @@ xset +fp ~/.fonts
 xset fp rehash
 xset -dpms
 xset s off
-xsetroot -solid "${WALLCOLOR_A}"
 xsetroot -cursor_name left_ptr
 xrdb -load ~/.Xresources
 
 unclutter -grav -noevents -root &
+
+start-pulseaudio-x11
 
 tinyclock &
 twitch_daemon &

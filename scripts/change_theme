@@ -3,26 +3,25 @@
 print_usage() {
   echo "Usage: change_theme.sh name_of_theme config_file\n"
   echo "-l: list of themes"
+  exit 1
 }
 
 get_all_themes() {
   echo ls ~/.colors/
+  exit 0
 }
 
 if [ $1 = "-l" ]; then
   $(get_all_themes)
-  exit 0
 fi
 
 if [ $# != 2 ]; then
   echo -e $(print_usage)
-  exit 1
 fi
 
 if [ ! -e ~/.colors/$1 ]; then
   echo "Can't read file!"
   echo -e $(print_usage)
-  exit 1
 fi
 
 for line in $(get_theme.sh ~/.colors/$1); do

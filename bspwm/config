@@ -38,7 +38,7 @@ CLIP="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 BAR_LENGTH=20
 BAR_CHAR='='
 
-TC_FONT="-*-profont-medium-*-*-*-15-*-*-*-*-*-*-*"
+TC_FONT="-*-profont-medium-*-*-*-12-*-*-*-*-*-*-*"
 TC_HEIGHT=40
 TC_WIDTH=100
 TC_OFFSET_X=1805

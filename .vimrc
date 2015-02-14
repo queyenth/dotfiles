@@ -250,7 +250,7 @@ else
   colorscheme default
 end
 
-set guifont=orp\ Medium\ Semi-Condensed\ 9
+set guifont=Source\ Code\ Pro\ for\ Powerline\ 8
 
 " Useful maping
 map <C-j> <C-W>j

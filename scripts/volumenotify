@@ -75,4 +75,4 @@ do
   fi
 done
 
-$(dirname $0)/notify "%{F$PANEL_COLOR_ICON}$icon%{F-} [$bar]" &
+$(dirname $0)/notify "%{F$WHITE}$icon%{F-} [$bar]" &
