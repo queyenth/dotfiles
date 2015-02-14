@@ -5,7 +5,7 @@ Latest dotfiles
 
 Screenshots
 ----------
-![](https://raw.githubusercontent.com/queyenth/dotfiles/master/screenshot.png)
+![](https://dl.dropboxusercontent.com/u/52598071/2015-02-14-092429_1920x1080_scrot.png)
 
 Details
 -------
