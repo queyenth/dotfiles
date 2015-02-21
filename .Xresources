@@ -1,10 +1,10 @@
-#include "/home/queyenth/.colors/base16/base16-grayscale.dark.xresources"
+#include "/home/queyenth/.colors/blumune"
 
 urxvt*perl-lib: /usr/lib/urxvt/perl
 urxvt*perl-ext-common: default,matcher,font-size
 urxvt*perl-matcher: 1
 urxvt*matcher-button: 3
-urxvt*url-launcher: /usr/bin/firefox-bin
+urxvt*url-launcher: /usr/bin/firefox
 urxvt*depth: 32
 urxvt*dynamicColors: on
 urxvt*scrollBar: false
@@ -30,9 +30,13 @@ urxvt.urgentOnBell: true
 /* urxvt*boldFont: -jmk-dweep-medium-r-semicondensed--11-100-75-75-c-50-iso8859-1 */
 /* urxvt*letterSpace: 0 */
 
-urxvt*font: -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-urxvt*boldFont: -misc-orp-bold-r-semicondensed--12-110-75-75-c-60-iso10646-1
-urxvt*letterSpace: 0
+/* urxvt*font: -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1 */
+/* urxvt*boldFont: -misc-orp-bold-r-semicondensed--12-110-75-75-c-60-iso10646-1 */
+/* urxvt*letterSpace: 0 */
+
+urxvt*font: xft:Source Code Pro for Powerline:style=Medium:size=8:dpi=96
+urxvt*boldFont: xft:Source Code Pro for Powerline:style=Bold:size=8:dpi=96
+urxvt*letterSpace: -1
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false
