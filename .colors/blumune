@@ -1,0 +1,42 @@
+! dkeg 2015
+! blumune
+
+#define bg          #0d0f13
+#define blk         #12151a
+#define b_blk       #4a4b4a
+#define red         #294852
+#define b_red       #345b67
+#define b_green     #f0f1f1
+#define green       #6c7d85
+#define yellow      #bbe8e3
+#define cyan        #547b91
+#define b_cyan      #a8a9aa
+#define white       #e2e3e4
+
+*background:    #0d0f13
+*foreground:    #a8a9aa
+*cursorColor:   #547b91
+
+*color0:    #12151a
+*color8:    #4a4b4a
+
+*color1:    #294852
+*color9:    #345b67
+
+*color2:    #e2e3e4
+*color10:   #e2e3e4
+
+*color3:    #6c7d85
+*color11:   #6c7d85
+
+*color4:    #294852
+*color12:   #294852
+
+*color5:    #345b67
+*color13:   #345b67
+
+*color6:    #547b91
+*color14:   #547b91
+
+*color7:    #a8a9aa
+*color15:   #a8a9aa
