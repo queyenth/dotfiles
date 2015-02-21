@@ -10,12 +10,8 @@ xset s off
 xsetroot -cursor_name left_ptr
 xrdb -load ~/.Xresources
 
-unclutter -grav -noevents -root &
-
 start-pulseaudio-x11
 
-tinyclock &
-twitch_daemon &
 urxvtd &
 
 sxhkd &
