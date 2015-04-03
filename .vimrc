@@ -225,6 +225,8 @@ NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'tikhomirov/vim-glsl'
 NeoBundle 'godlygeek/csapprox'
+NeoBundle 'junegunn/limelight.vim'
+NeoBundle 'junegunn/goyo.vim'
 
 if iCanHazNeoBundle == 0
   echo "Installing Bundles, please ignore key map error message"
