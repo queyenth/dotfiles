@@ -218,6 +218,8 @@ NeoBundle 'godlygeek/csapprox'
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'junegunn/goyo.vim'
 
+NeoBundle 'w0ng/vim-hybrid'
+
 if iCanHazNeoBundle == 0
   echo "Installing Bundles, please ignore key map error message"
   echo ""
@@ -238,7 +240,8 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme default
+let g:hybrid_use_Xresources=1
+colorscheme hybrid
 
 set guifont=Monaco\ 8
 
