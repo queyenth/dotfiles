@@ -7,12 +7,7 @@ xset +fp ~/.fonts
 xset fp rehash
 xset -dpms
 xset s off
-xsetroot -cursor_name left_ptr
 xrdb -load ~/.Xresources
-
-start-pulseaudio-x11
-
-urxvtd &
 
 sxhkd &
 exec bspwm

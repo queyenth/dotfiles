@@ -4,7 +4,7 @@ ln -s ~/dotfiles/bspwm ~/.config/bspwm
 ln -s ~/dotfiles/sxhkd ~/.config/sxhkd
 ln -s ~/dotfiles/scripts ~/scripts
 ln -s ~/dotfiles/.colors ~/.colors
-ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.nvimrc ~/.nvimrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.Xresources ~/.Xresources
 ln -s ~/dotfiles/.xinitrc ~/.xinitrc

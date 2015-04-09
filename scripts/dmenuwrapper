@@ -1,0 +1,14 @@
+#!/bin/sh
+
+source $(dirname $0)/config
+
+DMENUWIDTH=1910
+DMENUHEIGHT=20
+XPOS=5
+YPOS=0
+
+BGSELECT="#626C94"
+FG="#7B8695"
+BG="#1B2227"
+
+dmenu_run -w $DMENUWIDTH -h $DMENUHEIGHT -x $XPOS -y $YPOS -fn ${FONT2} -nb $BG -nf $FG -sb $BGSELECT
