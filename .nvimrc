@@ -276,6 +276,9 @@ nnoremap <silent> <Leader>q :ToggleQuickfix<CR>
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
+" Limelight
+let g:limelight_conceal_ctermfg='DarkGray'
+
 " Airline settings
 set noshowmode
 if !exists('g:airline_symbols')

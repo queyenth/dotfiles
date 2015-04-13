@@ -119,4 +119,5 @@ alias rec="ffmpeg -f x11grab -video_size 1920x1080 -i :0 -f alsa -i default -c:v
 alias enc_to_webm="ffmpeg -i $1 -acodec libvorbis -aq 7 -ac 2 -qmax 30 -threads 2 $2"
 alias grep="grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
 export GREP_OPTIONS=""
+export EDITOR="nvim"
 # End of lines added by compinstall
