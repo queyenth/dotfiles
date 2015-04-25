@@ -240,8 +240,7 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-let g:hybrid_use_Xresources=1
-colorscheme hybrid
+colorscheme smyck256
 
 set guifont=Monaco\ 8
 
@@ -281,9 +280,9 @@ let g:limelight_conceal_ctermfg='DarkGray'
 
 " Airline settings
 set noshowmode
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'ubaryd'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine

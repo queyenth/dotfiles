@@ -1,9 +1,9 @@
 #!/bin/sh
 
-source ~/.config/bspwm/config
+source $(dirname $0)/config
 
 (echo " $@"; sleep $DURATION)\
-| bar \
+| lemonbar \
       -f "$FONT1","$FONT2"\
       -F "$FOREGROUND"\
       -B "$BACKGROUND"\

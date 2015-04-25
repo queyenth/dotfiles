@@ -6,6 +6,7 @@
 
 NORMIFS=$IFS
 FIELDIFS=':'
+NAMEPAD=$PAD
 
 source $(dirname $0)/config
 
