@@ -11,9 +11,9 @@ bspc config auto_cancel         true
 
 # Colors
 bspc config normal_border_color none
-bspc config active_border_color "#5ed1d3"
+bspc config active_border_color "#5c77f9"
 bspc config urgent_border_color "#525252"
-bspc config focused_border_color "#5ed1d3"
+bspc config focused_border_color "#5c77f9"
 bspc config presel_border_color none
 
 bspc monitor -d \ TERM \ CODE \ FILE \ WEB \ CHAT
@@ -26,6 +26,6 @@ bspc rule -a Spotify floating=on
 
 urxvtd &
 xsetroot -cursor_name left_ptr
-hsetroot -fill ~/Downloads/wallhaven-207747.png
+hsetroot -fill ~/wallpapers/wallhaven-190383.png
 compton -b --config ~/dotfiles/compton.conf &
 bspwm_panel.sh &

@@ -15,4 +15,5 @@ out_to_x no
 TEXT
 S\
 %{F\#FF5c77f9}%{F-} ${execpi 500 pactl list sinks | grep "Volume:" | cut -d " " -f5 | uniq} \
-%{B\#FFe0777f} ${time %a %d %b} ${time %H:%M} %{B-}
+${if_mpd_playing}%{B\#FF6c77f9} ${mpd_artist} - ${mpd_title} %{F-}${endif}\
+%{B\#FFbb474a} ${time %A, %d %b} ${time %H:%M} %{B-}
