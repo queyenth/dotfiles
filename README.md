@@ -9,6 +9,6 @@ Screenshot
 
 ToDo
 ----------
-1) tmux
-2) devzen popups
-3) notify & volumenotify  
+1. tmux
+2. dzen popups
+3. notify & volumenotify  
