@@ -7,7 +7,7 @@
 # author
 #   Windelicato - http://github.com/windelicato
 
-source ~/.config/bspwm/config
+source $(dirname $0)/config
 
 err() {
   echo "$1"
@@ -69,10 +69,16 @@ do
   if [[ `state` != "on" ]]; then
     bar+=" "
   elif [ $i -lt $current ]; then
-    bar+="%{F$RED}${BAR_CHAR}%{F-}"
-  else
     bar+="%{F$WHITE}${BAR_CHAR}%{F-}"
+  else
+    bar+="%{F$BLUE}${BAR_CHAR}%{F-}"
   fi
 done
 
-$(dirname $0)/notify "%{F$WHITE}$icon%{F-} [$bar]" &
+(echo "%{F$WHITE}$icon%{F-} [$bar]"; sleep $DURATION)\
+| lemonbar \
+      -f "$FONT1","$FONT2"\
+      -F "$FOREGROUND"\
+      -B "$BACKGROUND"\
+      -g "$VOLUME_GEOMETRY"\
+      -u $LINEHEIGHT

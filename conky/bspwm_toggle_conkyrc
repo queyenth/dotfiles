@@ -6,15 +6,13 @@ override_utf8_locale yes
 short_units yes
 pad_percents 2
 top_name_width 9
-uppercase no
+uppercase yes
 out_to_console yes
 out_to_x no
 
-# cpu  ram  temp  net  ac  
+# cpu  ram  temp  net  ac       
 
 TEXT
 S\
-%{F\#FF626C94} %{F-} cpu ${cpu cpu0}% \
-%{F\#FF626C94} %{F-} ram ${mem} \
-${time %H:%M}\
-
+%{F\#FF5c77f9}%{F-} ${execpi 500 pactl list sinks | grep "Volume:" | cut -d " " -f5 | uniq} \
+%{B\#FFe0777f} ${time %a %d %b} ${time %H:%M} %{B-}

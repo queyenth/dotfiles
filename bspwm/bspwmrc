@@ -1,8 +1,8 @@
 #!/bin/sh
 
-bspc config border_width        2
-bspc config top_padding         20
-bspc config window_gap          5
+bspc config border_width        5
+bspc config top_padding         30
+bspc config window_gap          10
 bspc config split_ratio         0.50
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
@@ -11,15 +11,21 @@ bspc config auto_cancel         true
 
 # Colors
 bspc config normal_border_color none
-bspc config active_border_color "#525252"
+bspc config active_border_color "#5ed1d3"
 bspc config urgent_border_color "#525252"
-bspc config focused_border_color "#1E4E51"
+bspc config focused_border_color "#5ed1d3"
 bspc config presel_border_color none
 
-bspc monitor -d rei iti ni san yon
+bspc monitor -d \ TERM \ CODE \ FILE \ WEB \ CHAT
+
+bspc rule -a vlc floating=on
+bspc rule -a mplayer floating=on
+bspc rule -a Skype floating=on
+bspc rule -a Steam floating=on
+bspc rule -a Spotify floating=on
 
 urxvtd &
 xsetroot -cursor_name left_ptr
-hsetroot -tile ~/dotfiles/noisy_net.png
+hsetroot -fill ~/Downloads/wallhaven-207747.png
 compton -b --config ~/dotfiles/compton.conf &
 bspwm_panel.sh &

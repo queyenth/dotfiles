@@ -1,10 +1,101 @@
-﻿" No to the total compatibility with the ancient vi
+﻿" vim: set foldmethod=marker foldlevel=0:
+" .nvimrc of Queyenth
+
+if has('vim_starting')
+  set all&
+endif
+
+let s:is_windows = has('win32') || has('win64')
+let s:plugins=filereadable(expand("~/.nvim/autoload/plug.vim", 1))
+
+if !s:plugins
+  echo "Installing vim-plug.."
+  echo ""
+  silent call mkdir(expand("~/.nvim/autoload", 1), 'p')
+  exe '!curl -fLo '.expand("~/.nvim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+else
+  call plug#begin('~/.nvim/bundle')
+
+  " Edit
+  " Surround vim objects with a pair of indetical chars
+  Plug 'tpope/vim-surround'
+  " Extend repetitions by the 'dot' key
+  Plug 'tpope/vim-repeat'
+  " Toggle comments (very useful plugin)
+  Plug 'tpope/vim-commentary'
+  " Reveals all the character info
+  Plug 'tpope/vim-characterize'
+  " Wisely add end in Ruby, endfunction in Vim
+  Plug 'tpope/vim-endwise'
+  " Marks admin
+  Plug 'kshenoy/vim-signature'
+  "
+  " Snippets
+  Plug 'sirver/ultisnips'
+  Plug 'honza/vim-snippets'
+  "
+  " Browsing
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'justinmk/vim-gtfo'
+  "
+  " Workflow
+  Plug 'wakatime/vim-wakatime'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'szw/vim-ctrlspace'
+  "
+  " Git
+  Plug 'tpope/vim-fugitive'
+  " Syntax checking
+  Plug 'scrooloose/syntastic'
+
+  " Appearance
+  Plug 'bling/vim-airline'
+  Plug 'mhinz/vim-startify'
+  Plug 'junegunn/limelight.vim'
+  Plug 'junegunn/goyo.vim'
+  Plug 'godlygeek/csapprox'
+  Plug 'junegunn/rainbow_parentheses.vim'
+  Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
+  Plug 'gerw/vim-HiLinkTrace'
+  Plug 'queyenth/vim-queyenth'
+
+  " Langs
+  " HTML/CSS/SCSS
+  Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'css'] }
+  Plug 'mattn/emmet-vim', { 'for': ['html', 'xhtml', 'scss', 'xml', 'xls', 'markdown'] }
+  Plug 'ap/vim-css-color', { 'for': ['html', 'xhtml', 'scss', 'xml'] }
+  Plug 'cakebaker/scss-syntax.vim'
+  " CoffeeScript
+  Plug 'kchmck/vim-coffee-script'
+  " C++
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'octol/vim-cpp-enhanced-highlight'
+  " GLSL
+  Plug 'tikhomirov/vim-glsl'
+  " Clojure
+  Plug 'tpope/vim-fireplace'
+  Plug 'tpope/vim-leiningen'
+  Plug 'guns/vim-clojure-static'
+  Plug 'guns/vim-clojure-highlight'
+  " Rust
+  Plug 'wting/rust.vim'
+  call plug#end()
+endif
+
+" No to the total compatibility with the ancient vim
 set nocompatible
 set nolist
+set virtualedit=block
+set nojoinspaces
 set nowrap
+set shortmess=aIT
+set hidden
+
+set autoindent
+set smartindent
 
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 set tm=500
 set mouse=a
@@ -40,17 +131,13 @@ set complete+=k
 set complete+=b
 set complete+=t
 
-" Always show ruler
-set ruler
 " Show some data about selected lines,chars
 set showcmd
 
 set number
 set cursorline
-set scrolljump=7
-set scrolloff=7
-
-" Disabling annoying vim beep-beep
+set scrolljump=5
+set scrolloff=5
 
 " Set utf-8 encoding
 set encoding=utf-8
@@ -83,19 +170,17 @@ set lazyredraw
 " No highlight search results (looks ugly)
 set nohlsearch
 set incsearch
-set ignorecase
-set smartcase
+set ignorecase smartcase
 
 " To make backspace works, like it should works
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 
 " Expand tab into spaces, and set it to 2 spaces
-set expandtab
+set expandtab smarttab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 set sessionoptions=resize,winpos,winsize,buffers,tabpages,folds,curdir,help
 
 set formatoptions+=cr
@@ -116,120 +201,6 @@ au VimResized * exe "normal! \<c-w>="
 
 autocmd! BufWritePost nvimrc source %
 
-" Auto installing NeoBundle
-let iCanHazNeoBundle=1
-let neobundle_readme=expand($HOME.'/.nvim/bundle/neobundle.vim/README.md')
-if !filereadable(neobundle_readme)
-  echo "Installing NeoBundle.."
-  echo ""
-  silent !mkdir -p $HOME/.nvim/bundle
-  silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.nvim/bundle/neobundle.vim
-  let iCanHazNeoBundle=0
-endif
-
-" Call NeoBundle
-if has('vim_starting')
-  set rtp+=$HOME/.nvim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand($HOME.'/.nvim/bundle'))
-
-" Is better if NeoBundle rules NeoBundle (lol?!)
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" So, Bundles here
-NeoBundle 'Shougo/vimproc.vim', {
-  \ 'build' : {
-  \   'windows' : 'make -f make_mingw32.mak',
-  \   'cygwin' : 'make -f make_cygwin.mak',
-  \   'mac' : 'make -f make_mac.mak',
-  \   'unix' : 'make -f make_unix.mak',
-  \ },
-\ }
-
-" HTML/CSS
-NeoBundleLazy 'othree/html5.vim', {'autoload':
-      \ {'filetypes': ['html', 'xhtml', 'css']}}
-
-NeoBundleLazy 'mattn/emmet-vim', {'autoload':
-      \ {'filetypes': ['html', 'xhtml', 'css', 'xml', 'xls', 'markdown']}}
-
-" NerdTree
-NeoBundle 'scrooloose/nerdtree'
-
-NeoBundle 'ap/vim-css-color'
-NeoBundle 'terryma/vim-multiple-cursors'
-
-" Admin Git
-NeoBundle 'tpope/vim-fugitive'
-" Git viewer
-NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'], 'autoload':{'commands': 'Gitv'}}
-
-" Show indent lines
-NeoBundleLazy 'Yggdroot/indentLine', {'autoload': {'filetypes': ['python']}}
-
-" Powerful and advanced Snippets tool
-NeoBundle 'sirver/ultisnips'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'garbas/vim-snipmate'
-" Snippets for Ultisnips
-NeoBundle 'honza/vim-snippets'
-
-NeoBundle 'Valloric/YouCompleteMe'
-
-" Syntax checking
-NeoBundle 'scrooloose/syntastic'
-
-" Clojure
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-leiningen'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'guns/vim-clojure-highlight'
-
-" Rust
-NeoBundle 'wting/rust.vim'
-
-" Text edition {
-" Autocompletion of (, [, {, ', ", ...
-NeoBundle 'Raimondi/delimitMate'
-" Surround vim objects with a pair of indetical chars
-NeoBundle 'tpope/vim-surround'
-" Extend repetitions by the 'dot' key
-NeoBundle 'tpope/vim-repeat'
-" Toggle comments (very useful plugin)
-NeoBundle 'tpope/vim-commentary'
-" Reveals all the character info
-NeoBundle 'tpope/vim-characterize'
-" Marks admin
-NeoBundle 'kshenoy/vim-signature'
-
-NeoBundle 'chriskempson/base16-vim'
-" }
-
-" A better looking status line
-NeoBundle 'bling/vim-airline'
-
-" Additional bundles
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
-NeoBundle 'tomtom/tlib_vim'
-NeoBundle 'octol/vim-cpp-enhanced-highlight'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'tikhomirov/vim-glsl'
-NeoBundle 'godlygeek/csapprox'
-NeoBundle 'junegunn/limelight.vim'
-NeoBundle 'junegunn/goyo.vim'
-
-NeoBundle 'w0ng/vim-hybrid'
-
-if iCanHazNeoBundle == 0
-  echo "Installing Bundles, please ignore key map error message"
-  echo ""
-  :NeoBundleInstall
-endif
-
-call neobundle#end()
-
-NeoBundleCheck
-
 filetype plugin indent on
 
 " Enabling syntax highlithing
@@ -240,7 +211,7 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme smyck256
+colorscheme queyenth
 
 set guifont=Monaco\ 8
 
@@ -249,6 +220,10 @@ map <C-j> <C-W>j
 map <C-h> <C-W>h
 map <C-k> <C-W>k
 map <C-l> <C-W>l
+
+map <A-j> gT
+map <A-k> gt
+
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
@@ -272,17 +247,20 @@ nnoremap <silent> <Leader>q :ToggleQuickfix<CR>
 " =======================================
 "
 " YouCompleteMe
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
+" let g:ycm_server_keep_logfiles = 1
+" let g:ycm_server_log_level = 'debug'
 
 " Limelight
 let g:limelight_conceal_ctermfg='DarkGray'
 
 " Airline settings
 set noshowmode
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_exclude_preview = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'ubaryd'
+let g:airline_theme = 'queyenth'
+
+" CtrlSpace settings
+let g:ctrlspace_use_tabline = 1
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine
@@ -322,23 +300,6 @@ if !exists(":Gdiffoff")
   command Gdiffoff diffoff | q | Gedit
 endif
 noremap <Leader>dq :Gdiffoff<CR>
-
-" Gitv
-nnoremap <silent> <leader>gv :Gitv --all<CR>
-nnoremap <silent> <leader>gV :Gitv! --all<CR>
-vnoremap <silent> <leader>gV :Gitv! --all<CR>
-
-let g:Gitv_OpenHorizontal = 'auto'
-let g:Gitv_WipeAllOnClose = 1
-let g:Gitv_DoNotMapCtrlKey = 1
-
-autocmd FileType git set nofoldenable
-
-" indentLine
-map <silent> <Leader>L :IndentLinesToggle<CR>
-let g:indentLine_enabled = 0
-let g:indentLine_char = '|'
-let g:indentLine_color_term = 239
 
 " Syntastic
 nmap <silent><Leader>N :SyntasticCheck<CR>:Errors<CR>

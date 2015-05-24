@@ -13,15 +13,18 @@ get_all_themes() {
 
 if [ $1 = "-l" ]; then
   $(get_all_themes)
+  exit 0
 fi
 
 if [ $# != 2 ]; then
   echo -e $(print_usage)
+  exit 0
 fi
 
 if [ ! -e ~/.colors/$1 ]; then
   echo "Can't read file!"
   echo -e $(print_usage)
+  exit 0
 fi
 
 for line in $(get_theme.sh ~/.colors/$1); do

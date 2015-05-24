@@ -3,7 +3,7 @@
 #
 
 super + ctrl + q
-	killall tinyclock; killall bar; bspc quit
+	killall bspwm_panel.sh; killall lemonbar; bspc quit
 
 super + w
 	bspc window -c
@@ -85,6 +85,9 @@ super + Return
 
 super + r
 	dmenuwrapper
+
+super + ctrl + shift + l
+  python2 ~/scripts/py3lock.py
 
 super + shift + s
   scrot '%H-%M-%S_%d-%m-%Y_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'

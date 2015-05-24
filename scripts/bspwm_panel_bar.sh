@@ -1,8 +1,4 @@
 #! /bin/sh
-#
-# bar input parser for bspwm  Wednesday, 01 October 2014 14:56 IST
-
-#screen_width=$(sres -W)
 
 NORMIFS=$IFS
 FIELDIFS=':'
@@ -13,7 +9,6 @@ source $(dirname $0)/config
 while read -r line ; do
     case $line in
         S*)
-            # conky
             sys_infos="${line#?}"
             ;;
         T*)
@@ -65,16 +60,11 @@ while read -r line ; do
                         esac
                         wm_infos="${wm_infos}%{F$FG B$BG A:bspc desktop -f ${name}:}${PAD}${name}${PAD}%{A B- F-}"
                         ;;
-                    #L*)
-                        ## layout
-                        #layout=$(printf "[%s]" $( echo "${item#?}" | sed 's/^\(.\).*/\U\1/'))
-                        #wm_infos="${wm_infos}%{F$BG B$LAYOUT_BG}%{F$LAYOUT_FG A:bspc desktop -l next:} $layout %{A F$LAYOUT_BG B-}"
-                        #;;
                 esac
                 shift
             done
             IFS=$NORMIFS
             ;;
     esac
-    printf "%s\n" "%{l}$wm_infos %{c}$title %{r}$sys_infos"
+    printf "%s\n" "%{l}$wm_infos %{r}$sys_infos"
 done
