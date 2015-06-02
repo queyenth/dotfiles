@@ -57,7 +57,7 @@ else
   Plug 'junegunn/rainbow_parentheses.vim'
   Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
   Plug 'gerw/vim-HiLinkTrace'
-  Plug 'queyenth/vim-queyenth'
+  Plug 'queyenth/oxeded.vim'
 
   " Langs
   " HTML/CSS/SCSS
@@ -211,7 +211,7 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme queyenth
+colorscheme oxeded
 
 set guifont=Monaco\ 8
 
@@ -259,7 +259,7 @@ let g:airline_exclude_preview = 1
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'queyenth'
+let g:airline_theme = 'oxeded'
 
 " CtrlSpace settings
 let g:ctrlspace_use_tabline = 1

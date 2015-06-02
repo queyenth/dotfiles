@@ -8,7 +8,7 @@ urxvt*url-launcher: /usr/bin/firefox
 urxvt*depth: 32
 urxvt*dynamicColors: on
 urxvt*scrollBar: false
-urxvt*geometry: 95x15
+urxvt*geometry: 80x20
 urxvt*cursorBlink: false
 urxvt*cursorUnderline: false
 urxvt*internalBorder: 5
