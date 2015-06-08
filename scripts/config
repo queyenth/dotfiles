@@ -46,7 +46,7 @@ PANEL_GEOMETRY="1910x30+5"
 PAD="  "
 RPAD="   "
 
-FONT1="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+FONT1="Stlarch-10"
 FONT2="Monaco-8"
 
 LINEHEIGHT="3"
