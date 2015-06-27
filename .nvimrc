@@ -58,6 +58,7 @@ else
   Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
   Plug 'gerw/vim-HiLinkTrace'
   Plug 'queyenth/oxeded.vim'
+  Plug 'airblade/vim-gitgutter'
 
   " Langs
   " HTML/CSS/SCSS

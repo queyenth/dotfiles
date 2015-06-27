@@ -35,10 +35,13 @@ streaming() {
        -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p\
        -s $OUTRES -preset $QUALITY -tune film -acodec libmp3lame -threads $THREADS -strict normal \
        -bufsize $CBR "rtmp://$SERVER.twitch.tv/app/$STREAM_KEY"
- }
+}
 
 alias rec="ffmpeg -f x11grab -video_size 1920x1080 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac $1"
 alias enc_to_webm="ffmpeg -i $1 -acodec libvorbis -aq 7 -ac 2 -qmax 30 -threads 2 $2"
 alias grep="grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
+alias sudock="sudo docker"
+alias docker-ip="sudock inspect --format '{{ .NetworkSettings.IPAddress }}' $1"
 export GREP_OPTIONS=""
 export EDITOR="nvim"
+export PATH=$PATH:~/.gem/ruby/2.2.0/bin:~/scripts
