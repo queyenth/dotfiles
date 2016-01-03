@@ -26,6 +26,6 @@ bspc rule -a Spotify floating=on
 
 urxvtd &
 xsetroot -cursor_name left_ptr
-hsetroot -fill ~/wallpapers/wallhaven-220536.jpg
+hsetroot -fill ~/wallhaven-312194.png
 compton -b --config ~/dotfiles/compton.conf &
 bspwm_panel.sh &
