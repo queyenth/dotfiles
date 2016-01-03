@@ -12,11 +12,10 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-bspc control --subscribe > "$PANEL_FIFO" &
+bspc subscribe report > "$PANEL_FIFO" &
 
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 conky -c ~/conky/bspwm_toggle_conkyrc > "$PANEL_FIFO" &
-
 bspwm_panel_bar.sh < "$PANEL_FIFO" \
      | lemonbar -p \
            -g "$PANEL_GEOMETRY" \
