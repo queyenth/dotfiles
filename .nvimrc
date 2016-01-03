@@ -1,20 +1,19 @@
 ﻿" vim: set foldmethod=marker foldlevel=0:
-" .nvimrc of Queyenth
 
 if has('vim_starting')
   set all&
 endif
 
 let s:is_windows = has('win32') || has('win64')
-let s:plugins=filereadable(expand("~/.nvim/autoload/plug.vim", 1))
+let s:plugins=filereadable(expand("~/.config/nvim/autoload/plug.vim", 1))
 
 if !s:plugins
   echo "Installing vim-plug.."
   echo ""
-  silent call mkdir(expand("~/.nvim/autoload", 1), 'p')
-  exe '!curl -fLo '.expand("~/.nvim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  silent call mkdir(expand("~/.config/nvim/autoload", 1), 'p')
+  exe '!curl -fLo '.expand("~/.config/nvim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 else
-  call plug#begin('~/.nvim/bundle')
+  call plug#begin('~/.config/nvim/bundle')
 
   " Edit
   " Surround vim objects with a pair of indetical chars
@@ -199,8 +198,6 @@ autocmd BufReadPost *
 set viminfo^=%
 
 au VimResized * exe "normal! \<c-w>="
-
-autocmd! BufWritePost nvimrc source %
 
 filetype plugin indent on
 
