@@ -14,5 +14,5 @@ out_to_x no
 
 TEXT
 S\
-%{F\#FFEE2B7A}%{F-} ${execpi 500 pactl list sinks | grep "Volume:" | cut -d " " -f5 | head -n1} \
-%{B\#FF333333} ${time %A, %d %b} ${time %H:%M} %{B-}
+%{F\#FF5ED1D3}%{F-} ${execpi 500 pactl list sinks | grep "Volume:" | cut -d " " -f5 | head -n1} \
+%{F\#FF242424 B\#FF5ED1D3} ${time %A, %d %b} ${time %H:%M} %{B-}

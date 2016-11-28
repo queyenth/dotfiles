@@ -5,15 +5,15 @@ if has('vim_starting')
 endif
 
 let s:is_windows = has('win32') || has('win64')
-let s:plugins=filereadable(expand("~/.config/nvim/autoload/plug.vim", 1))
+let s:plugins=filereadable(expand("~/.vim/autoload/plug.vim", 1))
 
 if !s:plugins
   echo "Installing vim-plug.."
   echo ""
-  silent call mkdir(expand("~/.config/nvim/autoload", 1), 'p')
-  exe '!curl -fLo '.expand("~/.config/nvim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  silent call mkdir(expand("~/.vim/autoload", 1), 'p')
+  exe '!curl -fLo '.expand("~/.vim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 else
-  call plug#begin('~/.config/nvim/bundle')
+  call plug#begin('~/.vim/bundle')
 
   " Edit
   " Surround vim objects with a pair of indetical chars
@@ -57,6 +57,8 @@ else
   Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
   Plug 'gerw/vim-HiLinkTrace'
   Plug 'queyenth/oxeded.vim'
+  Plug 'chriskempson/base16-vim'
+  Plug 'whatyouhide/vim-gotham'
   Plug 'airblade/vim-gitgutter'
 
   " Langs
@@ -177,9 +179,9 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 
 " Expand tab into spaces, and set it to 2 spaces
 set expandtab smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 set sessionoptions=resize,winpos,winsize,buffers,tabpages,folds,curdir,help
 
@@ -197,6 +199,9 @@ autocmd BufReadPost *
   \ endif
 set viminfo^=%
 
+autocmd GUIEnter * set vb t_vb= " for your GUI
+autocmd VimEnter * set vb t_vb=
+
 au VimResized * exe "normal! \<c-w>="
 
 filetype plugin indent on
@@ -209,8 +214,8 @@ set t_Co=256
 if has("gui_running")
   set guicursor+=a:block-blinkon0
 end
-colorscheme oxeded
 
+colorscheme oxeded
 set guifont=Monaco\ 8
 
 " Useful maping

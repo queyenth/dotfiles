@@ -21,13 +21,16 @@ def xcb_fetch_windows():
   rects = []
 
   # iterate through top-level windows
-  for child in x.core.QueryTree(root).reply().children:
-    # make sure we only consider windows that are actually visible
-    attributes = x.core.GetWindowAttributes(child).reply()
-    if attributes.map_state != XCB_MAP_STATE_VIEWABLE:
-      continue
+  try: 
+    for child in x.core.QueryTree(root).reply().children:
+      # make sure we only consider windows that are actually visible
+      attributes = x.core.GetWindowAttributes(child).reply()
+      if attributes.map_state != XCB_MAP_STATE_VIEWABLE:
+        continue
 
-    rects += [x.core.GetGeometry(child).reply()]
+      rects += [x.core.GetGeometry(child).reply()]
+  except:
+    pass
 
   return rects
 

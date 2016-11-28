@@ -13,7 +13,7 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-completions src
 
-  zgen oh-my-zsh themes/apple
+  zgen oh-my-zsh themes/frisk
 
   zgen save
 fi
@@ -43,5 +43,6 @@ alias grep="grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-di
 alias sudock="sudo docker"
 alias docker-ip="sudock inspect --format '{{ .NetworkSettings.IPAddress }}' $1"
 export GREP_OPTIONS=""
-export EDITOR="nvim"
+export EDITOR="vim"
 export PATH=$PATH:~/.gem/ruby/2.2.0/bin:~/scripts
+export TERM="xterm"

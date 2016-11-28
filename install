@@ -4,7 +4,8 @@ ln -s ~/dotfiles/bspwm ~/.config/bspwm
 ln -s ~/dotfiles/sxhkd ~/.config/sxhkd
 ln -s ~/dotfiles/scripts ~/scripts
 ln -s ~/dotfiles/.colors ~/.colors
-mkdir ~/.config/nvim && ln -s ~/dotfiles/.nvimrc ~/.config/nvim/init.vim
+#mkdir ~/.config/nvim && ln -s ~/dotfiles/.nvimrc ~/.config/nvim/init.vim
+ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
 ln -s ~/dotfiles/.Xresources ~/.Xresources
