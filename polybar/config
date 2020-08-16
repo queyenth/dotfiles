@@ -1,0 +1,122 @@
+[colors]
+background = #fdf6e3
+foreground = #586e75
+foreground-alt = #002b36
+primary = #b58900
+secondary = #2aa198
+alert = #dc322f
+
+[bar/example]
+width = 100%
+height = 35
+radius = 2.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = ${colors.alert}
+
+;border-size = 3
+;border-color = ${colors.secondary}
+
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Hack:size=10;3"
+font-1 = "Symbols Nerd Font;3"
+font-2 = "Unifont;3"
+
+modules-left = bspwm
+#modules-center = xwindow
+modules-center = player
+modules-right = wireguard xkeyboard pulseaudio date
+
+tray-position = right
+tray-padding = 2
+wm-restack = bspwm
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/player]
+type = custom/script
+exec = ~/scripts/player-mpris-simple.sh
+interval = 5
+click-left = playerctl play-pause &
+click-right = playerctl next &
+click-middle = playerctl previous &
+
+[module/wireguard]
+type = custom/script
+exec = ~/scripts/vpn-wireguard-wg.sh
+interval = 5
+click-left = ~/scripts/vpn-wireguard-wg.sh --toggle &
+
+[module/bspwm]
+type = internal/bspwm
+
+ws-icon-0 = WWW;
+ws-icon-1 = TERM;
+ws-icon-2 = CODE;
+ws-icon-3 = MUSIC;
+ws-icon-4 = CHAT;
+ws-icon-5 = MISC;
+ws-icon-6 = MEDIA;
+ws-icon-7 = TRASH;
+
+#label-focused = %name%
+label-focused-foreground = ${colors.secondary}
+#label-focused-background = ${colors.primary}
+label-focused-padding = 2
+
+#label-occupied = %name%
+label-occupied-foreground = ${colors.primary}
+label-occupied-padding = 2
+
+#label-urgent = %name%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+#label-empty = %name%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout =  %layout%
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+label-muted = 
+
+format-volume = <ramp-volume> <label-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/date]
+type = internal/date
+interval = 5
+date = 
+date-alt = " %d %b, %A"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = %date%  %time%
+
+; vim: ft=dosini

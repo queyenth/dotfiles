@@ -3,104 +3,111 @@
 #
 
 super + ctrl + q
-	killall bspwm_panel.sh; killall lemonbar; bspc quit
+    killall bspwm_panel.sh; killall lemonbar; bspc quit
 
 super + {_,shift + }w
-	bspc node -{c,k}
+    bspc node -{c,k}
 
 super + b
-	bspc desktop -B
+    bspc desktop -B
 
 super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 super + {grave,Tab}
-	bspc {window,desktop} -f last
+    bspc {window,desktop} -f last
 
 super + apostrophe
-	bspc node -s last
+    bspc node -s last
 
 super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
 
 super + y
-	bspc node -w last.manual
+    bspc node -w last.manual
 
 super + m
-	bspc node -s biggest
+    bspc node -s biggest
 
 super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+    bspc node -{f,s} {west,south,north,east}
 
 super + {_,shift + }c
-	bspc node -f {next,prev}
+    bspc node -f {next,prev}
 
 super + {comma,period}
-	bspc desktop -C {backward,forward}
+    bspc desktop -C {backward,forward}
 
 super + bracket{left,right}
-	bspc desktop -f {prev,next}
+    bspc desktop -f {prev,next}
 
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 super + ctrl + {_,shift + }space
-	bspc {window -p cancel,desktop -c}
+    bspc {window -p cancel,desktop -c}
 
 super + alt + {h,j,k,l}
-	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+    bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
 
 super + alt + shift + {h,j,k,l}
-	bspc node {@east -r -10,@north -r +10,@south -r -10,@west +10}
+    bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
 
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} ^{1-9,10}
+super + {1-9,0}
+    ~/scripts/move_pip '^{1-9,10}'
+
+super + shift + {1-9,0}
+    bspc node -d '^{1-9,10}'
 
 ~button1
-	bspc pointer -g focus
+    bspc pointer -g focus
 
 super + button{1-3}
-	bspc pointer -g {move,resize_side,resize_corner}
+    bspc pointer -g {move,resize_side,resize_corner}
 
 super + !button{1-3}
-	bspc pointer -t %i %i
+    bspc pointer -t %i %i
 
 super + @button{1-3}
-	bspc pointer -u
-
-#
-# wm independent hotkeys
-#
+    bspc pointer -u
 
 super + Return
-	termite
+    st
 
 super + r
-	dmenuwrapper
+    rofi -show run
 
 super + ctrl + shift + l
-    i3lock-wrapper
+    python3 ~/scripts/py3lock.py
 
-super + shift + s
-  scrot '%H-%M-%S_%d-%m-%Y_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
+super + ctrl + shift + 3
+    gscreenshot-cli -c
 
-alt + Up
-  volumenotify + 3
+super + ctrl + shift + 4
+    gscreenshot-cli -c -s
 
-alt + Down
-  volumenotify - 3
+XF86AudioRaiseVolume
+    ~/scripts/volumenotify + 5
 
-alt + m
-  volumenotify !
+XF86AudioLowerVolume
+    ~/scripts/volumenotify - 5
 
-alt + ctrl + m
-  mpdnotify -t
+XF86AudioMute
+    ~/scripts/volumenotify !
 
-# make sxhkd reload its configuration files:
+XF86AudioPlay
+    spotifyctl -q playpause
+
+XF86AudioPrev
+    spotifyctl -q previous
+
+XF86AudioNext
+    spotifyctl -q next
+
 super + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd

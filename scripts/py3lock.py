@@ -3,8 +3,8 @@
 # vim:ts=2:sw=2:expandtab
 
 import os
-import xcb
-from xcb.xproto import *
+import xcffib
+from xcffib.xproto import *
 from PIL import Image
 
 XCB_MAP_STATE_VIEWABLE = 2
@@ -15,7 +15,7 @@ def screenshot():
 def xcb_fetch_windows():
   """ Returns an array of rects of currently visible windows. """
 
-  x = xcb.connect()
+  x = xcffib.connect()
   root = x.get_setup().roots[0].root
 
   rects = []
@@ -37,9 +37,11 @@ def xcb_fetch_windows():
 def obscure_image(image):
   """ Obscures the given image. """
   size = image.size
-  pixel_size = 9
+  pixel_size = 6
 
-  image = image.resize((size[0] / pixel_size, size[1] / pixel_size), Image.NEAREST)
+  width = max(size[0] // pixel_size, 1)
+  height = max(size[1] // pixel_size, 1)
+  image = image.resize((width, height), Image.NEAREST)
   image = image.resize((size[0], size[1]), Image.NEAREST)
 
   return image
@@ -62,7 +64,10 @@ def obscure(rects):
   image.save('/tmp/.i3lock.png')
 
 def lock_screen():
+  # Lock with nothing
   os.system('i3lock -u -i /tmp/.i3lock.png')
+  # Lock with ring
+  #os.system('i3lock -i /tmp/.i3lock.png --indpos="w/2:h/2" --insidevercolor=2e3440ff --insidewrongcolor=BF616Aaa --insidecolor=2e344000 --ringvercolor=2e344066 --ringwrongcolor=BF616Aaa --ringcolor=d8dee9ff --keyhlcolor=2e344099 --bshlcolor=2e344099 --separatorcolor=00000000 --line-uses-ring --radius 150 --ring-width 30 --indicator --veriftext="" --wrongtext="GO AWAY #@!!" --noinputtext=""')
 
 if __name__ == '__main__':
   # 1: Take a screenshot.

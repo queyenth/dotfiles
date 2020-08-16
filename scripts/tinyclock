@@ -1,6 +1,0 @@
-#!/bin/sh
-source ~/.config/bspwm/config
-while :; do
-  echo "%{c}" `date '+%T'`;
-  sleep 1;
-done | bar ${TC_OPT}

@@ -1,31 +1,25 @@
 #!/bin/sh
 
-bspc config border_width        2
-bspc config top_padding         30
-bspc config window_gap          5
-bspc config split_ratio         0.50
-bspc config borderless_monocle  true
-bspc config gapless_monocle     true
-bspc config focus_by_distance   true
-bspc config auto_cancel         true
-bspc config click_to_focus      true
+bspc config border_width 3
+bspc config top_padding 35
+bspc config window_gap 2
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
 
 # Colors
-bspc config normal_border_color none
-bspc config active_border_color "#b0b0b0"
-bspc config urgent_border_color "#525252"
-bspc config focused_border_color "#b0b0b0"
-bspc config presel_border_color none
+bspc config normal_border_color "#fdf6e3"
+bspc config active_border_color "#586e75"
+bspc config focused_border_color "#586e75"
+bspc config presel_feedback_color "#586e75"
 
-bspc monitor -d " TERM" " CODE" " STUF" " MISC" " CHAT" "MUSIC"
+bspc monitor -d WWW TERM CODE MUSIC CHAT MISC MEDIA TRASH
 
-bspc rule -a vlc floating=on
-bspc rule -a mplayer floating=on
-bspc rule -a Skype floating=on
-bspc rule -a Steam floating=on
-bspc rule -a Spotify floating=on
+bspc config pointer_modifier control
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
 
-xsetroot -cursor_name left_ptr
-hsetroot -fill ~/wallpaper.jpg
-compton -b --config ~/dotfiles/compton.conf &
-bspwm_panel.sh &
+bspc config external_rules_command ~/.config/bspwm/bspwm-rules
+
+polybar example &

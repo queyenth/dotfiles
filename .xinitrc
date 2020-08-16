@@ -1,16 +1,24 @@
 #!/bin/sh
 
-setxkbmap -model pc104 -layout us,ru -option grp:caps_toggle &
-wmname LG3D
 xset +fp /usr/share/fonts/local
 xset +fp ~/.fonts
 xset fp rehash
-xset -dpms
-xset s off
+xset +dpms
+
+xset s on
 xrdb -load ~/.Xresources
 
-sxhkd &
-exec bspwm
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
 
-#sxhkd -c ~/.config/sxhkd/sxhkdrc_wmutils >/dev/null 2>&1 &
-#exec xwait
+xsetroot -cursor_name left_ptr
+
+dunst &
+hsetroot -fill ~/wallpaper
+
+#xcape -t 300 -e 'Control_L=Escape'
+
+wmname LG3D
+
+sxhkd &
+exec bspwm >~/.bspwm.out 2>~/.bspwm.err

@@ -1,4 +1,4 @@
-#include "/home/q/.colors/oxeded"
+#include "/home/q/.colors/base16-xresources/xresources/base16-solarized-light.Xresources"
 
 urxvt*perl-lib: /usr/lib/urxvt/perl
 urxvt*perl-ext-common: default,matcher,font-size
@@ -14,9 +14,12 @@ urxvt*cursorUnderline: false
 urxvt*internalBorder: 5
 urxvt.urgentOnBell: true
 
-urxvt*font: xft:Monaco for Powerline:style=Medium:size=8:dpi=96,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-urxvt*boldFont: xft:Monaco for Powerline:style=Bold:size=8:dpi=96,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-urxvt*letterSpace: -1
+urxvt*font: xft:Hack:style=Regular:size=10:dpi=96:antialias=true:autohint=true
+urxvt*boldFont: xft:Hack:style=Bold:size=10:dpi=96:antialias=true:autohint=true
+urxvt*letterSpace: -2
+st.letterSpace: -3
+
+*.alpha: 1
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false

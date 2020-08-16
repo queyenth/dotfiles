@@ -7,7 +7,8 @@
 # author
 #   Windelicato - http://github.com/windelicato
 
-source $(dirname $0)/config
+BAR_LENGTH=20
+BAR_CHAR='='
 
 err() {
   echo "$1"
@@ -24,6 +25,7 @@ usage() {
   echo "   -h, --help         - display this"
   exit
 }
+msgId="991049"
 
 level() {
   amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p' | uniq
@@ -54,31 +56,26 @@ esac
 
 amixer set Master $AMIXARG >/dev/null
 
-if [[ `state` != "on" ]]; then
-  icon=""
-elif [[ `level` -lt 30 ]]; then
-  icon=""
-else
-  icon=""
-fi
-
 steps=$(echo "100/$BAR_LENGTH" | bc)
 current=$(echo "`level`/$steps" | bc)
 for i in `seq 1 $BAR_LENGTH`;
 do
   if [[ `state` != "on" ]]; then
     bar+=" "
-  elif [ $i -lt $current ]; then
-    bar+="%{F$WHITE}${BAR_CHAR}%{F-}"
+  elif [ $i -le $current ]; then
+    bar+="${BAR_CHAR}"
   else
-    bar+="%{F$BLUE}${BAR_CHAR}%{F-}"
+    bar+="-"
   fi
 done
 
-(echo "%{F$WHITE}$icon%{F-} [$bar]"; sleep $DURATION)\
-| lemonbar \
-      -f "$FONT1","$FONT2"\
-      -F "$FOREGROUND"\
-      -B "$BACKGROUND"\
-      -g "$VOLUME_GEOMETRY"\
-      -u $LINEHEIGHT
+case $1 in
+  '+'|'-i'|'--increase'|'-'|'-d'|'--decrease')
+    dunstify -a "changeVolume" -u low -i audio-volume-high -r "$msgId" "${bar}"
+    ;;
+  '!'|'-t'|'--toggle')
+    dunstify -a "changeVolume" -u low -i audio-volume-muted -r "$msgId" "muted/unmuted"
+    ;;
+esac
+
+canberra-gtk-play -i audio-volume-change -d "changeVolume"
