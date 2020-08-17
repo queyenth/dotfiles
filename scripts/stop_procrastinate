@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -L /etc/hosts ]]; then
+    rm /etc/hosts
+    ln -s /etc/hosts_no_procrastinate /etc/hosts
+else
+    echo "Hosts is not a symlink"
+fi

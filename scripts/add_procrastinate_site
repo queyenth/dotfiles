@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "127.0.0.1 $1" >> /etc/hosts_no_procrastinate
+echo "127.0.0.1 www.$1" >> /etc/hosts_no_procrastinate
