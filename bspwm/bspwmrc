@@ -22,4 +22,8 @@ bspc config pointer_action3 resize_corner
 
 bspc config external_rules_command ~/.config/bspwm/bspwm-rules
 
+# Notifications!
+dunst &
+
+# Polybar!
 polybar example &
