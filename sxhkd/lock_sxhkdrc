@@ -1,0 +1,101 @@
+#
+# bspwm hotkeys
+#
+
+lock + {_,shift + }w
+    bspc node -{c,k}
+
+lock + b
+    bspc desktop -B
+
+lock + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+lock + {grave,Tab}
+    bspc {window,desktop} -f last
+
+lock + apostrophe
+    bspc node -s last
+
+lock + {o,i}
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
+
+lock + y
+    bspc node -w last.manual
+
+lock + m
+    bspc node -s biggest
+
+lock + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+lock + {_,shift + }c
+    bspc node -f {next,prev}
+
+lock + {comma,period}
+    bspc desktop -C {backward,forward}
+
+lock + bracket{left,right}
+    bspc desktop -f {prev,next}
+
+lock + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+lock + ctrl + {_,shift + }space
+    bspc {window -p cancel,desktop -c}
+
+lock + alt + {h,j,k,l}
+    bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+lock + alt + shift + {h,j,k,l}
+    bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+lock + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+lock + {1-9,0}
+    ~/scripts/move_pip '^{1-9,10}'
+
+lock + shift + {1-9,0}
+    bspc node -d '^{1-9,10}'
+
+~button1
+    bspc pointer -g focus
+
+lock + Return
+    xst
+
+lock + r
+    rofi -show run
+
+lock + ctrl + shift + l
+    python3 ~/scripts/py3lock.py
+
+lock + ctrl + shift + 3
+    gscreenshot-cli -c
+
+lock + ctrl + shift + 4
+    gscreenshot-cli -c -s
+
+XF86AudioRaiseVolume
+    ~/scripts/volumenotify + 5
+
+XF86AudioLowerVolume
+    ~/scripts/volumenotify - 5
+
+XF86AudioMute
+    ~/scripts/volumenotify !
+
+XF86AudioPlay
+    spotifyctl -q playpause
+
+XF86AudioPrev
+    spotifyctl -q previous
+
+XF86AudioNext
+    spotifyctl -q next
+
+lock + super + Escape
+    pkill -USR1 -x sxhkd
