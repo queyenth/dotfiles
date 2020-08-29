@@ -1,28 +1,9 @@
-#include "/home/q/.colors/base16-xresources/xresources/base16-solarized-light.Xresources"
+#include "/home/q/.colors/base16-solarized-light.Xresources"
 
-urxvt*perl-lib: /usr/lib/urxvt/perl
-urxvt*perl-ext-common: default,matcher,font-size
-urxvt*perl-matcher: 1
-urxvt*matcher-button: 3
-urxvt*url-launcher: /usr/bin/firefox
-urxvt*depth: 32
-urxvt*dynamicColors: on
-urxvt*scrollBar: false
-urxvt*geometry: 80x20
-urxvt*cursorBlink: false
-urxvt*cursorUnderline: false
-urxvt*internalBorder: 5
-urxvt.urgentOnBell: true
-
-urxvt*font: xft:Hack:style=Regular:size=10:dpi=96:antialias=true:autohint=true
-urxvt*boldFont: xft:Hack:style=Bold:size=10:dpi=96:antialias=true:autohint=true
-urxvt*letterSpace: -2
-st.letterSpace: -3
+st.font: Hack Nerd Font Mono:style=Regular:size=10:dpi=96:antialias=true:autohint=true
+st.boldFont: Hack Nerd Font Mono:style=Bold:size=10:dpi=96:antialias=true:autohint=true
 
 *.alpha: 1
-
-URxvt.iso14755: false
-URxvt.iso14755_52: false
 
 Xft.dpi: 96
 Xft.antialias: 1
