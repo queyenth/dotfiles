@@ -27,11 +27,14 @@ alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection cliboard -o"
 
 alias rec="ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default $1"
-alias enc_to_webm="ffmpeg -i $1 -acodec libvorbis -aq 7 -ac 2 -qmax 30 -threads 2 $2"
+alias enc_to_webm="ffmpeg -i $1 -acodec libvorbis -aq 7 -ac 2 -qmax 30 -threads 4 $2"
+alias webm_to_mp4="ffmpeg -i $1 -threads 4 $2"
 
 export GREP_OPTIONS=""
 export EDITOR="nvim"
 export TERM="xterm-256color"
+
+export SYNCTHING="~/syncthing/data/Default/"
 
 export PATH=$PATH:~/.local/bin:~/scripts:~/go/bin
 
