@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Inspired by
 #   z3bra - http://blog.z3bra.org/2014/04/pop-it-up.html
@@ -58,6 +58,7 @@ amixer set Master $AMIXARG >/dev/null
 
 steps=$(echo "100/$BAR_LENGTH" | bc)
 current=$(echo "`level`/$steps" | bc)
+bar=""
 for i in `seq 1 $BAR_LENGTH`;
 do
   if [[ `state` != "on" ]]; then
