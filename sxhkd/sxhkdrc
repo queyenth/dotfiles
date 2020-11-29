@@ -2,8 +2,9 @@
 # bspwm hotkeys
 #
 
+# Restart polybar
 super + ctrl + q
-    killall bspwm_panel.sh; killall lemonbar; bspc quit
+    pkill polybar; polybar example
 
 super + {_,shift + }w
     bspc node -{c,k}
@@ -82,6 +83,9 @@ super + Return
 super + r
     rofi -show run
 
+super + p
+    rofi -show window
+
 super + ctrl + shift + l
     python3 ~/scripts/py3lock.py
 
@@ -101,13 +105,16 @@ XF86AudioMute
     ~/scripts/volumenotify !
 
 XF86AudioPlay
-    spotifyctl -q playpause
+    playerctl play-pause
 
 XF86AudioPrev
-    spotifyctl -q previous
+    playerctl previous
 
 XF86AudioNext
-    spotifyctl -q next
+    playerctl next
+
+super + F10
+    ~/scripts/changesource
 
 super + Escape
     pkill -USR1 -x sxhkd
