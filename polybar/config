@@ -1,10 +1,10 @@
 [colors]
-background = #fdf6e3
-foreground = #586e75
-foreground-alt = #002b36
-primary = #b58900
-secondary = #2aa198
-alert = #dc322f
+background = #282828
+foreground = #ebdbb2
+foreground-alt = #a89984
+primary = #d79921
+secondary = #689d6a
+alert = #cc241d
 
 [bar/example]
 width = 100%

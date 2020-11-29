@@ -17,19 +17,16 @@ else
   Plug 'tpope/vim-repeat'
   " Toggle comments (very useful plugin)
   Plug 'tpope/vim-commentary'
-  " Reveals all the character info
-  Plug 'tpope/vim-characterize'
   " Marks admin
   Plug 'kshenoy/vim-signature'
 
   " Workflow
   Plug 'airblade/vim-rooter'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
   Plug 'junegunn/fzf.vim'
 
   " Tmux
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'benmills/vimux'
-  " Plug 'edkolev/tmuxline.vim'
 
   " Git
   Plug 'tpope/vim-fugitive'
@@ -39,32 +36,14 @@ else
 
   " Appearance
   Plug 'bling/vim-airline'
-  Plug 'mhinz/vim-startify'
-  Plug 'junegunn/limelight.vim'
-  Plug 'junegunn/goyo.vim'
-  Plug 'queyenth/oxeded.vim'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'chriskempson/base16-vim'
-  Plug 'dawikur/base16-vim-airline-themes'
-  Plug 'ayu-theme/ayu-vim'
-  Plug 'rakr/vim-one'
-  Plug 'reedes/vim-colors-pencil'
+  Plug 'morhetz/gruvbox'
 
   " Langs
   " COC
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " HTML/CSS/SCSS
-  Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'css'] }
-  Plug 'mattn/emmet-vim', { 'for': ['html', 'xhtml', 'scss', 'xml', 'xls', 'markdown', 'js', 'jsx', 'javascript.jsx'] }
   Plug 'ap/vim-css-color', { 'for': ['html', 'xhtml', 'scss', 'xml'] }
-  Plug 'cakebaker/scss-syntax.vim'
-  Plug 'pangloss/vim-javascript'
-  Plug 'mxw/vim-jsx'
-  " PHP
-  Plug 'stephpy/vim-php-cs-fixer', { 'for': ['php', 'phtml'] }
-  " C++
-  Plug 'jackguo380/vim-lsp-cxx-highlight'
   call plug#end()
 endif
 
@@ -90,7 +69,6 @@ set mousemodel=popup
 set laststatus=2
 set splitright
 set splitbelow
-set autochdir
 
 " No backups, 2014, you know
 set nobackup
@@ -200,16 +178,16 @@ filetype plugin indent on
 
 " Enabling syntax highlithing
 syntax enable
-set background=light
+set background=dark
 set t_Co=256
 
-"set termguicolors
-colorscheme base16-solarized-light
+set termguicolors
+colorscheme gruvbox
+"autocmd vimenter * colorscheme gruvbox
 set guifont=Hack:h11
 if has("gui_running")
   set guicursor+=a:block-blinkon0
-  colorscheme ayu
-  let ayucolor="mirage"
+  colorscheme gruvbox
 end
 
 
@@ -238,25 +216,17 @@ map <Leader>y "*y
 map <Leader>p "*p
 map <Leader>P :set invpaste<CR>
 
-command! ToggleQuickfix call <SID>QuickfixToggle()
-nnoremap <silent> <Leader>q :ToggleQuickfix<CR>
-
 " NETRW
 let g:netrw_liststyle = 3
 
 " PLUGINS SETUP
 " =======================================
-" Limelight
-let g:limelight_conceal_ctermfg='DarkGray'
 
 " Airline settings
 set noshowmode
 let g:airline_exclude_preview = 1
 let g:airline_powerline_fonts = 1
-
-" Vimux Maps
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
+let g:airline_theme='gruvbox'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine
@@ -271,29 +241,10 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_error_symbol = '⚡'
 let g:syntastic_style_warning_symbol = '⚡'
 
-" PHP-CS-FIXER
-let g:php_cs_fixer_level = 'symfony'
-let g:php_cs_fixer_config = 'default'
-let g:php_cs_fixer_rules = "@PSR2"
-let g:php_cs_fixer_php_path = "php"
-let g:php_cs_fixer_enable_default_mapping = 1
-let g:php_cs_fixer_dry_run = 0
-let g:php_cs_fixer_verbose = 0
-
-" PHPCD path to php with pcntl support
-let g:phpcd_php_cli_executable = '/usr/local/opt/php@7.3/bin/php'
-
-" Emmet setup
-let g:user_emmet_settings = {
-    \ 'javscript.jsx' : {
-        \ 'extends' : 'jsx',
-    \ },
-\ }
-
 " FZF
 map <C-p> :Files<CR>
 map <C-space> :Buffers<CR>
-let g:fzf_layout = { 'up': '~40%' }
+let g:fzf_layout = { 'down': '~40%' }
 
 " Signify
 let g:signify_sign_change = '•'

@@ -9,4 +9,4 @@ rofi.separator-style: none
 rofi.hide-scrollbar: true
 rofi.line-margin: 0
 rofi.font: Hack 11
-rofi.theme: ~/.config/rofi/base16-solarized-light.rasi
+rofi.theme: ~/.config/rofi/gruvbox-dark.rasi

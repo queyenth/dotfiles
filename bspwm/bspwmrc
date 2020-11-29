@@ -2,16 +2,16 @@
 
 bspc config border_width 3
 bspc config top_padding 35
-bspc config window_gap 2
+bspc config window_gap 5
 bspc config split_ratio 0.52
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 
 # Colors
-bspc config normal_border_color "#fdf6e3"
-bspc config active_border_color "#586e75"
-bspc config focused_border_color "#586e75"
-bspc config presel_feedback_color "#586e75"
+bspc config normal_border_color "#282828"
+bspc config active_border_color "#282828"
+bspc config focused_border_color "#ebdbb2"
+bspc config presel_feedback_color "#ebdbb2"
 
 bspc monitor -d WWW TERM CODE MUSIC CHAT MISC MEDIA TRASH
 
@@ -21,6 +21,15 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
 bspc config external_rules_command ~/.config/bspwm/bspwm-rules
+
+# Default sxhkd, which doesn't give a shit about Caps_Lock
+sxhkd &
+
+# This one SXHKD doesn't exclude caps_lock key so we can create somewhat vim-like behaviour
+# When caps_lock is active, you do your WM stuff
+# This allows me to create even more easy-reachable hotkeys, without needing to have Super pressed all the time
+# Also allows to use Super in emacs or whatever.
+#~/workspace/sxhkd/sxhkd -c ~/.config/sxhkd/lock_sxhkdrc &
 
 # Notifications!
 dunst &

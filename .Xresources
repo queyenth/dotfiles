@@ -1,14 +1,13 @@
-#include "/home/q/.colors/base16-solarized-light.Xresources"
-
-st.font: Hack Nerd Font Mono:style=Regular:size=10:dpi=96:antialias=true:autohint=true
-st.boldFont: Hack Nerd Font Mono:style=Bold:size=10:dpi=96:antialias=true:autohint=true
+#include "/home/q/.colors/gruvbox-dark.xresources"
+st.font: Hack Nerd Font Mono:style=Regular:size=12:dpi=96:antialias=true:autohint=true
+st.boldFont: Hack Nerd Font Mono:style=Bold:size=12:dpi=96:antialias=true:autohint=true
 
 *.alpha: 1
 
-Xft.dpi: 96
+Xft.dpi: 120
 Xft.antialias: 1
-Xft.autohint: 0
-Xft.hinting: 1
-Xft.hintstyle: hintfull
+Xft.autohint: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
