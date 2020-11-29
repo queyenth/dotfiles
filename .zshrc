@@ -32,10 +32,13 @@ alias webm_to_mp4="ffmpeg -i $1 -threads 4 $2"
 
 export GREP_OPTIONS=""
 export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
 export TERM="xterm-256color"
 
 export SYNCTHING="~/syncthing/data/Default/"
 
-export PATH=$PATH:~/.local/bin:~/scripts:~/go/bin
+export SPICETIFY_INSTALL="/home/q/spicetify-cli"
+export PATH="/home/q/dotfiles/scripts:$SPICETIFY_INSTALL:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.firefox ] && source ~/.firefox
