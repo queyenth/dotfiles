@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Using the same msgId as in volumenotify
+msgId="991049"
+
+if [[ `ponymix get-profile` == "output:analog-stereo" ]]; then
+    ponymix set-profile output:iec958-stereo
+    icon="audio-speakers"
+else
+    ponymix set-profile output:analog-stereo
+    icon="audio-headphones"
+fi
+
+bar=$(volumebar)
+dunstify -a "changeSource" -u low -i "$icon" -r "$msgId" "$bar"

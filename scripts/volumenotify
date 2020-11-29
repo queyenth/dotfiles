@@ -3,8 +3,6 @@
 # Inspired by
 #   z3bra - http://blog.z3bra.org/2014/04/pop-it-up.html
 #   bruenig - https://bbs.archlinux.org/viewtopic.php?id=46608
-#
-# author
 #   Windelicato - http://github.com/windelicato
 
 BAR_LENGTH=20
@@ -27,25 +25,17 @@ usage() {
 }
 msgId="991049"
 
-level() {
-  amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p' | uniq
-}
-
-state() {
-  amixer get Master | sed -n 's/^.*\[\(o[nf]\+\)]$/\1/p' | uniq
-}
-
 case $1 in
   '+'|'-i'|'--increase')
     [ -z "$2" ] && err "No argument specified for increase"
-    AMIXARG="${2}%+"
+    PONYMIXARG="increase ${2}"
     ;;
   '-'|'-d'|'--decrease')
     [ -z "$2" ] && err "No argument specified for decrease"
-    AMIXARG="${2}%-"
+    PONYMIXARG="decrease ${2}"
     ;;
   '!'|'-t'|'--toggle')
-    AMIXARG="toggle"
+    PONYMIXARG="toggle"
     ;;
   ''|'-h'|'--help')
     usage
@@ -54,21 +44,9 @@ case $1 in
     err "Unrecognized option \`$1', see volumenotify --help"
 esac
 
-amixer set Master $AMIXARG >/dev/null
+ponymix $PONYMIXARG
 
-steps=$(echo "100/$BAR_LENGTH" | bc)
-current=$(echo "`level`/$steps" | bc)
-bar=""
-for i in `seq 1 $BAR_LENGTH`;
-do
-  if [[ `state` != "on" ]]; then
-    bar+=" "
-  elif [ $i -le $current ]; then
-    bar+="${BAR_CHAR}"
-  else
-    bar+="-"
-  fi
-done
+bar=$(volumebar)
 
 case $1 in
   '+'|'-i'|'--increase'|'-'|'-d'|'--decrease')

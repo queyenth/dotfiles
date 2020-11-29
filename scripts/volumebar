@@ -1,0 +1,22 @@
+#!/bin/bash
+
+BAR_LENGTH=20
+BAR_CHAR='='
+
+vol=$(ponymix get-volume)
+steps=$(echo "100/$BAR_LENGTH" | bc)
+current=$(echo "$vol/$steps" | bc)
+bar="$vol% "
+
+for i in `seq 1 $BAR_LENGTH`;
+do
+  if ponymix is-muted ; then
+    bar+=" "
+  elif [ $i -le $current ]; then
+    bar+="${BAR_CHAR}"
+  else
+    bar+="-"
+  fi
+done
+
+echo $bar
