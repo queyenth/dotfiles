@@ -62,7 +62,6 @@ mplayer() {
 }
 
 spotify() {
-    state=floating;
     desktop=^4;
 }
 
@@ -95,11 +94,6 @@ pip() {
     marked=on;
 }
 
-emacs() {
-    state=tiled;
-    desktop=^3;
-}
-
 case $instance.$class in
     (*.vlc) vlc;;
     (*.mplayer) mplayer;;
@@ -109,7 +103,6 @@ case $instance.$class in
     (*.Skype) skype;;
     (*.TelegramDesktop) telegram_desktop;;
     (*.KeePassXC) keepassxc;;
-    (*.Emacs) emacs;;
     (Toolkit.Firefox) pip;;
     (.)
         case $(ps -p "$(xdo pid "$id")" -o comm= 2>/dev/null) in
