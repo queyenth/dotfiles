@@ -65,9 +65,9 @@ def obscure(rects):
 
 def lock_screen():
   # Lock with nothing
-  os.system('i3lock -u -i /tmp/.i3lock.png')
+  #os.system('i3lock -u -i /tmp/.i3lock.png')
   # Lock with ring
-  #os.system('i3lock -i /tmp/.i3lock.png --indpos="w/2:h/2" --insidevercolor=2e3440ff --insidewrongcolor=BF616Aaa --insidecolor=2e344000 --ringvercolor=2e344066 --ringwrongcolor=BF616Aaa --ringcolor=d8dee9ff --keyhlcolor=2e344099 --bshlcolor=2e344099 --separatorcolor=00000000 --line-uses-ring --radius 150 --ring-width 30 --indicator --veriftext="" --wrongtext="GO AWAY #@!!" --noinputtext=""')
+  os.system('i3lock -i /tmp/.i3lock.png --indpos="w/2:h/2" --insidevercolor=2e3440ff --insidewrongcolor=BF616Aaa --insidecolor=2e344000 --ringvercolor=2e344066 --ringwrongcolor=BF616Aaa --ringcolor=d8dee9ff --keyhlcolor=2e344099 --bshlcolor=2e344099 --separatorcolor=00000000 --line-uses-ring --radius 150 --ring-width 30 --indicator --veriftext="" --wrongtext="GO AWAY #@!!" --noinputtext=""')
 
 if __name__ == '__main__':
   # 1: Take a screenshot.
