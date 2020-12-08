@@ -1,22 +1,7 @@
-# Created by newuser for 5.7.1
-source ~/.zgen/zgen.zsh
+# idk
+bindkey "\033[H" beginning-of-line
+bindkey "\033[4~" end-of-line
 
-if ! zgen saved; then
-    zgen oh-my-zsh
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/git-extras
-    zgen oh-my-zsh plugins/bower
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/common-aliases
-    zgen oh-my-zsh plugins/docker
-
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-completions src
-
-    zgen load jackharrisonsherlock/common common
-
-    zgen save
-fi
 alias vim="nvim"
 alias grep="grep --color=auto --exclude-dir=.git"
 alias dk="docker"
@@ -42,3 +27,5 @@ export PATH="/home/q/dotfiles/scripts:$SPICETIFY_INSTALL:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.firefox ] && source ~/.firefox
+
+eval "$(starship init zsh)"
