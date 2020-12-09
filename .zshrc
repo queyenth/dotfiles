@@ -1,6 +1,17 @@
-# idk
+# keybindings
 bindkey "\033[H" beginning-of-line
 bindkey "\033[4~" end-of-line
+bindkey "\033[P" delete-char
+bindkey "^r" history-incremental-search-backward
+
+#options
+export HISTSIZE=100000
+export SAVEHIST=100000
+export HISTFILE=~/.zsh_history
+
+setopt INC_APPEND_HISTORY
+#setopt HIST_IGNORE_DUPS
+setopt EXTENDED_HISTORY
 
 alias vim="nvim"
 alias grep="grep --color=auto --exclude-dir=.git"
