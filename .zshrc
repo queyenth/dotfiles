@@ -26,6 +26,8 @@ alias rec="ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -f puls
 alias enc_to_webm="ffmpeg -i $1 -acodec libvorbis -aq 7 -ac 2 -qmax 30 -threads 4 $2"
 alias webm_to_mp4="ffmpeg -i $1 -threads 4 $2"
 
+alias rr="curl -s -L http://bit.ly/10hA8iC | bash"
+
 export GREP_OPTIONS=""
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
