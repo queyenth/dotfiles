@@ -26,20 +26,31 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Hack Nerd Font:size=10;3"
-font-1 = Weather Icons:size=12;2
+font-0 = "Hack Nerd Font:size=8;3"
+font-1 = Weather Icons:size=8;2
 
-modules-left = bspwm
+modules-left = bspwm xwindow
 #modules-center = xwindow
-modules-center = player
-modules-right = wireguard openweathermap xkeyboard pulseaudio date
+#modules-center = 
+modules-right = mpd wireguard openweathermap xkeyboard pulseaudio date
 
 tray-position = right
 tray-padding = 2
 wm-restack = bspwm
 
+dpi-x = 120
+dpi-y = 120
+
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+interval = 2
 
 [module/player]
 type = custom/script

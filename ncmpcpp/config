@@ -1,0 +1,56 @@
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory = ~/.local/share/ncmpcpp/lyrics
+
+mpd_host = localhost
+mpd_port = 6600
+mpd_connection_timeout = 5
+mpd_music_dir = /mnt/WDBLUE/music
+mpd_crossfade_time = 3
+
+#visualizer_fifo_path = /tmp/mpd.fifo
+#visualizer_output_name = Visualizer feed
+#visualizer_in_stereo = yes
+#visualizer_sync_interval = 30
+#visualizer_type = spectrum
+#visualizer_look = ●▮
+
+playlist_disable_highlight_delay = 1
+message_delay_time = "4"
+
+song_list_format = "{{%a - %t}|{%f}}{$R%l}"
+current_item_prefix = $(green)$r
+current_item_inactive_column_prefix = $(white)$r
+now_playing_prefix = "$4"
+now_playing_suffix = "$9"
+playlist_display_mode = classic
+autocenter_mode = no
+centered_cursor = no
+user_interface = classic
+
+data_fetching_delay = yes
+
+statusbar_visibility = no
+progressbar_look = "─╼ "
+titles_visibility = no
+header_visibility = no
+
+browser_playlist_prefix = "$2plist >>$3 "
+browser_display_mode = classic
+
+colors_enabled = yes
+statusbar_color = white
+empty_tag_color = white
+#visualizer_color = yellow
+main_window_color = white
+#progressbar_color = yellow
+progressbar_elapsed_color = yellow
+
+song_window_title_format = "{%a - }{%t}|{%f}"
+search_engine_display_mode = columns
+
+follow_now_playing_lyrics = yes
+fetch_lyrics_for_current_song_in_background = no
+lyrics_fetchers = genius
+genius_api_token = 
+
+execute_on_song_change = notify-send "Now Playing" "$(mpc current)"
