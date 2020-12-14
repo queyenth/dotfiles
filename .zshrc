@@ -3,6 +3,7 @@ bindkey "\033[H" beginning-of-line
 bindkey "\033[4~" end-of-line
 bindkey "\033[P" delete-char
 bindkey "^r" history-incremental-search-backward
+bindkey "^?" backward-delete-char 
 
 #options
 export HISTSIZE=100000
