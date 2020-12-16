@@ -34,5 +34,9 @@ sxhkd &
 # Notifications!
 dunst &
 
+# mpd & scribble
+[[ -z $(pgrep -xU $UID mpd ]] && mpd &
+[[ -z $(pgrep -xU $UID mpdscribble ]] && mpdscribble &
+
 # Polybar!
 polybar example &
