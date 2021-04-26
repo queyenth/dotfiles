@@ -16,6 +16,7 @@ setopt EXTENDED_HISTORY
 
 alias vim="nvim"
 alias grep="grep --color=auto --exclude-dir=.git"
+alias ls="ls --color=auto"
 alias dk="docker"
 alias dkc="docker-compose"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
@@ -37,9 +38,8 @@ export TERM="xterm-256color"
 export SYNCTHING="~/syncthing/data/Default/"
 
 export SPICETIFY_INSTALL="/home/q/spicetify-cli"
-export PATH="/home/q/dotfiles/scripts:$SPICETIFY_INSTALL:$PATH"
+export PATH="/home/q/dotfiles/scripts:/home/q/.local/bin:$SPICETIFY_INSTALL:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.firefox ] && source ~/.firefox
 
 eval "$(starship init zsh)"
