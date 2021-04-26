@@ -78,10 +78,11 @@ super + @button{1-3}
     bspc pointer -u
 
 super + Return
-    xst
+    st
 
 super + r
-    rofi -show run
+    dmenu_run
+    #rofi -show drun
 
 super + p
     rofi -show window
