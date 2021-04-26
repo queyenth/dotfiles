@@ -1,12 +1,12 @@
 import sys
 from grapefruit import Color
-from xterm256 import xterm_to_rgb
+from x256 import x256
 
 def xterm2html(color):
-    r, g, b = xterm_to_rgb(int(color))
-    return Color.RgbToHtml(r, g, b)
+    r, g, b = x256.to_rgb(int(color))
+    return Color.RgbToHtml(r / 255, g / 255, b / 255)
 
-color = raw_input()
+color = input()
 while color != "exit":
-    print xterm2html(color)
-    color = raw_input()
+    print(xterm2html(color))
+    color = input()
