@@ -37,6 +37,7 @@ else
   " Appearance
   Plug 'bling/vim-airline'
   Plug 'morhetz/gruvbox'
+  Plug 'queyenth/oxeded.vim'
 
   " Langs
   " COC
@@ -182,12 +183,11 @@ set background=dark
 set t_Co=256
 
 set termguicolors
-colorscheme gruvbox
-"autocmd vimenter * colorscheme gruvbox
-set guifont=Hack:h11
+colorscheme oxeded
 if has("gui_running")
+  set guifont=Hack:h11
   set guicursor+=a:block-blinkon0
-  colorscheme gruvbox
+  colorscheme oxeded
 end
 
 
@@ -226,7 +226,7 @@ let g:netrw_liststyle = 3
 set noshowmode
 let g:airline_exclude_preview = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+let g:airline_theme='oxeded'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine
@@ -353,3 +353,8 @@ nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>j :<C-u>CocNext<CR>
 nnoremap <silent> <space>k :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p :<C-u>CocListResume<CR>
+
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun

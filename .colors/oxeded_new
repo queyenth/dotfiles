@@ -1,0 +1,52 @@
+! cterm = 235
+*background: #282828
+! cterm = 253
+*foreground: #DEDEDE
+
+!black
+! cterm = 16
+*color0: #000000
+! cterm = 238
+*color8: #424242
+
+!red
+! cterm = 131
+*color1: #AD5C62
+! cterm = 168
+*color9: #cc707b
+
+!green
+! cterm = 107
+*color2: #88B86E
+! cterm = 114
+*color10: #98cc7a
+
+!yellow
+! cterm = 143
+*color3: #ada268
+! cterm = 180
+*color11: #ccb87a
+
+!blue
+! cterm = 61
+*color4: #4359a8
+! cterm = 62
+*color12: #4c61d9
+
+!magenta
+! cterm = 97
+*color5: #905CAD
+! cterm = 134
+*color13: #a76fc7
+
+!cyan
+! cterm = 73
+*color6: #489FA1
+! cterm = 80
+*color14: #5ED1D3
+
+!white
+! cterm = 145
+*color7: #B0B0B0
+! cterm = 231
+*color15: #F7F7F7

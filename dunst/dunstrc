@@ -64,7 +64,7 @@
     frame_width = 3
 
     # Defines color of the frame around the notification window.
-    frame_color = "#d79921"
+    frame_color = "#489fa1"
 
     # Define a color for the separator.
     # possible values are:
@@ -296,19 +296,19 @@
     # Icon for notifications with critical urgency, uncomment to enable
     #icon = /path/to/icon
 
-[gruvbox_low]
+[oxeded_low]
     msg_urgency = low
     background = "#282828"
-    foreground = "#ebdbb2"
+    foreground = "#dedede"
 
-[gruvbox_normal]
+[oxeded_normal]
     msg_urgency = normal
     background = "#282828"
-    foreground = "#fabd2f"
+    foreground = "#dedede"
 
-[gruvbox_critical]
+[oxeded_critical]
     msg_urgency = critical
-    background = "#cc241d"
+    background = "#e0777f"
     foreground = "#282828"
 
 # Every section that isn't one of the above is interpreted as a rules to

@@ -1,4 +1,4 @@
-#include "/home/q/.colors/gruvbox-dark.xresources"
+#include "/home/q/.colors/oxeded_new"
 st.font: Hack Nerd Font Mono:style=Regular:size=12:dpi=96:antialias=true:autohint=true
 st.boldFont: Hack Nerd Font Mono:style=Bold:size=12:dpi=96:antialias=true:autohint=true
 
