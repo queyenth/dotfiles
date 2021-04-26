@@ -178,11 +178,11 @@ def_key "j"
 #def_key "}"
 #  scroll_down_artist
 #
-#def_key "page_up"
-#  page_up
+def_key "ctrl-u"
+  page_up
 #
-#def_key "page_down"
-#  page_down
+def_key "ctrl-d"
+  page_down
 #
 #def_key "home"
 #  move_home
@@ -214,11 +214,11 @@ def_key "j"
 #def_key "space"
 #  toggle_visualization_type
 #
-#def_key "delete"
-#  delete_playlist_items
+def_key "d"
+  delete_playlist_items
 #
-#def_key "delete"
-#  delete_browser_items
+def_key "d"
+  delete_browser_items
 #
 #def_key "delete"
 #  delete_stored_playlist
@@ -400,11 +400,11 @@ def_key "h"
 #def_key "?"
 #  find_item_backward
 #
-#def_key "."
-#  next_found_item
+def_key "n"
+  next_found_item
 #
-#def_key ","
-#  previous_found_item
+def_key "N"
+  previous_found_item
 #
 #def_key "w"
 #  toggle_find_mode
@@ -436,8 +436,8 @@ def_key "h"
 #def_key "g"
 #  jump_to_position_in_song
 #
-#def_key "l"
-#  show_lyrics
+def_key "."
+  show_lyrics
 #
 #def_key "ctrl-v"
 #  select_range
@@ -466,14 +466,14 @@ def_key "h"
 #def_key "C"
 #  crop_main_playlist
 #
-#def_key "m"
-#  move_sort_order_up
+def_key "K"
+  move_sort_order_up
 #
 #def_key "m"
 #  move_selected_items_up
 #
-#def_key "n"
-#  move_sort_order_down
+def_key "J"
+  move_sort_order_down
 #
 #def_key "n"
 #  move_selected_items_down
