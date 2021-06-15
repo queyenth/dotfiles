@@ -36,8 +36,10 @@ else
 
   " Appearance
   Plug 'bling/vim-airline'
+  Plug 'dawikur/base16-vim-airline-themes'
   Plug 'morhetz/gruvbox'
   Plug 'queyenth/oxeded.vim'
+  Plug 'chriskempson/base16-vim'
 
   " Langs
   " COC
@@ -183,11 +185,11 @@ set background=dark
 set t_Co=256
 
 set termguicolors
-colorscheme oxeded
+let base16colorspace=256
+colorscheme base16-gruvbox-light-medium
 if has("gui_running")
   set guifont=Hack:h11
   set guicursor+=a:block-blinkon0
-  colorscheme oxeded
 end
 
 
@@ -226,7 +228,6 @@ let g:netrw_liststyle = 3
 set noshowmode
 let g:airline_exclude_preview = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oxeded'
 
 " Commentary
 nmap <Leader>c <Plug>CommentaryLine
