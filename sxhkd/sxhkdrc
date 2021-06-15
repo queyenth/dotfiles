@@ -72,7 +72,7 @@ super + @button{1-3}
     bspc pointer -u
 
 super + Return
-    st
+    alacritty
 
 super + r
     dmenu_run
