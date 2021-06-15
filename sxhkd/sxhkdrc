@@ -75,7 +75,7 @@ super + Return
     alacritty
 
 super + r
-    dmenu_run
+    dmenu_run -h 35
     #rofi -show drun
 
 super + p
