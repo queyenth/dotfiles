@@ -38,4 +38,4 @@ emacs --daemon &
 dunst &
 
 # Polybar!
-polybar example &
+bspwmbar &
