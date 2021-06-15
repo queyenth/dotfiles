@@ -31,6 +31,9 @@ sxhkd &
 # Also allows to use Super in emacs or whatever.
 #~/workspace/sxhkd/sxhkd -c ~/.config/sxhkd/lock_sxhkdrc &
 
+# Emacs, cause come on...
+emacs --daemon &
+
 # Notifications!
 dunst &
 

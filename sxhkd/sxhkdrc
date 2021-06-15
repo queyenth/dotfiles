@@ -35,9 +35,6 @@ super + m
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
-super + {_,shift + }c
-    bspc node -f {next,prev}
-
 super + {comma,period}
     bspc desktop -C {backward,forward}
 
@@ -83,6 +80,15 @@ super + r
 
 super + p
     rofi -show window
+
+super + c
+    ~/scripts/capture
+
+super + shift + c
+    ~/scripts/capturelink
+
+super + e
+    ~/scripts/runem
 
 super + ctrl + shift + l
     python3 ~/scripts/py3lock.py
