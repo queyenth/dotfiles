@@ -59,11 +59,8 @@ super + alt + shift + {h,j,k,l}
 super + ctrl + {1-9}
     bspc node -o 0.{1-9}
 
-super + {1-9,0}
-    ~/scripts/move_pip '^{1-9,10}'
-
-super + shift + {1-9,0}
-    bspc node -d '^{1-9,10}'
+super + {_, shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 ~button1
     bspc pointer -g focus
@@ -95,6 +92,12 @@ super + ctrl + shift + 3
 
 super + ctrl + shift + 4
     gscreenshot-cli -c -s
+
+super + minus
+    ~/scripts/hide_window
+
+super + equal
+    ~/scripts/mark_window
 
 XF86AudioRaiseVolume
     ~/scripts/volumenotify + 5

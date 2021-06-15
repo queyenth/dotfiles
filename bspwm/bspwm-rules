@@ -86,7 +86,7 @@ telegram_desktop() {
 
 pip() {
     state=floating;
-    marked=on;
+    sticky=on;
 }
 
 case $instance.$class in
