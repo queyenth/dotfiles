@@ -1,0 +1,23 @@
+#!/usr/bin/sh
+
+# Stolen from Derek Taylor
+
+selected="$(ps --user "$(id -u)" -F | \
+          dmenu -i -l 20 -p "Search for process to kill:" "$@" | \
+          awk '{print $2, $11}')"
+
+if [ -n "$selected" ]; then
+    answer="$(echo "No\nYes" | dmenu -i -p "Kill $selected?" "$@")"
+
+    if [ $answer = "Yes" ]; then
+        selpid=$(echo $selected | cut -d ' ' -f1)
+        kill -9 "$selpid"
+        echo "Process $selected has been killed."
+    fi
+
+    if [ $answer = "No" ]; then
+        echo "Program terminated."
+    fi
+fi
+
+exit 0

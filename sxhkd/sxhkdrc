@@ -115,16 +115,13 @@ XF86AudioMute
     ~/scripts/volumenotify !
 
 XF86AudioPlay
-    mpc toggle
+    playerctl play-pause
 
 XF86AudioPrev
-    mpc prev
+    playerctl previous
 
 XF86AudioNext
-    mpc next
-
-super + F10
-    ~/scripts/changesource
+    playerctl next
 
 super + Escape
     pkill -USR1 -x sxhkd

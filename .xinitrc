@@ -27,9 +27,13 @@ hsetroot -fill ~/wallpaper
 # WMNAME important for some apps, idk
 wmname LG3D
 
+# Picom
+picom &
+
 # Tap - escape, hold - ctrl!
 #xcape -t 300 -e 'Control_L=Escape'
 
 # I don't know what's the difference though
 exec dbus-run-session bspwm >~/.bspwm.out 2>~/.bspwm.err
+#exec dbus-run-session emacs -mm --debug-init -l ~/.emacs.d/desktop.el
 #exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id) bspwm >~/.bspwm.out 2>~/.bspwm.err

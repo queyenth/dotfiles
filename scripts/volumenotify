@@ -46,6 +46,13 @@ esac
 
 ponymix $PONYMIXARG
 
+# volumelevel=$(ponymix get-volume)
+# if ponymix is-muted; then
+#     echo 0 > /tmp/wob.fifo
+# else
+#     echo $volumelevel > /tmp/wob.fifo
+# fi
+
 bar=$(volumebar)
 
 case $1 in

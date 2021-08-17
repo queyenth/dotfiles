@@ -1,10 +1,10 @@
 [colors]
-background = #282828
-foreground = #dedede
-foreground-alt = #5d5d5d
-primary = #b0b0b0
-secondary = #489fa1
-alert = #e0777f
+background = #18181b
+foreground = #dfeaec
+foreground-alt = #444444
+primary = #
+secondary = #4abfc7
+alert = #d33a68
 
 [bar/example]
 width = 100%:-10
@@ -27,14 +27,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Hack Nerd Font:size=8;3"
+font-0 = "Iosevka Term:size=8;3"
 font-1 = Weather Icons:size=8;2
 
 modules-left = bspwm xwindow
 #modules-center = xwindow
 #modules-center = 
 #modules-right = mpd wireguard openweathermap xkeyboard pulseaudio date
-modules-right = mpd xkeyboard pulseaudio date
+modules-right = openweathermap xkeyboard pulseaudio date
 
 tray-position = right
 tray-padding = 2

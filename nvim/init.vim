@@ -40,6 +40,7 @@ else
   Plug 'morhetz/gruvbox'
   Plug 'queyenth/oxeded.vim'
   Plug 'chriskempson/base16-vim'
+  Plug 'AlessandroYorba/Sierra'
 
   " Langs
   " COC
@@ -184,9 +185,10 @@ syntax enable
 set background=dark
 set t_Co=256
 
-set termguicolors
-let base16colorspace=256
-colorscheme base16-gruvbox-light-medium
+"set termguicolors
+"let base16colorspace=256
+let g:sierra_Midnight = 1
+colorscheme sierra
 if has("gui_running")
   set guifont=Hack:h11
   set guicursor+=a:block-blinkon0

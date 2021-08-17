@@ -1,18 +1,18 @@
-# keybindings
-bindkey "\033[H" beginning-of-line
-bindkey "\033[4~" end-of-line
-bindkey "\033[P" delete-char
-bindkey "^r" history-incremental-search-backward
-bindkey "^?" backward-delete-char 
+source ~/.zgen/zgen.zsh
 
-#options
-export HISTSIZE=100000
-export SAVEHIST=100000
-export HISTFILE=~/.zsh_history
+if ! zgen saved; then
+    zgen oh-my-zsh
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/git-extras
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/common-aliases
+    zgen oh-my-zsh plugins/docker
 
-setopt INC_APPEND_HISTORY
-#setopt HIST_IGNORE_DUPS
-setopt EXTENDED_HISTORY
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zsh-completions src
+
+    zgen save
+fi
 
 alias vim="nvim"
 alias grep="grep --color=auto --exclude-dir=.git"
