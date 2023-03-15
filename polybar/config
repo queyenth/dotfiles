@@ -7,11 +7,13 @@ secondary = #4abfc7
 alert = #d33a68
 
 [bar/example]
-width = 100%:-10
-offset-x = 5
-height = 35
-radius = 2.0
-fixed-center = false
+width = 100%:-20
+monitor = ${env:MONITOR:}
+offset-x = 10
+offset-y = 10
+height = 40
+radius = 8
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -22,26 +24,26 @@ line-color = ${colors.alert}
 ;border-size = 3
 ;border-color = ${colors.secondary}
 
-padding-left = 0
+padding-left = 2
 padding-right = 2
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 2
 
-font-0 = "Iosevka Term:size=8;3"
+font-0 = "FiraCode Nerd Font Mono:size=8;3"
 font-1 = Weather Icons:size=8;2
 
-modules-left = bspwm xwindow
-#modules-center = xwindow
+modules-left = xwindow
+modules-center = bspwm
 #modules-center = 
 #modules-right = mpd wireguard openweathermap xkeyboard pulseaudio date
 modules-right = openweathermap xkeyboard pulseaudio date
 
-tray-position = right
+tray-position = ${env:TRAYPOS:}
 tray-padding = 2
+
 wm-restack = bspwm
 
-dpi-x = 120
-dpi-y = 120
+dpi-x = 192
+dpi-y = 192
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -66,7 +68,7 @@ click-middle = playerctl previous &
 [module/openweathermap]
 type = custom/script
 exec = ~/scripts/openweathermap-detailed.sh
-interval = 600
+interval = 900
 label-font = 2
 
 [module/wireguard]
@@ -78,35 +80,28 @@ click-left = ~/scripts/vpn-wireguard-wg.sh --toggle &
 [module/bspwm]
 type = internal/bspwm
 
-ws-icon-0 = WWW;
-ws-icon-1 = TERM;
-ws-icon-2 = CODE;
-ws-icon-3 = MUSIC;
-ws-icon-4 = CHAT;
-ws-icon-5 = MISC;
-ws-icon-6 = MEDIA;
-ws-icon-7 = TRASH;
+ws-icon-default = ﱤ
 
-#label-focused = %name%
+label-focused = %icon%
 label-focused-foreground = ${colors.secondary}
 #label-focused-background = ${colors.primary}
 label-focused-padding = 2
 
-#label-occupied = %name%
+label-occupied = %icon%
 label-occupied-foreground = ${colors.primary}
 label-occupied-padding = 2
 
-#label-urgent = %name%!
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-#label-empty = %name%
+label-empty = •
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:50:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard

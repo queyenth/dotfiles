@@ -28,7 +28,11 @@ alias rec="ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -f puls
 alias enc_to_webm="ffmpeg -i $1 -acodec libvorbis -aq 7 -ac 2 -qmax 30 -threads 4 $2"
 alias webm_to_mp4="ffmpeg -i $1 -threads 4 $2"
 
+alias img-optimize="/home/q/.img-optimize/optimize.sh"
+
 alias rr="curl -s -L http://bit.ly/10hA8iC | bash"
+
+alias cal="cal -m"
 
 export GREP_OPTIONS=""
 export EDITOR="nvim"
@@ -38,7 +42,13 @@ export TERM="xterm-256color"
 export SYNCTHING="~/syncthing/data/Default/"
 
 export SPICETIFY_INSTALL="/home/q/spicetify-cli"
-export PATH="/home/q/dotfiles/scripts:/home/q/.local/bin:$SPICETIFY_INSTALL:$PATH"
+export DENO_INSTALL="/home/q/.deno"
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export PATH="/home/q/dotfiles/scripts:/home/q/.local/bin:$SPICETIFY_INSTALL:$DENO_INSTALL/bin:$PATH"
+export UID="$(id -u)"
+#export QT_AUTO_SCREEN_SCALE_FACTOR=1
+#export QT_QPA_PLATFORM=wayland
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

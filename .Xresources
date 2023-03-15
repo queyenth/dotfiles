@@ -1,10 +1,10 @@
 #include "/home/q/.colors/base16-gruvbox-light-medium-256.Xresources"
-st.font: Hack Nerd Font Mono:style=Regular:size=12:dpi=96:antialias=true:autohint=true
-st.boldFont: Hack Nerd Font Mono:style=Bold:size=12:dpi=96:antialias=true:autohint=true
+st.font: Hack Nerd Font Mono:style=Regular:size=12:dpi=120:antialias=true:autohint=true
+st.boldFont: Hack Nerd Font Mono:style=Bold:size=12:dpi=120:antialias=true:autohint=true
 
 *.alpha: 1
 
-Xft.dpi: 120
+Xft.dpi: 192 
 Xft.antialias: 1
 Xft.autohint: 1
 Xft.hinting: true

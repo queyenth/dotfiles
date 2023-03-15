@@ -62,12 +62,7 @@ mplayer() {
 }
 
 spotify() {
-    desktop=^4;
-}
-
-deezer() {
-    state=floating;
-    desktop=^4;
+    desktop=^14;
 }
 
 pavucontrol() {
@@ -76,12 +71,12 @@ pavucontrol() {
 
 skype() {
     state=floating;
-    desktop=^5;
+    desktop=^15;
 }
 
 telegram_desktop() {
     state=floating;
-    desktop=^5;
+    desktop=^15;
 }
 
 pip() {
@@ -93,7 +88,6 @@ case $instance.$class in
     (*.vlc) vlc;;
     (*.mplayer) mplayer;;
     (*.Spotify) spotify;;
-    (*.Deezer) deezer;;
     (*.Pavucontrol) pavucontrol;;
     (*.Skype) skype;;
     (*.TelegramDesktop) telegram_desktop;;

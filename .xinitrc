@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# xrandr --output DisplayPort-1 --mode 1920x1080 --scale 2x2
+sh ~/.screenlayout/default.sh
+
 # Fonts stuff, yay!
 xset +fp /usr/share/fonts/local
 xset +fp ~/.fonts
@@ -21,14 +24,14 @@ autocutsel -selection PRIMARY -fork &
 # Cursor stuff.
 xsetroot -cursor_name left_ptr
 
-# Set wallpaper!
-hsetroot -fill ~/wallpaper
-
 # WMNAME important for some apps, idk
 wmname LG3D
 
+# Set wallpaper!
+hsetroot -fill ~/wallpaper
+
 # Picom
-picom &
+# picom &
 
 # Tap - escape, hold - ctrl!
 #xcape -t 300 -e 'Control_L=Escape'

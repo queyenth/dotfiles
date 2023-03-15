@@ -9,9 +9,6 @@ super + ctrl + q
 super + {_,shift + }w
     bspc node -{c,k}
 
-super + b
-    bspc desktop -B
-
 super + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
@@ -28,9 +25,6 @@ super + {o,i}
 
 super + y
     bspc node -w last.manual
-
-super + m
-    bspc node -s biggest
 
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
@@ -56,8 +50,14 @@ super + alt + shift + {h,j,k,l}
 super + ctrl + {1-9}
     bspc node -o 0.{1-9}
 
-super + {_, shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
+#super + {_, shift + }{1,2,3,4,5,6,7,8,9,0}
+#    bspc {desktop -f,node -d} '^{1,2,3,4,5,6,7,8,9,10}'
+
+super + {_, shift + }{1,2,3,4,5,6,7,8,9,0}
+    bspc {desktop -f,node -d} '^{11,12,13,14,15,16,17,18,19,20}'
+
+super + {_, shift + }{F1,F2,F3,F4,F5,F6,F7,F8,F9,F10}
+    bspc {desktop -f,node -d} '^{1,2,3,4,5,6,7,8,9,10}'
 
 ~button1
     bspc pointer -g focus
@@ -94,10 +94,10 @@ super + ctrl + shift + l
     python3 ~/scripts/py3lock.py
 
 super + ctrl + shift + 3
-    gscreenshot-cli -c
+    flameshot screen
 
 super + ctrl + shift + 4
-    gscreenshot-cli -c -s
+    flameshot gui
 
 super + minus
     ~/scripts/hide_window
@@ -105,13 +105,16 @@ super + minus
 super + equal
     ~/scripts/mark_window
 
-XF86AudioRaiseVolume
+#XF86AudioRaiseVolume
+super + n
     ~/scripts/volumenotify + 5
 
-XF86AudioLowerVolume
+#XF86AudioLowerVolume
+super + b
     ~/scripts/volumenotify - 5
 
-XF86AudioMute
+#XF86AudioMute
+super + m
     ~/scripts/volumenotify !
 
 XF86AudioPlay
