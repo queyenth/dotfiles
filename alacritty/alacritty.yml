@@ -107,10 +107,10 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode Nerd Font Mono
+    #family: FiraCode Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    #style: Bold
 
   # Italic font face
   #italic:
@@ -741,28 +741,119 @@ font:
 #     - { index: 21, color: '0x3c3836' }
 
 # Proto colors
+#colors:
+#  primary:
+#    background: '0x18181b'
+#    foreground: '0xc8c8d0'
+#  cursor:
+#    text: '0x18181b'
+#    cursor: '0xc8c8d0'
+#  normal:
+#    black: '0x161618'
+#    red: '0xd33a68'
+#    green: '0x50d44b'
+#    yellow: '0xe7d63b'
+#    blue: '0x6377d1'
+#    magenta: '0x8554b3'
+#    cyan: '0x4abfc7'
+#    white: '0xdfeaec'
+#  bright:
+#    black: '0x343446'
+#    red: '0xda4e78'
+#    green: '0x68d864'
+#    yellow: '0xecdd5b'
+#    blue: '0x8191d9'
+#    magenta: '0x9a72c0'
+#    cyan: '0x6fccd3'
+#    white: '0xf6f9f9'
+
+# nord
+# colors:
+#   primary:
+#     background: "#2e3440"
+#     foreground: "#d8dee9"
+#     dim_foreground: "#a5abb6"
+#   cursor:
+#     text: "#2e3440"
+#     cursor: "#d8dee9"
+#   vi_mode_cursor:
+#     text: "#2e3440"
+#     cursor: "#d8dee9"
+#   selection:
+#     text: CellForeground
+#     background: "#4c566a"
+#   search:
+#     matches:
+#       foreground: CellBackground
+#       background: "#88c0d0"
+#   footer_bar:
+#     background: "#434c5e"
+#     foreground: "#d8dee9"
+#   normal:
+#     black: "#3b4252"
+#     red: "#bf616a"
+#     green: "#a3be8c"
+#     yellow: "#ebcb8b"
+#     blue: "#81a1c1"
+#     magenta: "#b48ead"
+#     cyan: "#88c0d0"
+#     white: "#e5e9f0"
+#   bright:
+#     black: "#4c566a"
+#     red: "#bf616a"
+#     green: "#a3be8c"
+#     yellow: "#ebcb8b"
+#     blue: "#81a1c1"
+#     magenta: "#b48ead"
+#     cyan: "#8fbcbb"
+#     white: "#eceff4"
+#   dim:
+#     black: "#373e4d"
+#     red: "#94545d"
+#     green: "#809575"
+#     yellow: "#b29e75"
+#     blue: "#68809a"
+#     magenta: "#8c738c"
+#     cyan: "#6d96a5"
+#     white: "#aeb3bb"
 colors:
   primary:
-    background: '0x18181b'
-    foreground: '0xc8c8d0'
+    background: "0xfaf4ed"
+    foreground: "0x575279"
   cursor:
-    text: '0x18181b'
-    cursor: '0xc8c8d0'
+    text: "0x575279"
+    cursor: "0xcecacd"
+  vi_mode_cursor:
+    text: "0x575279"
+    cursor: "0xcecacd"
+  line_indicator:
+    foreground: None
+    background: None
+  selection:
+    text: "0x575279"
+    background: "0xdfdad9"
   normal:
-    black: '0x161618'
-    red: '0xd33a68'
-    green: '0x50d44b'
-    yellow: '0xe7d63b'
-    blue: '0x6377d1'
-    magenta: '0x8554b3'
-    cyan: '0x4abfc7'
-    white: '0xdfeaec'
+    black: "0xf2e9e1"
+    red: "0xb4637a"
+    green: "0x286983"
+    yellow: "0xea9d34"
+    blue: "0x56949f"
+    magenta: "0x907aa9"
+    cyan: "0xd7827e"
+    white: "0x575279"
   bright:
-    black: '0x343446'
-    red: '0xda4e78'
-    green: '0x68d864'
-    yellow: '0xecdd5b'
-    blue: '0x8191d9'
-    magenta: '0x9a72c0'
-    cyan: '0x6fccd3'
-    white: '0xf6f9f9'
+    black: "0x9893a5"
+    red: "0xb4637a"
+    green: "0x286983"
+    yellow: "0xea9d34"
+    blue: "0x56949f"
+    magenta: "0x907aa9"
+    cyan: "0xd7827e"
+    white: "0x575279"
+  hints:
+    start:
+      foreground: "#797593"
+      background: "#fffaf3"
+    end:
+      foreground: "#9893a5"
+      background: "#fffaf3"

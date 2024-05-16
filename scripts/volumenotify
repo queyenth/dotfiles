@@ -5,9 +5,6 @@
 #   bruenig - https://bbs.archlinux.org/viewtopic.php?id=46608
 #   Windelicato - http://github.com/windelicato
 
-BAR_LENGTH=20
-BAR_CHAR='='
-
 err() {
   echo "$1"
   exit 1
@@ -23,7 +20,6 @@ usage() {
   echo "   -h, --help         - display this"
   exit
 }
-msgId="991049"
 
 case $1 in
   '+'|'-i'|'--increase')
@@ -37,6 +33,9 @@ case $1 in
   '!'|'-t'|'--toggle')
     PONYMIXARG="toggle"
     ;;
+  '='|'-s'|'--set')
+    PONYMIXARG="set-volume ${2}"
+    ;;
   ''|'-h'|'--help')
     usage
     ;;
@@ -46,22 +45,21 @@ esac
 
 ponymix $PONYMIXARG
 
-# volumelevel=$(ponymix get-volume)
-# if ponymix is-muted; then
-#     echo 0 > /tmp/wob.fifo
-# else
-#     echo $volumelevel > /tmp/wob.fifo
-# fi
-
-bar=$(volumebar)
+volume=$(ponymix get-volume)
 
 case $1 in
   '+'|'-i'|'--increase'|'-'|'-d'|'--decrease')
-    dunstify -a "changeVolume" -u low -i audio-volume-high -r "$msgId" "${bar}"
+    notify-send -e -h int:value:"$volume" -h string:x-canonical-private-synchronous:volume_notif -u low -i audio-volume-high "Volume: $volume"
     ;;
   '!'|'-t'|'--toggle')
-    dunstify -a "changeVolume" -u low -i audio-volume-muted -r "$msgId" "muted/unmuted"
+    if ponymix is-muted ; then
+      notify-send -e -h string:x-canonical-private-synchronous:volume_notif -u low -i audio-volume-muted "Volume: muted"
+    else
+      notify-send -e -h int:value:"$volume" -h string:x-canonical-private-synchronous:volume_notif -u low -i audio-volume-high "Volume: $volume" 
+    fi
     ;;
 esac
 
 canberra-gtk-play -i audio-volume-change -d "changeVolume"
+~/src/eww/target/release/eww update volume=$volume
+~/src/eww/target/release/eww update volume_is_muted=$(ponymix is-muted || echo true)

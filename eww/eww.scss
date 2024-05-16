@@ -1,0 +1,307 @@
+$base: #faf4ed;
+$surface: #fffaf3;
+$overlay: #f2e9e1;
+$muted: #9893a5;
+$subtle: #797593;
+$text: #575279;
+$love: #b4637a;
+$gold: #ea9d34;
+$rose: #d7827e;
+$pine: #286983;
+$foam: #56949f;
+$iris: #907aa9;
+$highlightlow: #f4ede8;
+$highlightmed: #dfdad9;
+$highlighthigh: #cecacd;
+
+* {
+    all: unset;
+    font-family: BlexMono Nerd Font;
+}
+
+.separator {
+    border: 1px solid #666666;
+    margin: 4px 5px;
+}
+
+.bar, .bar-secondary {
+    color: $text;
+    padding: 0px;
+    font-size: 11px;
+    // background-color: #faf4ed;
+    // border: 1px solid #dfdad9;
+}
+
+.sidestuff {
+    padding-right: 7px;
+}
+
+.sidestuff slider {
+    all: unset;
+    color: #ffd5cd;
+}
+
+.metric scale trough {
+    all: unset;
+    background-color: $highlightmed;
+    border-radius: 50px;
+    min-height: 3px;
+    min-width: 25px;
+    margin-left: 5px;
+}
+
+.metric scale trough highlight {
+    all: unset;
+    background-color: $pine;
+    color: $highlightmed;
+    border-radius: 10px;
+}
+
+.left-side {
+    .mode {
+        padding: 0 5px;
+        color: $highlightmed;
+        &.resize {
+            background-color: $pine;
+        }
+        &.winmark {
+            background-color: $rose;
+        }
+    }
+}
+
+.workspaces {
+    padding-left: 5px;
+}
+.workspaces button {
+    padding: 0 5px;
+    color: #666;
+}
+.workspaces .unfocused {
+    color: $highlightmed;
+}
+.workspaces .occupied {
+    color: $pine;
+}
+.workspaces .focused {
+    color: $rose;
+}
+.workspaces .urgent {
+    background-color: $rose;
+    color: $text;
+}
+.workspaces button:hover {
+    color: $love;
+}
+
+// Agenda
+.agenda_type_label {
+    font-size: larger;
+    font-weight: bolder;
+}
+.agenda_list {
+    font-size: larger;
+    .agenda_task {
+        &_past-scheduled {
+            color: $gold;
+            font-weight: bold;
+        }
+        &_deadline {
+            color: $love;
+            font-weight: bold;
+        }
+        
+        .agenda_task_todo_NEXT {
+            color: $gold;
+            font-weight: bold;
+        }
+        .agenda_task_todo_TODO {
+            color: $rose;
+            font-weight: bold;
+        }
+        .agenda_task_todo_WAIT {
+            color: $muted;
+            font-weight: bold;
+        }
+        .agenda_task_todo_DONE {
+            color: $gold;
+            font-weight: bold;
+            text-decoration: line-through;
+        }
+        .agenda_task_todo_CANCELED {
+            color: $love;
+            font-weight: bold;
+        }
+
+        .agenda_task_head {
+            &.DONE {
+                text-decoration: line-through;
+                color: #666666;
+            }
+        }
+    }
+}
+
+// Reminder
+.reminder_pop {
+    background-color: $base;
+    padding: 12px;
+    border-radius: 16px;
+    font-size: 9px;
+    border: 2px solid #f8efe5;
+    color: $text;
+}
+
+.reminder_input {
+    border: 1px solid $rose;
+    color: $rose;
+    min-height: 25px;
+}
+
+.reminders {
+    font-size: 9px;
+}
+
+.pop_module {
+    background-color: #f8efe5;
+    border-radius: 16px;
+    padding: 7px;
+}
+
+.calendar:selected {
+    background-color: $rose;
+    color: #f8efe5;
+}
+
+.weather_pop {
+    background-color: #f8efe5;
+    border-radius: 16px;
+    padding-bottom: 10px;
+}
+.weather_right_now_panel {
+    background-color: $rose;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    min-height: 20px;
+    color: #f8efe5;
+}
+.weather_hourly_icon {
+    font-size: 25px;
+    margin: -7px 0;
+}
+.weather_forecast {
+    margin-top: -15px;
+}
+
+.control_pop {
+    font-size: 25px;
+
+    .shutdown_btn {
+        color: $love;
+    }
+}
+
+// Music
+.song_cover_art {
+    background-size: cover;
+    background-position: center;
+    min-height: 12px;
+    min-width: 16px;
+    margin: 4px;
+    border-radius: 30px;
+}
+
+.song {
+    color: $rose;
+    font-weight: bold;
+    margin: 4px 0px 4px 0px;
+}
+
+.song_btn_play {
+    color: $rose;
+    font-size: 14px;
+}
+
+.song_btn_prev, .song_btn_next {
+    color: $rose;
+    font-size: 14px;
+}
+
+.music_cover_art {
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+    min-width: 150px;
+}
+
+.music {
+    color: $rose;
+    font-size: 10px;
+    font-weight: bold;
+    margin: 10px 0px 0px -7px;
+}
+
+.music_artist {
+    color: $rose;
+    font-size: 8px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.music_btn_prev, .music_btn_play, .music_btn_next {
+    font-weight: normal;
+    margin: 0;
+    color: $rose;
+    font-size: 16px;
+}
+
+.music_btn_play {
+    color: $rose;
+}
+
+.music_bar {
+    margin-top: 7px;
+}
+
+.music_bar scale trough highlight {
+    all: unset;
+    background-image: linear-gradient(to right, #afcee0 30%, #acbdce 50%, #77a5bf 100% *50);
+    border-radius: 24px;
+}
+
+.music_bar scale trough {
+    all: unset;
+    background-color: $rose;
+    border-radius: 24px;
+    min-height: 13px;
+    min-width: 95px;
+    margin: -5px 5px 10px 0px;
+}
+
+// dunst-snooze
+.dunst-snooze {
+    margin-left: 7px;
+}
+
+// openweather
+.weather {
+    font-family: Weather Icons;
+    margin-right: 7px;
+}
+
+// Systray
+.systray {
+    margin-left: 5px;
+}
+// power
+.power {
+    color: $love;
+}
+
+.power-options {
+    margin-left: 7px;
+}
+
+.shutdown {
+    color: $love;
+}

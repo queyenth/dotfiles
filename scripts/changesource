@@ -4,7 +4,7 @@
 msgId="991049"
 
 if [[ `ponymix get-profile` == "output:analog-stereo" ]]; then
-    ponymix set-profile output:iec958-stereo
+    ponymix set-profile a2dp-sink
     icon="audio-speakers"
 else
     ponymix set-profile output:analog-stereo

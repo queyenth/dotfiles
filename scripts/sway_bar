@@ -1,0 +1,30 @@
+#!/bin/sh
+
+SONG_STATUS="$(playerctl status)"
+SONG_ARTIST="$(playerctl metadata artist | sed 's/\(.\{30\}\).*/\1.../')"
+SONG_TITLE="$(playerctl metadata title | sed 's/\(.\{30\}\).*/\1.../')"
+SONG_ICON="󰝚"
+
+OUTPUT=""
+
+#OUTPUT="$OUTPUT $(~/scripts/openweathermap-detailed.sh)"
+
+if ponymix is-muted ; then
+    OUTPUT="$OUTPUT 󰝟 "
+else 
+    OUTPUT="$OUTPUT 󰕾 $(ponymix get-volume)% "
+fi
+
+if [ ! -z "$SONG_TITLE" ]; then
+    if [ "$SONG_STATUS" = "Paused" ]; then
+	SONG_ICON="󰐊"
+    elif [ "$SONG_STATUS" = "Playing" ]; then
+	SONG_ICON="󰏤"
+    fi
+    OUTPUT="$OUTPUT $SONG_ICON $SONG_ARTIST - $SONG_TITLE"
+fi
+
+OUTPUT="$OUTPUT $(~/scripts/sway_layout)"
+
+OUTPUT="$OUTPUT 󰃭 $(date +'%H:%M:%S, %a, %d %b')"
+echo "$OUTPUT"

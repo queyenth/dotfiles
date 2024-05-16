@@ -35,7 +35,7 @@ else
   Plug 'scrooloose/syntastic'
 
   " Appearance
-  Plug 'bling/vim-airline'
+  "Plug 'bling/vim-airline'
   Plug 'dawikur/base16-vim-airline-themes'
   Plug 'morhetz/gruvbox'
   Plug 'queyenth/oxeded.vim'
@@ -182,13 +182,13 @@ filetype plugin indent on
 
 " Enabling syntax highlithing
 syntax enable
-set background=dark
+set background=light
 set t_Co=256
 
 "set termguicolors
 "let base16colorspace=256
-let g:sierra_Midnight = 1
-colorscheme sierra
+"let g:sierra_Midnight = 1
+"colorscheme sierra
 if has("gui_running")
   set guifont=Hack:h11
   set guicursor+=a:block-blinkon0

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+swaymsg -t get_inputs | jq -r '.[] | select(.identifier == "1278:33:PFU_Limited_HHKB-Hybrid_Keyboard") | .xkb_active_layout_name'

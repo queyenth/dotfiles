@@ -1,5 +1,16 @@
 #!/bin/sh
 
+EXPIRY=900 # 15 minutes
+[ "$1" -eq "$1" ] 2>/dev/null && EXPIRY=$1 && shift
+CACHE="/tmp/openweather.cache"
+
+if [ -f "${CACHE}" ]; then
+    if [ $(expr $(date +%s) - $(date -r "$CACHE" +%s)) -le $EXPIRY ]; then
+	cat "${CACHE}"
+	exit 0
+    fi
+fi
+
 get_icon() {
     case $1 in
         # Icons for weather-icons
@@ -72,5 +83,5 @@ if [ -n "$weather" ]; then
     weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
     weather_icon=$(echo "$weather" | jq -r ".weather[0].icon")
 
-    echo "$(get_icon "$weather_icon")" "$weather_desc", "$weather_temp$SYMBOL"
+    echo "$(get_icon "$weather_icon")" "$weather_desc", "$weather_temp$SYMBOL" | tee "$CACHE"
 fi

@@ -1,0 +1,49 @@
+#!/bin/sh
+
+bspwm_workspaces() {
+
+    min=1
+    max=10
+    monitor=$1
+
+    if [ "$monitor" -eq "1" ]; then
+        min=11
+        max=20
+    fi
+
+    workspace_icons="α β γ δ ε ζ η θ ι λ"
+    set -- $workspace_icons
+    box="["
+    for i in `seq $min $max`
+    do
+        if [ $(bspc query -D -d .occupied --names | grep "^$i$") ]; then
+            box="$box { name: $i, focused:"
+            if [ $(bspc query -D -d .focused --names | grep "^$i$") ]; then
+		box="$box true"
+            else
+		box="$box false"
+            fi
+	    box="$box },"
+        fi
+        shift
+    done
+
+    box="${box%,} ]" # Remove the last comma
+    echo $box
+}
+
+if [ "$1" = "bspwm" ]; then
+    bspwm_workspaces $2
+
+    bspc subscribe desktop node_transfer | while read -r _ ; do
+	bspwm_workspaces $2
+    done
+    
+fi
+
+if [ "$1" = "sway" ]; then
+    echo $(swaymsg -t get_workspaces -r)
+    swaymsg -t subscribe -m '["workspace"]' | while read -r _ ; do
+	echo $(swaymsg -t get_workspaces -r)
+    done
+fi

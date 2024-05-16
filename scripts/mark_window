@@ -1,3 +1,24 @@
 #!/bin/sh
+swaymsg mode default
 
-bspc node focused -g sticky
+marks=$(swaymsg -t get_marks | jq -r ".[]")
+selected=$1
+
+if [ -z "$selected" ]; then
+    dmenu_params="-r -b -h 25 -i -nb #faf4ed -nf #575279 -sb #d7827e -sf #fffaf3"
+
+    if [ -z "$marks" ]; then
+        dmenu_params="$dmenu_params -po mark"
+    else
+        dmenu_params="$dmenu_params -p mark"
+    fi
+    selected=$(echo "$marks" | dmenu-wl $dmenu_params)
+fi
+
+if [ ! -z "$selected" ]; then
+    if echo "$marks" | grep -w -q "$selected"; then
+        swaymsg "[con_mark=\"$selected\"] focus"
+    else
+        swaymsg mark "$selected"
+    fi
+fi

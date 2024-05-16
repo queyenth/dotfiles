@@ -1,0 +1,63 @@
+#!/bin/bash
+
+music() {
+    LOCK_FILE="/tmp/eww-song.lock"
+    EWW_BIN="$HOME/src/eww/target/release/eww"
+
+    run() {
+        ${EWW_BIN} close power_win reminder_win
+        ${EWW_BIN} open music_win
+    }
+
+    if [[ ! -f "$LOCK_FILE" ]]; then
+        touch "$LOCK_FILE"
+        run && echo "ok good!"
+    else
+        ${EWW_BIN} close music_win
+        rm "$LOCK_FILE" && echo "closed"
+    fi
+}
+
+power() {
+    LOCK_FILE="/tmp/eww-power.lock"
+    EWW_BIN="$HOME/src/eww/target/release/eww"
+
+    run() {
+        ${EWW_BIN} close music_win reminder_win
+        ${EWW_BIN} open power_win
+    }
+
+    if [[ ! -f "$LOCK_FILE" ]]; then
+        touch "$LOCK_FILE"
+        run && echo "ok good!"
+    else
+        ${EWW_BIN} close power_win
+        rm "$LOCK_FILE" && echo "closed"
+    fi
+}
+
+reminder() {
+    LOCK_FILE="/tmp/eww-reminder.lock"
+    EWW_BIN="$HOME/src/eww/target/release/eww"
+
+    run() {
+        ${EWW_BIN} close music_win power_win
+        ${EWW_BIN} open reminder_win
+    }
+
+    if [[ ! -f "$LOCK_FILE" ]]; then
+        touch "$LOCK_FILE"
+        run && echo "ok good!"
+    else
+        ${EWW_BIN} close reminder_win
+        rm "$LOCK_FILE" && echo "closed"
+    fi
+}
+
+if [ "$1" = "music" ]; then
+    music
+elif [ "$1" = "power" ]; then
+    power
+elif [ "$1" = "reminder" ]; then
+    reminder
+fi

@@ -7,6 +7,13 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/common-aliases
     zgen oh-my-zsh plugins/docker
+    zgen oh-my-zsh plugins/docker-compose
+    zgen oh-my-zsh plugins/pass
+    zgen oh-my-zsh plugins/fd
+    zgen oh-my-zsh plugins/gulp
+    zgen oh-my-zsh plugins/ripgrep
+    zgen oh-my-zsh plugins/urltools
+    zgen oh-my-zsh themes/clean
 
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-completions src
@@ -35,7 +42,7 @@ alias rr="curl -s -L http://bit.ly/10hA8iC | bash"
 alias cal="cal -m"
 
 export GREP_OPTIONS=""
-export EDITOR="nvim"
+export EDITOR="mg"
 export MANPAGER="nvim +Man!"
 export TERM="xterm-256color"
 
@@ -47,9 +54,9 @@ export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 export PATH="/home/q/dotfiles/scripts:/home/q/.local/bin:$SPICETIFY_INSTALL:$DENO_INSTALL/bin:$PATH"
 export UID="$(id -u)"
-#export QT_AUTO_SCREEN_SCALE_FACTOR=1
-#export QT_QPA_PLATFORM=wayland
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_QPA_PLATFORM=wayland
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"

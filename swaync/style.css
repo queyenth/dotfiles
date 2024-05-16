@@ -1,0 +1,253 @@
+/*
+:root {
+  --base: #faf4ed;
+  --surface: #fffaf3;
+  --overlay: #f2e9e1;
+  --muted: #9893a5;
+  --subtle: #797593;
+  --text: #575279;
+  --love: #b4637a;
+  --gold: #ea9d34;
+  --rose: #d7827e;
+  --pine: #286983;
+  --foam: #56949f;
+  --iris: #907aa9;
+  --highlightLow: #f4ede8;
+  --highlightMed: #dfdad9;
+  --highlightHigh: #cecacd;
+}
+*/
+
+@define-color base #faf4ed;
+@define-color surface #fffaf3;
+@define-color overlay #f2e9e1;
+@define-color muted #9893a5;
+@define-color subtle #797593;
+@define-color text #575279;
+@define-color love #b4637a;
+@define-color gold #ea9d34;
+@define-color rose #d7827e;
+@define-color pine #286983;
+@define-color foam #56949f;
+@define-color iris #907aa9;
+@define-color highlightLow #f4ede8;
+@define-color highlightMed #dfdad9;
+@define-color highlightHigh #cecacd;
+
+* {
+    font-family: BlexMono Nerd Font;
+    font-size: 14px;
+}
+ 
+.control-center .notification-row:focus,
+.control-center .notification-row:hover {
+    opacity: 1;
+    background: @highlightMed;
+}
+ 
+.notification-row {
+    outline: none;
+    margin: 20px;
+    padding: 0;
+}
+ 
+.notification {
+    background: transparent;
+    color: @text;
+    margin: 0px;
+}
+ 
+.notification-content {
+    background: @base;
+    color: @text;
+    padding: 7px;
+    border: 2px solid @rose;
+    margin: 0;
+}
+ 
+.close-button {
+    background: @rose;
+    color: @base;
+    text-shadow: none;
+    padding: 0;
+    border-radius: 0px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+ 
+.close-button:hover {
+    box-shadow: none;
+    background: @love;
+    transition: all .15s ease-in-out;
+    border: none
+}
+ 
+.notification-action {
+    color: @text;
+    border: 2px solid @rose;
+    border-top: none;
+    border-radius: 0px;
+    background: @base;
+}
+ 
+.notification-default-action:hover,
+.notification-action:hover {
+    color: @base;
+    background: @rose;
+}
+ 
+.summary {
+    color: @text;
+    padding-top: 7px;
+    font-size: 13px;
+}
+ 
+.time {
+    font-size: 11px;
+    color: @rose;
+    margin-right: 24px
+}
+ 
+.body {
+    color: @text;
+    font-size: 12px;
+}
+ 
+.control-center {
+    background: @base;
+    color: @text;
+    border: 2px solid @rose;
+}
+ 
+.control-center-list {
+    background: transparent;
+}
+ 
+.control-center-list-placeholder {
+    opacity: .5
+}
+ 
+.floating-notifications {
+    background: transparent;
+}
+ 
+.blank-window {
+    background: alpha(black, 0.1)
+}
+ 
+.widget-title {
+    background: @overlay;
+    color: @text;
+    padding: 5px 10px;
+    margin: 10px 10px 5px 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+ 
+.widget-title>button {
+    font-size: 1rem;
+    color: @text;
+    text-shadow: none;
+    background: @surface;
+    box-shadow: none;
+    border-radius: 5px;
+}
+ 
+.widget-title>button:hover {
+    background: @rose;
+    color: @base;
+}
+ 
+.widget-dnd {
+    background: @overlay;
+    color: @text;
+    padding: 5px 10px;
+    margin: 5px 10px 10px 10px;
+    border-radius: 5px;
+    font-size: large;
+}
+ 
+.widget-dnd>switch {
+    border-radius: 4px;
+    background: @surface;
+    border: 1px solid @text;
+}
+ 
+.widget-dnd>switch:checked {
+    background: @rose;
+}
+ 
+.widget-dnd>switch slider {
+    background: @text;
+    border-radius: 5px;
+}
+ 
+.widget-label {
+    margin: 10px 10px 5px 10px;
+}
+ 
+.widget-label>label {
+    font-size: 1rem;
+    color: @text;
+}
+ 
+.widget-mpris {
+    color: @text;
+    background: @overlay;
+    padding: 5px 10px 0px 0px;
+    margin: 5px 10px 50px 10px;
+    box-shadow: unset;
+    border-radius: 5px;
+}
+ 
+.widget-mpris > box > button {
+    border-radius: 5px;
+}
+.widget-mpris > box > button:hover {
+    color: @base;
+    background: @rose;
+}
+ 
+.widget-mpris-player {
+    padding: 5px 10px;
+    margin: 10px;
+    color: @text;
+    background: @overlay;
+    box-shadow: unset;
+    border-radius: 5px;
+}
+
+.widget-mpris-player > box > button.flat {
+    color: @text;
+    background: @overlay;
+    box-shadow: unset;
+}
+
+.widget-mpris-player > box > button {
+    color: @rose;
+    background: @surface;
+}
+
+.widget-mpris-player > box > button:hover {
+    color: @base;
+    background: @rose;
+}
+
+.widget-mpris-title {
+    color: @text;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+ 
+.widget-mpris-subtitle {
+    color: @text;
+    font-size: 1rem;
+}
+
+.widget-mpris-album-art {
+    box-shadow: 0 0 3px rgba(15, 15, 15, 0.75);
+}
+
+/* Local Variables: */
+/* eval: (add-hook 'after-save-hook '(lambda nil (shell-command "swaync-client -rs")) nil t) */
+/* End: */

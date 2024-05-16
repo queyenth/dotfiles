@@ -22,9 +22,9 @@ message_delay_time = "4"
 
 song_list_format = "{{%a - %t}|{%f}}{$R%l}"
 #song_list_format = "{{%a - %t}|{%f}}"
-current_item_prefix = $(cyan)$r
+current_item_prefix = $(red)$r
 current_item_inactive_column_prefix = $(white)$r
-now_playing_prefix = "$4"
+now_playing_prefix = "$(red)"
 now_playing_suffix = "$9"
 playlist_display_mode = classic
 playlist_separate_albums = yes
@@ -48,14 +48,14 @@ empty_tag_color = white
 #visualizer_color = yellow
 main_window_color = white
 #progressbar_color = yellow
-progressbar_elapsed_color = yellow
+progressbar_elapsed_color = red
 
 song_window_title_format = "{%a - }{%t}|{%f}"
 search_engine_display_mode = columns
 
 follow_now_playing_lyrics = yes
 fetch_lyrics_for_current_song_in_background = no
-lyrics_fetchers = genius,plyrics,internet
+#lyrics_fetchers = genius,plyrics,internet
 #genius_api_token = 1l6AuxkfpcXZdbG5kRklTFcOchCNl1P1e5RZSriOk_TQM8jR7ZHwUfcQ4rDVe3IO
 
 #execute_on_song_change = notify-send "Now Playing" "$(mpc --host=192.168.1.69 current)"

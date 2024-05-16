@@ -84,6 +84,10 @@ pip() {
     sticky=on;
 }
 
+eww() {
+    border=off;
+}
+
 case $instance.$class in
     (*.vlc) vlc;;
     (*.mplayer) mplayer;;
@@ -92,6 +96,7 @@ case $instance.$class in
     (*.Skype) skype;;
     (*.TelegramDesktop) telegram_desktop;;
     (Toolkit.Firefox) pip;;
+    (*.Eww) eww;;
     (.)
         case $(ps -p "$(xdo pid "$id")" -o comm= 2>/dev/null) in
             (spotify) spotify;;
