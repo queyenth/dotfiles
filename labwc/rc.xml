@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+
+<!--
+This is a very simple config file with many options missing. For a complete
+set of options with comments, see docs/rc.xml.all
+-->
+
+<labwc_config>
+
+    <placement>
+        <policy>center</policy>
+    </placement>
+
+    <theme>
+        <name></name>
+        <cornerRadius>4</cornerRadius>
+        <keepBorders>no</keepBorders>
+        <dropShadows>yes</dropShadows>
+        <font place="ActiveWindow">
+            <name>IBM Plex Mono</name>
+            <size>10</size>
+            <slant>normal</slant>
+            <weight>normal</weight>
+        </font>
+        <font place="InactiveWindow">
+            <name>IBM Plex Mono</name>
+            <size>10</size>
+            <slant>italic</slant>
+            <weight>normal</weight>
+        </font>
+        <font place="MenuItem">
+            <name>IBM Plex Mono</name>
+            <size>10</size>
+            <slant>normal</slant>
+            <weight>normal</weight>
+        </font>
+        <font place="OnScreenDisplay">
+            <name>IBM Plex Mono</name>
+            <size>10</size>
+            <slant>normal</slant>
+            <weight>normal</weight>
+        </font>
+    </theme>
+
+    <windowSwitcher>
+        <allWorkspaces>no</allWorkspaces>
+        <fields>
+            <field content="type" width="25%" />
+            <field content="trimmed_identifier" width="25%" />
+            <field content="title" width="50%" />
+        </fields>
+    </windowSwitcher>
+
+    <focus>
+        <followMouse>yes</followMouse>
+        <followMouseRequiresMovement>yes</followMouseRequiresMovement>
+        <raiseOnFocus>no</raiseOnFocus>
+    </focus>
+
+    <desktops>
+        <popupTime>1000</popupTime>
+        <names>
+            <name>α</name>
+            <name>β</name>
+            <name>γ</name>
+            <name>δ</name>
+            <name>ε</name>
+            <name>ζ</name>
+            <name>η</name>
+            <name>θ</name>
+            <name>ι</name>
+            <name>λ</name>
+        </names>
+    </desktops>
+
+    <keyboard>
+        <numlock>off</numlock>
+        <layoutScope>global</layoutScope>
+        <repeatRate>25</repeatRate>
+        <repeatDelay>300</repeatDelay>
+        <keybind key="W-k">
+            <action name="Close" />
+        </keybind>
+        <keybind key="W-y">
+            <action name="Execute">
+                <command>emacsclient -e "(emenu-pass)"</command>
+            </action>
+        </keybind>
+        <keybind key="W-C-r">
+            <action name="Execute">
+                <command>emacsclient -e "(emenu-reminder)"</command>
+            </action>
+        </keybind>
+        <keybind key="W-C-l">
+            <action name="Execute" command="swaylock -f -c 000000" />
+        </keybind>
+        <keybind key="W-Space">
+            <action name="Execute">
+                <command>emacsclient -e "(emenu-window-switch)"</command>
+            </action>
+        </keybind>
+        <keybind key="W-a">
+            <action name="ToggleMaximize" />
+        </keybind>
+        <keybind key="W-r">
+            <action name="Execute">
+                <command>emacsclient -e "(emenu-application-launcher)"</command>
+            </action>
+        </keybind>
+        <keybind key="W-Tab">
+            <action name="GoToDesktop" to="last" />
+        </keybind>
+        <keybind key="W-o">
+            <action name="NextWindow" />
+        </keybind>
+        <keybind key="W-S-o">
+            <action name="PreviousWindow" />
+        </keybind>
+        <keybind key="W-f">
+            <action name="ToggleFullscreen" />
+        </keybind>
+        <keybind key="W-Return">
+            <action name="Execute" command="alacritty" />
+        </keybind>
+        <keybind key="W-t">
+            <action name="Execute" command="alacritty" />
+        </keybind>
+        <keybind key="W-x">
+            <action name="Execute" command="~/scripts/runem" />
+        </keybind>
+        <keybind key="W-m">
+            <action name="MoveRelative" x="-10" />
+        </keybind>
+        <keybind key="W-n">
+            <action name="MoveRelative" y="10" />
+        </keybind>
+        <keybind key="W-e">
+            <action name="MoveRelative" y="-10" />
+        </keybind>
+        <keybind key="W-i">
+            <action name="MoveRelative" x="10" />
+        </keybind>
+        <keybind key="W-S-m">
+            <action name="MoveToEdge" direction="left" />
+        </keybind>
+        <keybind key="W-S-n">
+            <action name="MoveToEdge" direction="down" />
+        </keybind>
+        <keybind key="W-S-e">
+            <action name="MoveToEdge" direction="up" />
+        </keybind>
+        <keybind key="W-S-i">
+            <action name="MoveToEdge" direction="right" />
+        </keybind>
+        <keybind key="W-C-m">
+            <action name="SnapToEdge" direction="left" />
+        </keybind>
+        <keybind key="W-C-n">
+            <action name="SnapToEdge" direction="down" />
+        </keybind>
+        <keybind key="W-C-e">
+            <action name="SnapToEdge" direction="up" />
+        </keybind>
+        <keybind key="W-C-i">
+            <action name="SnapToEdge" direction="right" />
+        </keybind>
+        <keybind key="W-1">
+            <action name="GoToDesktop" to="1" />
+        </keybind>
+        <keybind key="W-2">
+            <action name="GoToDesktop" to="2" />
+        </keybind>
+        <keybind key="W-3">
+            <action name="GoToDesktop" to="3" />
+        </keybind>
+        <keybind key="W-4">
+            <action name="GoToDesktop" to="4" />
+        </keybind>
+        <keybind key="W-5">
+            <action name="GoToDesktop" to="5" />
+        </keybind>
+        <keybind key="W-6">
+            <action name="GoToDesktop" to="6" />
+        </keybind>
+        <keybind key="W-7">
+            <action name="GoToDesktop" to="7" />
+        </keybind>
+        <keybind key="W-8">
+            <action name="GoToDesktop" to="8" />
+        </keybind>
+        <keybind key="W-9">
+            <action name="GoToDesktop" to="9" />
+        </keybind>
+        <keybind key="W-0">
+            <action name="GoToDesktop" to="10" />
+        </keybind>
+        <keybind key="W-C-1">
+            <action name="SendToDesktop" follow="no" to="1" />
+        </keybind>
+        <keybind key="W-C-2">
+            <action name="SendToDesktop" follow="no" to="2" />
+        </keybind>
+        <keybind key="W-C-3">
+            <action name="SendToDesktop" follow="no" to="3" />
+        </keybind>
+        <keybind key="W-C-4">
+            <action name="SendToDesktop" follow="no" to="4" />
+        </keybind>
+        <keybind key="W-C-5">
+            <action name="SendToDesktop" follow="no" to="5" />
+        </keybind>
+        <keybind key="W-C-6">
+            <action name="SendToDesktop" follow="no" to="6" />
+        </keybind>
+        <keybind key="W-C-7">
+            <action name="SendToDesktop" follow="no" to="7" />
+        </keybind>
+        <keybind key="W-C-8">
+            <action name="SendToDesktop" follow="no" to="8" />
+        </keybind>
+        <keybind key="W-C-9">
+            <action name="SendToDesktop" follow="no" to="9" />
+        </keybind>
+        <keybind key="W-C-0">
+            <action name="SendToDesktop" follow="no" to="10" />
+        </keybind>
+        <keybind key="XF86_AudioRaiseVolume">
+            <action name="Execute" command="~/scripts/volumenotify + 5" />
+        </keybind>
+        <keybind key="XF86_AudioLowerVolume">
+            <action name="Execute" command="~/scripts/volumenotify - 5" />
+        </keybind>
+        <keybind key="C-XF86_AudioRaiseVolume">
+            <action name="Execute" command="~/scripts/volumenotify + 1" />
+        </keybind>
+        <keybind key="C-XF86_AudioLowerVolume">
+            <action name="Execute" command="~/scripts/volumenotify - 1" />
+        </keybind>
+        <keybind key="S-XF86_AudioRaiseVolume">
+            <action name="Execute" command="~/scripts/volumenotify + 10" />
+        </keybind>
+        <keybind key="S-XF86_AudioLowerVolume">
+            <action name="Execute" command="~/scripts/volumenotify - 10" />
+        </keybind>
+        <keybind key="XF86_AudioMute">
+            <action name="Execute" command="~/scripts/volumenotify !" />
+        </keybind>
+        <keybind key="XF86_AudioPlay">
+            <action name="Execute" command="playerctl play-pause" />
+        </keybind>
+        <keybind key="XF86_AudioPrev">
+            <action name="Execute" command="playerctl previous" />
+        </keybind>
+        <keybind key="XF86_AudioNext">
+            <action name="Execute" command="playerctl next" />
+        </keybind>
+        <keybind key="Print">
+            <action name="Execute" command="grimshot copy area" />
+        </keybind>
+        <keybind key="C-Print">
+            <action name="Execute" command="~/scripts/screen_save" />
+        </keybind>
+    </keyboard>
+
+    <mouse>
+        <default />
+        <!-- Show a custom menu on desktop right click -->
+        <context name="Root">
+            <mousebind button="Right" action="Press">
+                <action name="ShowMenu" menu="some-custom-menu" />
+            </mousebind>
+        </context>
+    </mouse>
+
+</labwc_config>

@@ -4,47 +4,17 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-### Variables
-
-# Colors
-set $base           #faf4ed
-set $surface        #fffaf3
-set $overlay        #f2e9e1
-set $muted          #9893a5
-set $subtle         #797593
-set $text           #575279
-set $love           #b4637a
-set $gold           #ea9d34
-set $rose           #d7827e
-set $pine           #286983
-set $foam           #56949f
-set $iris           #907aa9
-set $highlightlow   #f4ede8
-set $highlightmed   #dfdad9
-set $highlighthigh  #cecacd
-
-set $dmenu_cmd -b -h 25 -i -nb "$base" -nf "$text" -sb "$rose" -sf "$surface"
-
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-set $hp Mod3
-# Home row direction keys, like vim
-set $left m
-set $down n
-set $up e
-set $right i
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu-wl_run $dmenu_cmd
+
+include ~/.config/sway/00-bindings
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * background ~/three_spheres.jpg center $overlay
+output * background ~/Mx-butterfly.svg center $overlay
+#output * background ~/anna_karina_1.jpg fill
+#output * background ~/Downloads/Anna-Karina-Jean-Luc-Godard-French-actress-Nouvelle-Vague-1836017-wallhere.com.jpg fill
 #
 # Example configuration:
 #
@@ -97,258 +67,12 @@ gaps inner 5
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
-
-    # Kill focused window
-    bindsym --to-code $mod+w kill
-
-    # Start your launcher
-    bindsym --to-code $mod+r exec $menu
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym --to-code $mod+Shift+c reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym --to-code $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym --to-code $mod+$left focus left
-    bindsym --to-code $mod+$down focus down
-    bindsym --to-code $mod+$up focus up
-    bindsym --to-code $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-    bindsym $hp+Left focus left
-    bindsym $hp+Down focus down
-    bindsym $hp+Up focus up
-    bindsym $hp+Right focus right
-
-    # Move the focused window with the same, but add Shift
-    bindsym --to-code $mod+Shift+$left move left
-    bindsym --to-code $mod+Shift+$down move down
-    bindsym --to-code $mod+Shift+$up move up
-    bindsym --to-code $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-    bindsym $hp+Shift+Left move left
-    bindsym $hp+Shift+Down move down
-    bindsym $hp+Shift+Up move up
-    bindsym $hp+Shift+Right move right
-#
-# Workspaces:
-#
-    set $ws1 α
-    set $ws2 β
-    set $ws3 γ
-    set $ws4 δ
-    set $ws5 ε
-    set $ws6 ζ
-    set $ws7 η
-    set $ws8 θ
-    set $ws9 ι
-    set $ws0 λ
-
-    # Switch to workspace
-    bindsym $mod+1 workspace 1 $ws1
-    bindsym $mod+2 workspace 2 $ws2
-    bindsym $mod+3 workspace 3 $ws3
-    bindsym $mod+4 workspace 4 $ws4
-    bindsym $mod+5 workspace 5 $ws5
-    bindsym $mod+6 workspace 6 $ws6
-    bindsym $mod+7 workspace 7 $ws7
-    bindsym $mod+8 workspace 8 $ws8
-    bindsym $mod+9 workspace 9 $ws9
-    bindsym $mod+0 workspace 10 $ws0
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1 $ws1
-    bindsym $mod+Shift+2 move container to workspace 2 $ws2
-    bindsym $mod+Shift+3 move container to workspace 3 $ws3
-    bindsym $mod+Shift+4 move container to workspace 4 $ws4
-    bindsym $mod+Shift+5 move container to workspace 5 $ws5
-    bindsym $mod+Shift+6 move container to workspace 6 $ws6
-    bindsym $mod+Shift+7 move container to workspace 7 $ws7
-    bindsym $mod+Shift+8 move container to workspace 8 $ws8
-    bindsym $mod+Shift+9 move container to workspace 9 $ws9
-    bindsym $mod+Shift+0 move container to workspace 10 $ws0
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-
-    bindsym $mod+Tab workspace back_and_forth
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym --to-code $mod+b splith
-    bindsym --to-code $mod+v splitv
-
-    # Switch the current container between different layout styles
-    bindsym --to-code $mod+s layout stacking
-    bindsym --to-code $mod+t layout tabbed
-    bindsym --to-code $mod+d layout toggle split
-
-    # Move the container to the center
-    bindsym --to-code $mod+Shift+t move position center
-
-    # Make the current focus fullscreen
-    bindsym --to-code $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+Shift+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym --to-code $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-
-    bindsym $mod+plus sticky toggle
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym --to-code $left resize shrink width 10px
-    bindsym --to-code $down resize grow height 10px
-    bindsym --to-code $up resize shrink height 10px
-    bindsym --to-code $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+q mode "default"
-}
-bindsym --to-code $mod+q mode "resize"
-
-set $windowswitch ~/scripts/switch_window.sh -l 5 $dmenu_cmd
-mode "winmark" {
-    bindsym --to-code space exec $windowswitch
-    bindsym --to-code a exec ~/scripts/mark_window a
-    bindsym --to-code b exec ~/scripts/mark_window b
-    bindsym --to-code c exec ~/scripts/mark_window c
-    bindsym --to-code d exec ~/scripts/mark_window d
-    bindsym --to-code e exec ~/scripts/mark_window e
-    bindsym --to-code f exec ~/scripts/mark_window f
-    bindsym --to-code g exec ~/scripts/mark_window g
-    bindsym --to-code h exec ~/scripts/mark_window h
-    bindsym --to-code i exec ~/scripts/mark_window i
-    bindsym --to-code j exec ~/scripts/mark_window j
-    bindsym --to-code k exec ~/scripts/mark_window k
-    bindsym --to-code l exec ~/scripts/mark_window l
-    bindsym --to-code m exec ~/scripts/mark_window m 
-    bindsym --to-code n exec ~/scripts/mark_window n
-    bindsym --to-code o exec ~/scripts/mark_window o
-    bindsym --to-code p exec ~/scripts/mark_window p
-    bindsym --to-code q exec ~/scripts/mark_window q
-    bindsym --to-code r exec ~/scripts/mark_window r
-    bindsym --to-code s exec ~/scripts/mark_window s
-    bindsym --to-code t exec ~/scripts/mark_window t
-    bindsym --to-code u exec ~/scripts/mark_window u
-    bindsym --to-code v exec ~/scripts/mark_window v
-    bindsym --to-code w exec ~/scripts/mark_window w
-    bindsym --to-code x exec ~/scripts/mark_window x
-    bindsym --to-code y exec ~/scripts/mark_window y
-    bindsym --to-code z exec ~/scripts/mark_window z
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+h mode "default"
-}
-bindsym --to-code $mod+h mode "winmark"
-
-bindsym --to-code $hp+space exec $windowswitch
-bindsym --to-code $hp+a exec ~/scripts/mark_window a
-bindsym --to-code $hp+b exec ~/scripts/mark_window b
-bindsym --to-code $hp+c exec ~/scripts/mark_window c
-bindsym --to-code $hp+d exec ~/scripts/mark_window d
-bindsym --to-code $hp+e exec ~/scripts/mark_window e
-bindsym --to-code $hp+f exec ~/scripts/mark_window f
-bindsym --to-code $hp+g exec ~/scripts/mark_window g
-bindsym --to-code $hp+h exec ~/scripts/mark_window h
-bindsym --to-code $hp+i exec ~/scripts/mark_window i
-bindsym --to-code $hp+j exec ~/scripts/mark_window j
-bindsym --to-code $hp+k exec ~/scripts/mark_window k
-bindsym --to-code $hp+l exec ~/scripts/mark_window l
-bindsym --to-code $hp+m exec ~/scripts/mark_window m 
-bindsym --to-code $hp+n exec ~/scripts/mark_window n
-bindsym --to-code $hp+o exec ~/scripts/mark_window o
-bindsym --to-code $hp+p exec ~/scripts/mark_window p
-bindsym --to-code $hp+q exec ~/scripts/mark_window q
-bindsym --to-code $hp+r exec ~/scripts/mark_window r
-bindsym --to-code $hp+s exec ~/scripts/mark_window s
-bindsym --to-code $hp+t exec ~/scripts/mark_window t
-bindsym --to-code $hp+u exec ~/scripts/mark_window u
-bindsym --to-code $hp+v exec ~/scripts/mark_window v
-bindsym --to-code $hp+w exec ~/scripts/mark_window w
-bindsym --to-code $hp+x exec ~/scripts/mark_window x
-bindsym --to-code $hp+y exec ~/scripts/mark_window y
-bindsym --to-code $hp+z exec ~/scripts/mark_window z
-
-#
-# Custom Application Launcher
-#
-bindsym --to-code $mod+c exec ~/scripts/capture
-bindsym --to-code $mod+l exec ~/scripts/capturelink
-bindsym --to-code $mod+k exec ~/scripts/runem
-bindsym --to-code $mod+y exec passmenu $dmenu_cmd
-bindsym --to-code $mod+Shift+y exec passmenu --type $dmenu_cmd
-bindsym Print exec grimshot copy area
-bindsym --to-code $mod+z exec swaync-client -t -sw
-bindsym --to-code $mod+Shift+l exec swaylock -f -c 000000
-#
-# Media Control
-#
-bindsym XF86AudioRaiseVolume exec ~/scripts/volumenotify + 5
-bindsym XF86AudioLowerVolume exec ~/scripts/volumenotify - 5
-bindsym XF86AudioMute exec ~/scripts/volumenotify !
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioNext exec playerctl next
-
-set $mpdhost 192.168.1.69
-
-bindsym Shift+XF86AudioPlay exec mpc --host=$mpdhost toggle
-bindsym Shift+XF86AudioPrev exec mpc --host=$mpdhost prev
-bindsym Shift+XF86AudioNext exec mpc --host=$mpdhost next
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
 
 # target                 title     bg       text       indicator   border
 client.focused           $rose     $rose    $surface   $rose       $rose
@@ -401,11 +125,15 @@ exec pipewire
 exec playerctld daemon
 
 # A lot of stuff for mpd to run, smh
-exec mpd
-exec mpdscribble
-exec mpDris2
-exec musnify-mpd
+# exec mpd
+# exec mpdscribble
+# exec mpDris2
+# exec musnify-mpd
 
 exec wl-paste -t text --watch clipman store --no-persist
+
+# I think sway-audio-idle-inhibit is failing to run here because pipewire is not started (yet)
+# So now I start it through ~/.config/pipewire/something.conf
+# exec sway-audio-idle-inhibit
 
 include /etc/sway/config.d/*

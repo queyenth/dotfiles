@@ -1,0 +1,108 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 34,
+  "reload_style_on_change": true,
+  "modules-left": ["custom/workspaces", "image#mpris_cover", "mpris"],
+  "modules-center": ["wlr/taskbar"],
+  "modules-right": ["custom/email", "custom/weather", "pulseaudio", "custom/notifications", "custom/language", "clock", "idle_inhibitor", "custom/audio_idle_inhibitor", "tray"],
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "image#mpris_cover": {
+    "path": "/tmp/cover.jpeg",
+    "size": 24,
+    "interval": 5
+  },
+  "custom/language": {
+    "exec": "~/scripts/labwc_layout",
+  }
+  // "custom/org-clock": {
+  //   "exec": "~/scripts/emacsclient_exec.sh \"(when (and (fboundp #'org-clocking-p) (org-clocking-p)) (substring-no-properties (org-clock-get-clock-string)))\"",
+  //   "exec-on-event": true,
+  //   "on-click": "~/scripts/emacsclient_exec.sh \"(org-clock-out)\"",
+  //   "interval": 60,
+  // },
+  "custom/workspaces": {
+    "exec": "php ~/scripts/labwc_workspaces.php",
+  },
+  "custom/audio_idle_inhibitor": {
+    "format": "{icon}",
+    "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+    "exec-if": "which sway-audio-idle-inhibit",
+    "return-type": "json",
+    "format-icons": {
+      "output": "",
+      "input": "",
+      "output-input": " ",
+      "none": ""
+    }
+  },
+  "mpris": {
+    "format": "{status_icon} {dynamic}",
+    "status-icons": {
+      "playing": "",
+      "paused": "󰏤",
+      "stopped": "󰓛"
+    },
+    "dynamic-order": ["artist", "title", "position", "length"],
+    "dynamic-len": 50
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "all-outputs": true,
+    "icon-size": 24,
+    "icon-theme": "oomox-rose-pine-dawn",
+    "on-click": "minimize-raise",
+    "on-click-middle": "close"
+  },
+  "custom/email": {
+    "exec": "~/scripts/emacsclient_exec.sh \"(when (fboundp #'mu4e--modeline-string) (substring-no-properties (mu4e--modeline-string)))\"",
+    "interval": 60,
+  },
+  "custom/notifications": {
+    "exec": "~/.config/waybar/scripts/dunst.sh",
+    "exec-on-event": true,
+    "interval": 5,
+    "on-click": "dunstctl history-pop",
+    "on-click-middle": "dunstctl history-clear",
+    "on-click-right": "dunstctl set-paused toggle"
+  },
+  "custom/weather": {
+    "exec": "php ~/scripts/wttr.php",
+    "exec-on-event": true,
+    "on-click": "notify-send \"Update weather...\"",
+    "interval": 1800,
+    "return-type": "json"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%  {format_source}",
+    "format-bluetooth-muted": " {icon}  {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+  "clock": {
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%A, %B %d}"
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10
+  }
+}

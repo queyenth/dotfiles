@@ -1,6 +1,5 @@
 #!/bin/bash
-swaymsg mode default
-input=$(wlrctl toplevel list | dmenu-wl $@)
+input=$(wlrctl toplevel list | bemenu -i)
 # Xargs to cut spaces, lol.
 app_id=$(echo "$input" | cut -d: -f1 | xargs)
 title=$(echo "$input" | cut -d: -f2- | xargs)

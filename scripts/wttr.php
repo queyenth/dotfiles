@@ -99,7 +99,7 @@ if ($data) {
         if ($i >= 5) {
             break;
         }
-    
+
         $date = $days['date'];
         $hours = $days['hourly'];
         foreach ($hours as $hour) {
@@ -118,17 +118,32 @@ if ($data) {
         }
     }
 
+    // $eww = [
+    //     'temp' => $temperature,
+    //     'feelsLike' => $feelsLike,
+    //     'humidity' => $humidity,
+    //     'windspeed' => $windspeed,
+    //     'icon' => WEATHER_SYMBOL[WWO_CODE[$weatherCode]],
+    //     'hourly' => $hoursWeather
+    // ];
+
+    $tooltip = implode(
+        "\n",
+        [
+            'Feels like ' . $feelsLike . "°C,  $humidity% 󰖝 $windspeed km/h",
+            ...array_map(
+                fn ($x) => $x['time'] . ':00 ' . $x['icon'] . ' ' . $x['temp'] . '°C',
+                $hoursWeather
+            )
+        ]
+    );
+
     $eww = [
-        'temp' => $temperature,
-        'feelsLike' => $feelsLike,
-        'humidity' => $humidity,
-        'windspeed' => $windspeed,
-        'icon' => WEATHER_SYMBOL[WWO_CODE[$weatherCode]],
-        'hourly' => $hoursWeather
+        'text' => WEATHER_SYMBOL[WWO_CODE[$weatherCode]] . " " . $temperature . "°C",
+        'tooltip' => $tooltip
     ];
 
     echo json_encode($eww);
 } else {
     echo "{}";
 }
-

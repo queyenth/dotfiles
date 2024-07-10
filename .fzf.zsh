@@ -61,3 +61,7 @@ acdg() {
     echo $(pwd) >> ~/.cdg_paths
     sort -u ~/.cdg_paths -o ~/.cdg_paths
 }
+
+fcd() {
+    cd $(fd -t d | fzf)
+}

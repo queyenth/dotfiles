@@ -1,5 +1,4 @@
 #!/bin/sh
-swaymsg mode default
 
 marks=$(swaymsg -t get_marks | jq -r ".[]")
 selected=$1

@@ -1,2 +1,2 @@
 #!/bin/bash
-emacsclient -c -e "(org-capture nil \"i\")"
+emacsclient -c -e "(org-capture nil \"t\")"

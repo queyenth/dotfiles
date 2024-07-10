@@ -1,0 +1,152 @@
+set $mod Mod4
+set $left m
+set $down n
+set $up e
+set $right i
+set $term alacritty
+set $ws1 α
+set $ws2 β
+set $ws3 γ
+set $ws4 δ
+set $ws5 ε
+set $ws6 ζ
+set $ws7 η
+set $ws8 θ
+set $ws9 ι
+set $ws0 λ
+set $base #faf4ed
+set $surface #fffaf3
+set $overlay #f2e9e1
+set $muted #9893a5
+set $subtle #797593
+set $text #575279
+set $love #b4637a
+set $gold #ea9d34
+set $rose #d7827e
+set $pine #286983
+set $foam #56949f
+set $iris #907aa9
+set $highlightlow #f4ede8
+set $highlightmed #dfdad9
+set $highlighthigh #cecacd
+set $dmenu_cmd -b -h 25 -i -nb "$base" -nf "$text" -sb "$rose" -sf "$surface"
+set $menu ~/scripts/sway_run $dmenu_cmd
+set $passmenu passmenu $dmenu_cmd
+set $passmenu_type passmenu --type $dmenu_cmd
+set $windowswitch ~/scripts/switch_window.sh -l 5 $dmenu_cmd
+set $closeewwwindow ~/scripts/close_eww_window.sh $dmenu_cmd
+set $clipman clipman pick --err-on-no-selection --tool=CUSTOM --tool-args="dmenu-wl -l 5 $dmenu_cmd" && wtype -M shift -k Insert
+mode resize {
+    bindsym --to-code $left resize shrink width 10px
+    bindsym --to-code $down resize grow height 10px
+    bindsym --to-code $up resize shrink height 10px
+    bindsym --to-code $right resize grow width 10px
+    bindsym --to-code Left resize shrink width 10px
+    bindsym --to-code Down resize grow height 10px
+    bindsym --to-code Up resize shrink height 10px
+    bindsym --to-code Right resize grow width 10px
+    bindsym --to-code Escape mode default
+    bindsym --to-code $mod+g mode default
+    bindsym --to-code question exec ~/scripts/close_eww_window.sh --window which_key
+}
+mode wm-layout {
+    bindsym --to-code h mode default, splith
+    bindsym --to-code v mode default, splitv
+    bindsym --to-code s mode default, layout stacking
+    bindsym --to-code t mode default, layout tabbed
+    bindsym --to-code c mode default, move position center
+    bindsym --to-code d mode default, layout toggle split
+    bindsym --to-code f mode default, fullscreen
+    bindsym --to-code space mode default, floating toggle
+    bindsym --to-code Ctrl+space mode default, focus mode_toggle
+    bindsym --to-code Escape mode default
+    bindsym --to-code $mod+g mode default
+    bindsym --to-code question exec ~/scripts/close_eww_window.sh --window which_key
+}
+mode wm-run {
+    bindsym --to-code t mode default, exec $term
+    bindsym --to-code Return mode default, exec $term
+    bindsym --to-code r mode default, exec $menu
+    bindsym --to-code w mode default, exec $windowswitch
+    bindsym --to-code y mode default, exec $passmenu
+    bindsym --to-code Ctrl+y mode default, exec $passmenu_type
+    bindsym --to-code e mode default, exec ~/scripts/runem
+    bindsym --to-code n mode default, exec swaync-client -t -sw
+    bindsym --to-code Escape mode default
+    bindsym --to-code $mod+g mode default
+    bindsym --to-code question exec ~/scripts/close_eww_window.sh --window which_key
+}
+bindsym --to-code $mod+$left focus left
+bindsym --to-code $mod+$down focus down
+bindsym --to-code $mod+$up focus up
+bindsym --to-code $mod+$right focus right
+bindsym --to-code $mod+Left focus left
+bindsym --to-code $mod+Down focus down
+bindsym --to-code $mod+Up focus up
+bindsym --to-code $mod+Right focus right
+bindsym --to-code $mod+Ctrl+$left move left
+bindsym --to-code $mod+Ctrl+$down move down
+bindsym --to-code $mod+Ctrl+$up move up
+bindsym --to-code $mod+Ctrl+$right move right
+bindsym --to-code $mod+Ctrl+Left move left
+bindsym --to-code $mod+Ctrl+Down move down
+bindsym --to-code $mod+Ctrl+Up move up
+bindsym --to-code $mod+Ctrl+Right move right
+bindsym --to-code $mod+o focus next
+bindsym --to-code $mod+Shift+o focus prev
+bindsym --to-code $mod+k kill
+bindsym --to-code $mod+z focus parent
+bindsym --to-code $mod+l mode wm-layout
+bindsym --to-code $mod+space focus next
+bindsym --to-code $mod+Tab workspace back_and_forth
+bindsym --to-code $mod+Ctrl+r reload
+bindsym --to-code $mod+Ctrl+c exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym --to-code $mod+Ctrl+l exec swaylock -f -c 000000
+bindsym --to-code $mod+minus scratchpad show
+bindsym --to-code $mod+Ctrl+minus move scratchpad
+bindsym --to-code $mod+plus sticky toggle
+bindsym --to-code $mod+apostrophe exec ~/scripts/mark_window
+bindsym --to-code $mod+Shift+r mode resize
+bindsym --to-code $mod+x mode wm-run
+bindsym --to-code $mod+r exec $menu
+bindsym --to-code $mod+y mode default, exec $passmenu
+bindsym --to-code $mod+Ctrl+y mode default, exec $passmenu_type
+bindsym --to-code $mod+w exec $windowswitch
+bindsym --to-code $mod+t exec $term
+bindsym --to-code $mod+p exec $clipman
+bindsym --to-code $mod+c exec $closeewwwindow
+bindsym --to-code $mod+Return exec $term
+bindsym --to-code $mod+1 workspace 1 $ws1
+bindsym --to-code $mod+Ctrl+1 move container to workspace 1 $ws1
+bindsym --to-code $mod+2 workspace 2 $ws2
+bindsym --to-code $mod+Ctrl+2 move container to workspace 2 $ws2
+bindsym --to-code $mod+3 workspace 3 $ws3
+bindsym --to-code $mod+Ctrl+3 move container to workspace 3 $ws3
+bindsym --to-code $mod+4 workspace 4 $ws4
+bindsym --to-code $mod+Ctrl+4 move container to workspace 4 $ws4
+bindsym --to-code $mod+5 workspace 5 $ws5
+bindsym --to-code $mod+Ctrl+5 move container to workspace 5 $ws5
+bindsym --to-code $mod+6 workspace 6 $ws6
+bindsym --to-code $mod+Ctrl+6 move container to workspace 6 $ws6
+bindsym --to-code $mod+7 workspace 7 $ws7
+bindsym --to-code $mod+Ctrl+7 move container to workspace 7 $ws7
+bindsym --to-code $mod+8 workspace 8 $ws8
+bindsym --to-code $mod+Ctrl+8 move container to workspace 8 $ws8
+bindsym --to-code $mod+9 workspace 9 $ws9
+bindsym --to-code $mod+Ctrl+9 move container to workspace 9 $ws9
+bindsym --to-code $mod+0 workspace 10 $ws0
+bindsym --to-code $mod+Ctrl+0 move container to workspace 10 $ws0
+bindsym --to-code Print exec grimshot copy area
+bindsym --to-code Ctrl+Print exec ~/scripts/screen_save
+bindsym --to-code XF86AudioRaiseVolume exec ~/scripts/volumenotify + 5
+bindsym --to-code XF86AudioLowerVolume exec ~/scripts/volumenotify - 5
+bindsym --to-code Ctrl+XF86AudioRaiseVolume exec ~/scripts/volumenotify + 1
+bindsym --to-code Ctrl+XF86AudioLowerVolume exec ~/scripts/volumenotify - 1
+bindsym --to-code Shift+XF86AudioRaiseVolume exec ~/scripts/volumenotify + 10
+bindsym --to-code Shift+XF86AudioLowerVolume exec ~/scripts/volumenotify - 10
+bindsym --to-code XF86AudioMute exec ~/scripts/volumenotify !
+bindsym --to-code XF86AudioPlay exec playerctl play-pause
+bindsym --to-code XF86AudioPrev exec playerctl previous
+bindsym --to-code XF86AudioNext exec playerctl next
+bindsym --to-code $mod+question exec ~/scripts/close_eww_window.sh --window which_key
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+FILENAME=`date '+%Y-%m-%d_%H:%M_screen_shot.png'`
+
+# In case you want to paste it to the zenity dialog to save as is.
+wl-copy "$FILENAME"
+grimshot save area "/tmp/$FILENAME"
+mv "/tmp/$FILENAME" `zenity --file-selection --save`

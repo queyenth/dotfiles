@@ -1,0 +1,2 @@
+#!/bin/sh
+spotify --enable-features=UseOzonePlatform --ozone-platform=wayland

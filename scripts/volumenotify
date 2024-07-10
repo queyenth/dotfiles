@@ -22,25 +22,25 @@ usage() {
 }
 
 case $1 in
-  '+'|'-i'|'--increase')
-    [ -z "$2" ] && err "No argument specified for increase"
-    PONYMIXARG="increase ${2}"
-    ;;
-  '-'|'-d'|'--decrease')
-    [ -z "$2" ] && err "No argument specified for decrease"
-    PONYMIXARG="decrease ${2}"
-    ;;
-  '!'|'-t'|'--toggle')
-    PONYMIXARG="toggle"
-    ;;
-  '='|'-s'|'--set')
-    PONYMIXARG="set-volume ${2}"
-    ;;
-  ''|'-h'|'--help')
-    usage
-    ;;
-  *)
-    err "Unrecognized option \`$1', see volumenotify --help"
+    '+'|'-i'|'--increase'|'up')
+        [ -z "$2" ] && err "No argument specified for increase"
+        PONYMIXARG="increase ${2}"
+        ;;
+    '-'|'-d'|'--decrease'|'down')
+        [ -z "$2" ] && err "No argument specified for decrease"
+        PONYMIXARG="decrease ${2}"
+        ;;
+    '!'|'-t'|'--toggle')
+        PONYMIXARG="toggle"
+        ;;
+    '='|'-s'|'--set')
+        PONYMIXARG="set-volume ${2}"
+        ;;
+    ''|'-h'|'--help')
+        usage
+        ;;
+    *)
+        err "Unrecognized option \`$1', see volumenotify --help"
 esac
 
 ponymix $PONYMIXARG
@@ -48,18 +48,18 @@ ponymix $PONYMIXARG
 volume=$(ponymix get-volume)
 
 case $1 in
-  '+'|'-i'|'--increase'|'-'|'-d'|'--decrease')
+  '+'|'-i'|'--increase'|'-'|'-d'|'--decrease'|'up'|'down'|'='|'-s'|'--set')
     notify-send -e -h int:value:"$volume" -h string:x-canonical-private-synchronous:volume_notif -u low -i audio-volume-high "Volume: $volume"
     ;;
   '!'|'-t'|'--toggle')
     if ponymix is-muted ; then
       notify-send -e -h string:x-canonical-private-synchronous:volume_notif -u low -i audio-volume-muted "Volume: muted"
     else
-      notify-send -e -h int:value:"$volume" -h string:x-canonical-private-synchronous:volume_notif -u low -i audio-volume-high "Volume: $volume" 
+      notify-send -e -h int:value:"$volume" -h string:x-canonical-private-synchronous:volume_notif -u low -i audio-volume-high "Volume: $volume"
     fi
     ;;
 esac
 
 canberra-gtk-play -i audio-volume-change -d "changeVolume"
-~/src/eww/target/release/eww update volume=$volume
-~/src/eww/target/release/eww update volume_is_muted=$(ponymix is-muted || echo true)
+#~/src/eww/target/release/eww update volume=$volume
+#~/src/eww/target/release/eww update volume_is_muted=$(ponymix is-muted || echo true)

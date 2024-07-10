@@ -1,0 +1,62 @@
+#!/bin/sh
+
+get_kbd_mods() {
+    MODS_MASK=$1
+    M_SHIFT=1
+    M_CAPS=2
+    M_CTRL=4
+    M_ALT=8
+    M_HYPER=32
+    M_LOGO=64
+
+    OUTPUT=""
+
+    if [ $((MODS_MASK & M_HYPER)) -ne 0 ]; then
+	OUTPUT="$OUTPUT "
+    fi
+    if [ $((MODS_MASK & M_LOGO)) -ne 0 ]; then
+	OUTPUT="$OUTPUT 󰘳"
+    fi
+    if [ $((MODS_MASK & M_ALT)) -ne 0 ]; then
+	OUTPUT="$OUTPUT 󰘵"
+    fi
+    if [ $((MODS_MASK & M_SHIFT)) -ne 0 ]; then
+	OUTPUT="$OUTPUT 󰘶"
+    fi
+    if [ $((MODS_MASK & M_CTRL)) -ne 0 ]; then
+	OUTPUT="$OUTPUT 󰘴"
+    fi
+
+    echo "${OUTPUT# }"
+}
+
+get_kbd_layout() {
+    if [ "$1" = "0" ]; then
+	echo "us"
+    else
+	echo "ru"
+    fi
+}
+
+mods=$(get_kbd_mods 0)
+layout=$(get_kbd_layout 0)
+
+echo $mods $layout
+
+while read -r update < /tmp/labwc.fifo ; do
+    new_layout=$(echo "$update" | jq .layout)
+    new_mods=$(echo "$update" | jq .mods)
+    if [ ! "$new_layout" = "null" ]; then
+        layout=$(get_kbd_layout "$new_layout")
+    elif [ ! "$new_mods" = "null" ]; then
+        mods=$(get_kbd_mods "$new_mods")
+    fi
+    echo $mods $layout
+done
+
+# cat /tmp/labwc.fifo | while read -r _ ; do
+# done
+
+# swaymsg -t subscribe -m '["input"]' | while read -r _ ; do
+#     get_kbd_mods
+# done

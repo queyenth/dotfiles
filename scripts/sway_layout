@@ -29,7 +29,7 @@ get_kbd_layout() {
 	OUTPUT="$OUTPUT 󰘴"
     fi
 
-    if [ $ACTIVE_LAYOUT = "0" ]; then
+    if [ "$ACTIVE_LAYOUT" = "0" ]; then
 	OUTPUT="$OUTPUT us"
     else
 	OUTPUT="$OUTPUT ru"
