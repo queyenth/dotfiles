@@ -52,8 +52,8 @@ get_icon() {
     echo $icon
 }
 
-KEY=""
-CITY=""
+KEY="$(pass api.openweather.org)"
+CITY="Omsk"
 UNITS="metric"
 SYMBOL="°"
 
