@@ -14,9 +14,14 @@ volume_change_step = "5"
 visualizer_data_source = /tmp/mpd.fifo
 visualizer_output_name = Visualizer feed
 visualizer_in_stereo = yes
-#visualizer_type = spectrum
+visualizer_fps = 60
+visualizer_type = ellipse
+visualizer_spectrum_smooth_look = yes
 visualizer_look = ●▮
 
+connected_message_on_startup = yes
+cyclic_scrolling = yes
+mouse_support = no
 playlist_disable_highlight_delay = 1
 message_delay_time = "4"
 
@@ -55,9 +60,9 @@ search_engine_display_mode = columns
 
 follow_now_playing_lyrics = yes
 fetch_lyrics_for_current_song_in_background = no
-#lyrics_fetchers = genius,plyrics,internet
+lyrics_fetchers = genius,plyrics,internet
 #genius_api_token = 1l6AuxkfpcXZdbG5kRklTFcOchCNl1P1e5RZSriOk_TQM8jR7ZHwUfcQ4rDVe3IO
 
-#execute_on_song_change = notify-send "Now Playing" "$(mpc --host=192.168.1.69 current)"
+execute_on_song_change = notify-send -i "$(playerctl -p mpd metadata mpris:artUrl | sed 's/^file:\/\///')" "Now Playing" "$(mpc --host=192.168.1.69 current)"
 #execute_on_song_change = notify-send "Now Playing" "$(mpc current)"
 #execute_on_song_change=~/.config/ncmpcpp/cover/cover_art.sh &

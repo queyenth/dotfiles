@@ -1,0 +1,6 @@
+#!/bin/sh
+php ~/.config/eww/scripts/get_sway_keys.php eww default 4
+swaymsg -t subscribe -m '["mode"]' | while read -r change ; do
+    change=$(echo "$change" | jq -r ".change")
+    php ~/.config/eww/scripts/get_sway_keys.php eww "$change" 4
+done

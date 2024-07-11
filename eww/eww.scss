@@ -34,11 +34,15 @@ $highlighthigh: #cecacd;
 
 .sidestuff {
     padding-right: 7px;
-}
 
-.sidestuff slider {
-    all: unset;
-    color: #ffd5cd;
+    slider {
+        all: unset;
+        color: #ffd5cd;
+    }
+
+    .mu4e_mail {
+        margin-right: 5px;
+    }
 }
 
 .metric scale trough {
@@ -61,11 +65,9 @@ $highlighthigh: #cecacd;
     .mode {
         padding: 0 5px;
         color: $highlightmed;
+        background-color: $love;
         &.resize {
             background-color: $pine;
-        }
-        &.winmark {
-            background-color: $rose;
         }
     }
 }
@@ -110,7 +112,7 @@ $highlighthigh: #cecacd;
             color: $love;
             font-weight: bold;
         }
-        
+
         .agenda_task_todo_NEXT {
             color: $gold;
             font-weight: bold;
@@ -130,16 +132,21 @@ $highlighthigh: #cecacd;
         }
         .agenda_task_todo_CANCELED {
             color: $love;
+            text-decoration: line-through;
             font-weight: bold;
         }
 
-        .agenda_task_head {
-            &.DONE {
+        .agenda_task_head, .agenda_task_time, .agenda_task_extra {
+            &.DONE, &.CANCELED {
                 text-decoration: line-through;
                 color: #666666;
             }
         }
     }
+}
+
+.org_clock_btn {
+    margin-right: 5px;
 }
 
 // Reminder
@@ -217,12 +224,7 @@ $highlighthigh: #cecacd;
     margin: 4px 0px 4px 0px;
 }
 
-.song_btn_play {
-    color: $rose;
-    font-size: 14px;
-}
-
-.song_btn_prev, .song_btn_next {
+.song_btn_play, .song_btn_prev, .song_btn_next {
     color: $rose;
     font-size: 14px;
 }
@@ -236,14 +238,13 @@ $highlighthigh: #cecacd;
 
 .music {
     color: $rose;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: bold;
-    margin: 10px 0px 0px -7px;
 }
 
 .music_artist {
     color: $rose;
-    font-size: 8px;
+    font-size: 12px;
     font-weight: normal;
     margin: 0;
 }
@@ -274,8 +275,7 @@ $highlighthigh: #cecacd;
     background-color: $rose;
     border-radius: 24px;
     min-height: 13px;
-    min-width: 95px;
-    margin: -5px 5px 10px 0px;
+    min-width: 120px;
 }
 
 // dunst-snooze
@@ -304,4 +304,18 @@ $highlighthigh: #cecacd;
 
 .shutdown {
     color: $love;
+}
+
+// Which key
+.which-key {
+    font-size: larger;
+    .sway {
+        color: $text;
+    }
+    .exec {
+        color: $rose;
+    }
+    .mode {
+        color: $love;
+    }
 }

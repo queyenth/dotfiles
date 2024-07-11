@@ -78,6 +78,12 @@ set of options with comments, see docs/rc.xml.all
         <layoutScope>global</layoutScope>
         <repeatRate>25</repeatRate>
         <repeatDelay>300</repeatDelay>
+        <keybind key="W-C-t">
+            <action name="ToggleAlwaysOnTop" />
+        </keybind>
+        <keybind key="W-C-o">
+            <action name="ToggleOmnipresent" />
+        </keybind>
         <keybind key="W-k">
             <action name="Close" />
         </keybind>

@@ -12,6 +12,7 @@
 (deflisten current_kb_layout "~/scripts/sway_layout")
 
 (deflisten workspace-sway :initial "[]" "~/.config/eww/scripts/workspace sway")
+(deflisten which-key-sway :initial "[]" "~/.config/eww/scripts/sway_which_key")
 (deflisten mode-sway :initial "{\"change\": \"default\"}" "swaymsg -t subscribe -m '[\"mode\"]'")
 
 (defpoll volume_is_muted :interval "1m"
@@ -20,14 +21,20 @@
 (defpoll volume :interval "1m"
          "ponymix get-volume")
 
-(defpoll time :interval "10s"
+(defpoll time :interval "5s"
          "date '+%A %H:%M'")
 
-(defpoll full_date :interval "15m"
-         "date '+%d %B'")
+(defpoll full_date :interval "5s"
+         "date '+:%S, %d %B'")
 
 (defpoll reminders :interval "1m"
          "php ~/scripts/add_reminder.php show")
+
+(defpoll org_clock :interval "30s"
+         "~/scripts/emacsclient_exec.sh \"(when (and (fboundp #'org-clocking-p) (org-clocking-p)) (substring-no-properties (org-clock-get-clock-string)))\"")
+
+(defpoll mu4e_modeline_string :interval "30s"
+         "~/scripts/emacsclient_exec.sh \"(when (fboundp #'mu4e--modeline-string) (substring-no-properties (mu4e--modeline-string)))\"")
 
 (deflisten swaync-status :initial "{}" "swaync-client -s")
 
@@ -35,11 +42,12 @@
            (eventbox :onhover "${EWW_CMD} update reminder_reveal=true"
                      :onhoverlost "${EWW_CMD} update reminder_reveal=false"
                      (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+                          (label :limit-width 50 :class "org_clock_btn" :text {org_clock != "nil" ? org_clock : ""})
                           (label :class "reminder_time_btn" :text {time})
                           (revealer :transition "slideright"
                                     :reveal reminder_reveal
                                     :duration "350ms"
-                                    ", ${full_date}"))))
+                                    {full_date}))))
 
 (defwidget control_pop []
            (box :class "control_pop" :orientation "h" :space-evenly "true" :spacing 10 :vexpand "false" :hexpand "false"
@@ -70,12 +78,12 @@
            (box :visible {(tasks ?: false) != false} :class "agenda_${task-class}" :orientation "v" :space-evenly "false" :spacing 10 :vexpand "false" :hexpand "false"
                 (label :halign "start" :class "agenda_type_label" :text "${task-label}")
                 (box :class "agenda_list" :orientation "v" :space-evenly "false" :spacing 5 :vexpand "false" :hexpand "false"
-                     (for task in {tasks}
+                     (for task in {tasks ?: []}
                           (box :class "agenda_task agenda_task_${task?.type}" :orientation "h" :space-evenly "false" :spacing 5 :vexpand "false" :hexpand "false"
-                               (label :class "agenda_task_extra" :visible {task?.extra != ''} :text {task?.extra})
+                               (label :class "agenda_task_extra ${task.todo}" :visible {task?.extra != ''} :text {task?.extra})
                                (label :visible {task?.todo != ''} :class "agenda_task_todo_${task.todo}" :text {task?.todo})
                                ;; (label :class "agenda_task_date" :visible {task?.date != ''} :text {task?.date})
-                               (label :class "agenda_task_time" :visible {task?.time != ''} :text {task?.time})
+                               (label :class "agenda_task_time ${task.todo}" :visible {task?.time != ''} :text {task?.time})
                                (label :class "agenda_task_head ${task.todo}" :limit-width 50 :text {task?.head}))))))
 
 (defwidget agenda_pop []
@@ -113,6 +121,18 @@
            :geometry (geometry :x 130 :y 0 :width 400 :height 50 :anchor "left center")
            (agenda_pomodoro_widget))
 
+(defwidget which_key_widget []
+           (box :class "reminder_pop" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
+                (box :class "pop_module" :orientation "v" :space-evenly "false" :spacing 15 :vexpand "true" :hexpand "true"
+                     (for row in {which-key-sway}
+                          (box :class "which-key" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
+                               (for key in {row}
+                                    (label :halign "center" :class {key.class} :text "${key.which_key} => ${key.which_command}")))))))
+
+(defwindow which_key :stacking "overlay" :focusable "false" :monitor 0
+           :geometry (geometry :x 0 :y 0 :width 400 :height 50 :anchor "center")
+           (which_key_widget))
+
 (defwidget music []
            (eventbox :visible {song != ''} :onhover "${EWW_CMD} update music_reveal=true"
                      :onhoverlost "${EWW_CMD} update music_reveal=false"
@@ -127,7 +147,7 @@
                                     :duration "350ms"
                                     (box :vexpand "false" :hexpand "false" :orientation "h"
                                          (button :class "song_btn_prev" :onclick "playerctl previous" " 󰒮 ")
-                                         (button :class "song_btn_play" :onclick "playerctl play-pause" {song_status == "Playing" ? "  " : "  "})
+                                         (button :class "song_btn_play" :onclick "playerctl play-pause" {song_status == "Playing" ? " 󰏤 " : "  "})
                                          (button :class "song_btn_next" :onclick "playerctl next" " 󰒭 "))))))
 
 (defwidget music_pop []
@@ -140,7 +160,7 @@
                      (label :halign "center" :class "music_artist" :wrap "true" :text song_artist)
                      (box :orientation "h" :spacing 20 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
                           (button :class "music_btn_prev" :onclick "playerctl previous" "󰒮")
-                          (button :class "music_btn_play" :onclick "playerctl play-pause" {song_status == "Playing" ? "" : ""})
+                          (button :class "music_btn_play" :onclick "playerctl play-pause" {song_status == "Playing" ? "󰏤" : ""})
                           (button :class "music_btn_next" :onclick "playerctl next" "󰒭"))
                      (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
                           (scale :min 0 :active "true" :max {(song_length != '' ? song_length : 0) / 1000000} :value {current_status != '' ? round(current_status, 0) : 0})))))
@@ -161,7 +181,7 @@
 
 (defwidget bar-left []
            (box :class "left-side" :space-evenly false :spacing 10 :halign "start"
-                (label :visible {mode-sway?.change != "default"} :class "mode ${mode-sway?.change}" :text {mode-sway?.change})
+                (button :visible {mode-sway?.change != "default"} :class "mode ${mode-sway?.change}" :onclick "swaymsg mode default" {mode-sway?.change})
                 (workspaces)
                 (music)))
 
@@ -173,9 +193,12 @@
 
 (defwidget sidestuff []
            (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+                (label :class "mu4e_mail" :text "${mu4e_modeline_string}")
                 (label :visible {(weather?.temp ?: false) != false} :class "weather_right_now" :text "${weather?.icon} ${weather?.temp}°C ")
                 (label :class "layout" :text "󰌌 ${current_kb_layout} ")
-                (label :text "${volume_is_muted == 'true' ? '' : '󰝟'} ${volume}%" :class "volume-label")
+                (eventbox :onscroll "~/scripts/volumenotify {} 5"
+                          :onclick "~/scripts/volumenotify !"
+                          (label :text "${volume_is_muted == 'true' ? '' : '󰝟'} ${volume}%" :class "volume-label"))
                 (systray :class "systray" :orientation "h" :icon-size 16)
                 (box :class "separator")
                 (power)))
