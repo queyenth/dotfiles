@@ -9,6 +9,7 @@ mpd_connection_timeout = 5
 mpd_music_dir = /mnt/WDBLUE/music
 mpd_crossfade_time = 3
 
+volume_color = "white"
 volume_change_step = "5"
 
 visualizer_data_source = /tmp/mpd.fifo
@@ -25,22 +26,32 @@ mouse_support = no
 playlist_disable_highlight_delay = 1
 message_delay_time = "4"
 
-song_list_format = "{{%a - %t}|{%f}}{$R%l}"
+alternative_ui_separator_color = "black"
+alternative_header_first_line_format = $b$5«$/b$5« $b$8{%t}|{%f}$/b $5»$b$5»$/b
+alternative_header_second_line_format = {$b{$2%a$9}{ - $7%b$9}{ ($2%y$9)}}|{%D}
+
+song_status_format = "$7%t"
+song_list_format = "  %t $R%a %l  "
+#song_list_format = "{{%a - %t}|{%f}}{$R%l}"
 #song_list_format = "{{%a - %t}|{%f}}"
+song_columns_list_format = "(53)[white]{tr} (45)[blue]{a}"
+song_library_format = "{{%a - %t} (%b)}|{%f}"
 current_item_prefix = $(red)$r
-current_item_inactive_column_prefix = $(white)$r
-now_playing_prefix = "$(red)"
-now_playing_suffix = "$9"
-playlist_display_mode = classic
+current_item_suffix = $/r$(end)
+current_item_inactive_column_prefix = red
+current_item_inactive_column_suffix = red
+# now_playing_prefix = "$(red)"
+# now_playing_suffix = "$9"
+playlist_display_mode = columns
 playlist_separate_albums = yes
-autocenter_mode = no
-centered_cursor = no
-user_interface = alternative
+autocenter_mode = yes
+centered_cursor = yes
+user_interface = classic
 
 data_fetching_delay = yes
 
-statusbar_visibility = no
 progressbar_look = "─╼ "
+statusbar_visibility = no
 titles_visibility = no
 header_visibility = no
 
@@ -51,8 +62,8 @@ colors_enabled = yes
 statusbar_color = white
 empty_tag_color = white
 #visualizer_color = yellow
-main_window_color = white
-#progressbar_color = yellow
+main_window_color = blue
+progressbar_color = black
 progressbar_elapsed_color = red
 
 song_window_title_format = "{%a - }{%t}|{%f}"
