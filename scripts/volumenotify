@@ -61,5 +61,7 @@ case $1 in
 esac
 
 canberra-gtk-play -i audio-volume-change -d "changeVolume"
-#~/src/eww/target/release/eww update volume=$volume
-#~/src/eww/target/release/eww update volume_is_muted=$(ponymix is-muted || echo true)
+if pidof -q eww ; then
+    ~/src/eww/target/release/eww update volume=$volume
+    ~/src/eww/target/release/eww update volume_is_muted=$(ponymix is-muted || echo true)
+fi

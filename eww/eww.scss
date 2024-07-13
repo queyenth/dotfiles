@@ -175,6 +175,12 @@ $highlighthigh: #cecacd;
     padding: 7px;
 }
 
+.tooltip_label {
+    background-color: #f8efe5;
+    color: $text;
+    padding: 5px;
+}
+
 .calendar:selected {
     background-color: $rose;
     color: #f8efe5;

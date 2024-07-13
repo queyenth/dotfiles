@@ -1,7 +1,6 @@
 # Example autostart file
 [ ! -p /tmp/labwc.fifo ] && mkfifo /tmp/labwc.fifo
 [ ! -p /tmp/labwc_workspaces ] && mkfifo /tmp/labwc_workspaces
-echo 1 > /tmp/last_desktop
 
 # Set background color.
 swaybg -c "#f2e9e1" -i ~/Mx-butterfly.svg -m center >/dev/null 2>&1 &
@@ -16,7 +15,8 @@ swaybg -c "#f2e9e1" -i ~/Mx-butterfly.svg -m center >/dev/null 2>&1 &
 kanshi >/dev/null 2>&1 &
 
 # Launch a panel such as yambar or waybar.
-waybar >/dev/null 2>&1 &
+# waybar >/dev/null 2>&1 &
+~/src/eww/target/release/eww open bar >/dev/null 2>&1 &
 
 # Enable notifications. Typically GNOME/KDE application notifications go
 # through the org.freedesktop.Notifications D-Bus API and require a client such

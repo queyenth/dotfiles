@@ -118,15 +118,6 @@ if ($data) {
         }
     }
 
-    // $eww = [
-    //     'temp' => $temperature,
-    //     'feelsLike' => $feelsLike,
-    //     'humidity' => $humidity,
-    //     'windspeed' => $windspeed,
-    //     'icon' => WEATHER_SYMBOL[WWO_CODE[$weatherCode]],
-    //     'hourly' => $hoursWeather
-    // ];
-
     $tooltip = implode(
         "\n",
         [
@@ -139,9 +130,19 @@ if ($data) {
     );
 
     $eww = [
-        'text' => WEATHER_SYMBOL[WWO_CODE[$weatherCode]] . " " . $temperature . "°C",
+        'temp' => $temperature,
+        'feelsLike' => $feelsLike,
+        'humidity' => $humidity,
+        'windspeed' => $windspeed,
+        'icon' => WEATHER_SYMBOL[WWO_CODE[$weatherCode]],
+        'hourly' => $hoursWeather,
         'tooltip' => $tooltip
     ];
+
+    // $eww = [
+    //     'text' => WEATHER_SYMBOL[WWO_CODE[$weatherCode]] . " " . $temperature . "°C",
+    //     'tooltip' => $tooltip
+    // ];
 
     echo json_encode($eww);
 } else {

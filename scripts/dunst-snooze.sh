@@ -1,29 +1,17 @@
 #!/bin/bash
 
-FILE="/tmp/dunst.fifo"
-
-if [[ ! -p "$FILE" ]]; then
-	mkfifo "$FILE"
-fi
-
 get_status() {
     if [ "$(dunstctl is-paused)" = "true" ]; then
-        echo ""
+        echo -n ""
     else
-        echo ""
+        echo -n ""
+    fi
+
+    reminder_count=$(~/scripts/emacsclient_exec.sh "(q/rem-count)")
+    reminder_count=$(($reminder_count))
+    if [ $reminder_count -gt 0 ]; then
+        echo -n " ("$reminder_count")"
     fi
 }
 
-case "$1" in
-    --toggle)
-        dunstctl set-paused toggle
-	echo "toggled" > "$FILE"
-        ;;
-    *)
-        get_status
-        
-	tail -F "$FILE" | while read -r line ; do
-            get_status
-	done
-        ;;
-esac
+get_status

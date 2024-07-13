@@ -9,11 +9,11 @@
 (deflisten song_status "playerctl -F status")
 (deflisten cover_art "playerctl -F metadata mpris:artUrl")
 
-(deflisten current_kb_layout "~/scripts/sway_layout")
+;; (deflisten current_kb_layout "~/scripts/sway_layout")
 
-(deflisten workspace-sway :initial "[]" "~/.config/eww/scripts/workspace sway")
-(deflisten which-key-sway :initial "[]" "~/.config/eww/scripts/sway_which_key")
-(deflisten mode-sway :initial "{\"change\": \"default\"}" "swaymsg -t subscribe -m '[\"mode\"]'")
+;; (deflisten workspace-sway :initial "[]" "~/.config/eww/scripts/workspace sway")
+;; (deflisten which-key-sway :initial "[]" "~/.config/eww/scripts/sway_which_key")
+;; (deflisten mode-sway :initial "{\"change\": \"default\"}" "swaymsg -t subscribe -m '[\"mode\"]'")
 
 (defpoll volume_is_muted :interval "1m"
 	 "ponymix is-muted || echo true")
@@ -28,7 +28,7 @@
          "date '+:%S, %d %B'")
 
 (defpoll reminders :interval "1m"
-         "php ~/scripts/add_reminder.php show")
+         "~/scripts/emacsclient_exec.sh \"(q/rem-show)\"")
 
 (defpoll org_clock :interval "30s"
          "~/scripts/emacsclient_exec.sh \"(when (and (fboundp #'org-clocking-p) (org-clocking-p)) (substring-no-properties (org-clock-get-clock-string)))\"")
@@ -36,24 +36,31 @@
 (defpoll mu4e_modeline_string :interval "30s"
          "~/scripts/emacsclient_exec.sh \"(when (fboundp #'mu4e--modeline-string) (substring-no-properties (mu4e--modeline-string)))\"")
 
-(deflisten swaync-status :initial "{}" "swaync-client -s")
+;; (deflisten swaync-status :initial "{}" "swaync-client -s")
+(defpoll dunst-status :interval "5s" "~/scripts/dunst-snooze.sh")
 
 (defwidget reminder_time []
-           (eventbox :onhover "${EWW_CMD} update reminder_reveal=true"
-                     :onhoverlost "${EWW_CMD} update reminder_reveal=false"
-                     (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
-                          (label :limit-width 50 :class "org_clock_btn" :text {org_clock != "nil" ? org_clock : ""})
-                          (label :class "reminder_time_btn" :text {time})
-                          (revealer :transition "slideright"
-                                    :reveal reminder_reveal
-                                    :duration "350ms"
-                                    {full_date}))))
+           (tooltip
+            (calendar :class "calendar tooltip_label")
+            (eventbox :onhover "${EWW_CMD} update reminder_reveal=true"
+                      :onhoverlost "${EWW_CMD} update reminder_reveal=false"
+                      (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+                           (label :limit-width 50 :class "org_clock_btn" :text {org_clock != "nil" ? org_clock : ""})
+                           (label :class "reminder_time_btn" :text {time})
+                           (revealer :transition "slideright"
+                                     :reveal reminder_reveal
+                                     :duration "350ms"
+                                     {full_date})))))
 
 (defwidget control_pop []
            (box :class "control_pop" :orientation "h" :space-evenly "true" :spacing 10 :vexpand "false" :hexpand "false"
                 (button :class "lock_btn" :onclick "swaylock -f -c 000000" "")
-                (button :class "dnd_btn" :onclick "swaync-client -d"
-                        :onmiddleclick "swaync-client -C" {(swaync-status?.dnd ?: false) ? "" : ""})
+                ;; (button :class "dnd_btn" :onclick "swaync-client -d"
+                ;;         :onmiddleclick "swaync-client -C" {(swaync-status?.dnd ?: false) ? "" : ""})
+                (button :class "dnd_btn"
+                        :onclick "dunstctl history-pop"
+                        :onrightclick "dunstctl set-paused toggle"
+                        :onmiddleclick "dunstctl history-clear" {dunst-status})
                 (button :class "reboot_btn" :onclick "sudo reboot" "󰜉")
                 (button :class "shutdown_btn" :onclick "sudo shutdown +1 eww" "")))
 
@@ -121,17 +128,17 @@
            :geometry (geometry :x 130 :y 0 :width 400 :height 50 :anchor "left center")
            (agenda_pomodoro_widget))
 
-(defwidget which_key_widget []
-           (box :class "reminder_pop" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
-                (box :class "pop_module" :orientation "v" :space-evenly "false" :spacing 15 :vexpand "true" :hexpand "true"
-                     (for row in {which-key-sway}
-                          (box :class "which-key" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
-                               (for key in {row}
-                                    (label :halign "center" :class {key.class} :text "${key.which_key} => ${key.which_command}")))))))
+;; (defwidget which_key_widget []
+;;            (box :class "reminder_pop" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
+;;                 (box :class "pop_module" :orientation "v" :space-evenly "false" :spacing 15 :vexpand "true" :hexpand "true"
+;;                      (for row in {which-key-sway}
+;;                           (box :class "which-key" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
+;;                                (for key in {row}
+;;                                     (label :halign "center" :class {key.class} :text "${key.which_key} => ${key.which_command}")))))))
 
-(defwindow which_key :stacking "overlay" :focusable "false" :monitor 0
-           :geometry (geometry :x 0 :y 0 :width 400 :height 50 :anchor "center")
-           (which_key_widget))
+;; (defwindow which_key :stacking "overlay" :focusable "false" :monitor 0
+;;            :geometry (geometry :x 0 :y 0 :width 400 :height 50 :anchor "center")
+;;            (which_key_widget))
 
 (defwidget music []
            (eventbox :visible {song != ''} :onhover "${EWW_CMD} update music_reveal=true"
@@ -181,21 +188,29 @@
 
 (defwidget bar-left []
            (box :class "left-side" :space-evenly false :spacing 10 :halign "start"
-                (button :visible {mode-sway?.change != "default"} :class "mode ${mode-sway?.change}" :onclick "swaymsg mode default" {mode-sway?.change})
-                (workspaces)
+                ;; (button :visible {mode-sway?.change != "default"} :class "mode ${mode-sway?.change}" :onclick "swaymsg mode default" {mode-sway?.change})
+                ;; (workspaces)
                 (music)))
 
 (defwidget bar-center []
            (box :class "center-side" :space-evenly false :spacing 10 :halign "start"
                 (reminder_time)
-                (button :class "dunst-snooze" :onclick "swaync-client -d"
-                        :onmiddleclick "swaync-client -C" {(swaync-status?.dnd ?: false) ? "" : ""})))
+                ;; (button :class "dunst-snooze" :onclick "swaync-client -d"
+                ;;         :onmiddleclick "swaync-client -C" {(swaync-status?.dnd ?: false) ? "" : ""})
+                (tooltip
+                 (label :class "tooltip_label" :text {reminders})
+                 (button :class "dnd_btn"
+                         :onclick "dunstctl history-pop"
+                         :onrightclick "~/scripts/dunst-snooze.sh --toggle"
+                         :onmiddleclick "dunstctl history-clear" {dunst-status}))))
 
 (defwidget sidestuff []
            (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
                 (label :class "mu4e_mail" :text "${mu4e_modeline_string}")
-                (label :visible {(weather?.temp ?: false) != false} :class "weather_right_now" :text "${weather?.icon} ${weather?.temp}°C ")
-                (label :class "layout" :text "󰌌 ${current_kb_layout} ")
+                (tooltip
+                 (label :class "tooltip_label" :text {weather?.tooltip})
+                 (label :visible {(weather?.temp ?: false) != false} :class "weather_right_now" :text "${weather?.icon} ${weather?.temp}°C "))
+                ;; (label :class "layout" :text "󰌌 ${current_kb_layout} ")
                 (eventbox :onscroll "~/scripts/volumenotify {} 5"
                           :onclick "~/scripts/volumenotify !"
                           (label :text "${volume_is_muted == 'true' ? '' : '󰝟'} ${volume}%" :class "volume-label"))
@@ -210,22 +225,22 @@
                       (bar-center)
                       (sidestuff)))
 
-(defwidget workspaces []
-	   (box :class "workspaces" :orientation "h" :spacing 10 :space-evenly true :halign "start"
-		(for workspace in {workspace-sway}
-		     (button :onclick "swaymsg workspace ${workspace.name}"
-			     :onrightclick "swaymsg move container to workspace ${workspace.name}"
-			     :class {"${workspace.focused ? 'focused' : 'occupied'} ${workspace.urgent ? 'urgent' : ''}"}
-			     {replace(workspace.name, workspace.num, "")}))))
+;; (defwidget workspaces []
+;; 	   (box :class "workspaces" :orientation "h" :spacing 10 :space-evenly true :halign "start"
+;; 		(for workspace in {workspace-sway}
+;; 		     (button :onclick "swaymsg workspace ${workspace.name}"
+;; 			     :onrightclick "swaymsg move container to workspace ${workspace.name}"
+;; 			     :class {"${workspace.focused ? 'focused' : 'occupied'} ${workspace.urgent ? 'urgent' : ''}"}
+;; 			     {replace(workspace.name, workspace.num, "")}))))
 
 (defwindow bar
            :monitor 0
            :windowtype "desktop"
-           :geometry (geometry :x "5px"
-                               :y "5px"
-                               :width "1910px"
+           :geometry (geometry :x "0px"
+                               :y "0px"
+                               :width "1920px"
                                :height "10px"
-                               :anchor "top center")
+                               :anchor "bottom center")
            :stacking "bottom"
 	   :exclusive true
            (bar))
