@@ -1,35 +1,35 @@
-$base: #faf4ed;
-$surface: #fffaf3;
-$overlay: #f2e9e1;
+$highlightmed: rgba(50, 50, 50, 0.5);
+$highlighthigh: rgba(50, 50, 50, 1);
 $muted: #9893a5;
-$subtle: #797593;
-$text: #575279;
-$love: #b4637a;
-$gold: #ea9d34;
-$rose: #d7827e;
-$pine: #286983;
-$foam: #56949f;
-$iris: #907aa9;
-$highlightlow: #f4ede8;
-$highlightmed: #dfdad9;
-$highlighthigh: #cecacd;
+
+$altbackground: rgba(255, 255, 255, 0.3);
+// $background: #fff6d8;
+$background: rgba(204, 204, 204, 0.5);
+// $foreground: #484431;
+$foreground: grey20;
+
+$accent: #b4637a;
+$color1: #323232;
+$color2: grey20;
+$color3: #323232;
+$color4: #323232;
 
 * {
     all: unset;
-    font-family: BlexMono Nerd Font;
+    font-family: Iosevka Comfy Motion;
 }
 
 .separator {
-    border: 1px solid #666666;
+    border: 1px solid $foreground;
     margin: 4px 5px;
 }
 
 .bar, .bar-secondary {
-    color: $text;
+    color: $foreground;
     padding: 0px;
     font-size: 11px;
-    // background-color: #faf4ed;
-    // border: 1px solid #dfdad9;
+    // background-color: $background;
+    // border: 1px solid $highlightmed;
 }
 
 .sidestuff {
@@ -56,44 +56,49 @@ $highlighthigh: #cecacd;
 
 .metric scale trough highlight {
     all: unset;
-    background-color: $pine;
+    background-color: $color4;
     color: $highlightmed;
     border-radius: 10px;
+}
+
+.left-side,
+.center-side,
+.sidestuff {
+    background-color: $background;
+    // background-color: rgba(204, 204, 204, 0.5);
+    // background-color: #ccc;
+    // color: white;
+    border-radius: 15px;
+    padding: 0 10px;
 }
 
 .left-side {
     .mode {
         padding: 0 5px;
-        color: $highlightmed;
-        background-color: $love;
+        color: #ffffff;
+        background-color: $color1;
         &.resize {
-            background-color: $pine;
+            background-color: $color4;
         }
     }
 }
 
-.workspaces {
-    padding-left: 5px;
-}
 .workspaces button {
     padding: 0 5px;
-    color: #666;
-}
-.workspaces .unfocused {
-    color: $highlightmed;
-}
-.workspaces .occupied {
-    color: $pine;
+    color: $foreground;
+    font-weight: 100;
+    // font-weight: bold;
+    // color: #666;
 }
 .workspaces .focused {
-    color: $rose;
+    font-weight: bold;
 }
 .workspaces .urgent {
-    background-color: $rose;
-    color: $text;
+    background-color: #323232;
+    color: #ffffff;
 }
 .workspaces button:hover {
-    color: $love;
+    color: #323232;
 }
 
 // Agenda
@@ -105,20 +110,20 @@ $highlighthigh: #cecacd;
     font-size: larger;
     .agenda_task {
         &_past-scheduled {
-            color: $gold;
+            color: $color2;
             font-weight: bold;
         }
         &_deadline {
-            color: $love;
+            color: $color1;
             font-weight: bold;
         }
 
         .agenda_task_todo_NEXT {
-            color: $gold;
+            color: $color2;
             font-weight: bold;
         }
         .agenda_task_todo_TODO {
-            color: $rose;
+            color: $color1;
             font-weight: bold;
         }
         .agenda_task_todo_WAIT {
@@ -126,12 +131,12 @@ $highlighthigh: #cecacd;
             font-weight: bold;
         }
         .agenda_task_todo_DONE {
-            color: $gold;
+            color: $color3;
             font-weight: bold;
             text-decoration: line-through;
         }
         .agenda_task_todo_CANCELED {
-            color: $love;
+            color: $color1;
             text-decoration: line-through;
             font-weight: bold;
         }
@@ -151,17 +156,17 @@ $highlighthigh: #cecacd;
 
 // Reminder
 .reminder_pop {
-    background-color: $base;
+    background-color: $background;
     padding: 12px;
     border-radius: 16px;
     font-size: 9px;
-    border: 2px solid #f8efe5;
-    color: $text;
+    border: 1px solid $altbackground;
+    color: $foreground;
 }
 
 .reminder_input {
-    border: 1px solid $rose;
-    color: $rose;
+    border: 1px solid $color1;
+    color: $color1;
     min-height: 25px;
 }
 
@@ -170,33 +175,34 @@ $highlighthigh: #cecacd;
 }
 
 .pop_module {
-    background-color: #f8efe5;
+    background-color: $altbackground;
     border-radius: 16px;
     padding: 7px;
 }
 
 .tooltip_label {
-    background-color: #f8efe5;
-    color: $text;
+    background-color: #fff;
+    border: 1px solid $color2;
+    color: $foreground;
     padding: 5px;
 }
 
 .calendar:selected {
-    background-color: $rose;
-    color: #f8efe5;
+    background-color: $color2;
+    color: #fff;
 }
 
 .weather_pop {
-    background-color: #f8efe5;
+    background-color: $altbackground;
     border-radius: 16px;
     padding-bottom: 10px;
 }
 .weather_right_now_panel {
-    background-color: $rose;
+    background-color: $color2;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     min-height: 20px;
-    color: #f8efe5;
+    color: $altbackground;
 }
 .weather_hourly_icon {
     font-size: 25px;
@@ -210,7 +216,7 @@ $highlighthigh: #cecacd;
     font-size: 25px;
 
     .shutdown_btn {
-        color: $love;
+        color: $color1;
     }
 }
 
@@ -225,13 +231,13 @@ $highlighthigh: #cecacd;
 }
 
 .song {
-    color: $rose;
+    color: $color2;
     font-weight: bold;
     margin: 4px 0px 4px 0px;
 }
 
 .song_btn_play, .song_btn_prev, .song_btn_next {
-    color: $rose;
+    color: $color2;
     font-size: 14px;
 }
 
@@ -243,13 +249,13 @@ $highlighthigh: #cecacd;
 }
 
 .music {
-    color: $rose;
+    color: $color2;
     font-size: 14px;
     font-weight: bold;
 }
 
 .music_artist {
-    color: $rose;
+    color: $color2;
     font-size: 12px;
     font-weight: normal;
     margin: 0;
@@ -258,12 +264,12 @@ $highlighthigh: #cecacd;
 .music_btn_prev, .music_btn_play, .music_btn_next {
     font-weight: normal;
     margin: 0;
-    color: $rose;
+    color: $color2;
     font-size: 16px;
 }
 
 .music_btn_play {
-    color: $rose;
+    color: $color2;
 }
 
 .music_bar {
@@ -278,7 +284,7 @@ $highlighthigh: #cecacd;
 
 .music_bar scale trough {
     all: unset;
-    background-color: $rose;
+    background-color: $color2;
     border-radius: 24px;
     min-height: 13px;
     min-width: 120px;
@@ -301,7 +307,7 @@ $highlighthigh: #cecacd;
 }
 // power
 .power {
-    color: $love;
+    color: $color1;
 }
 
 .power-options {
@@ -309,19 +315,19 @@ $highlighthigh: #cecacd;
 }
 
 .shutdown {
-    color: $love;
+    color: $color1;
 }
 
 // Which key
 .which-key {
     font-size: larger;
     .sway {
-        color: $text;
+        color: $foreground;
     }
     .exec {
-        color: $rose;
+        color: $color1;
     }
     .mode {
-        color: $love;
+        color: $color1;
     }
 }

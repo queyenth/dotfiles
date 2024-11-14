@@ -12,7 +12,13 @@ include ~/.config/sway/00-bindings
 
 ### Output configuration
 #
-output * background ~/Mx-butterfly.svg center $overlay
+# output * background ~/Mx-butterfly.svg center $overlay
+# output * background ~/dot-grid.webp tile
+# output * background ~/three_spheres_sized.jpg center "#ffffff"
+# output * background ~/uroboros.jpg center "#fbfbfb"
+output * background ~/birds_wire.jpg center "#f9f9f9"
+# output * background ~/Downloads/wallhaven-p8mlje.jpg fill
+# output * background ~/GO8YQe0MwCK2hsshAS9iMcRcPou0NQ_original.jpg fill
 #output * background ~/anna_karina_1.jpg fill
 #output * background ~/Downloads/Anna-Karina-Jean-Luc-Godard-French-actress-Nouvelle-Vague-1836017-wallhere.com.jpg fill
 #
@@ -50,10 +56,19 @@ exec swayidle -w \
 # Read `man 5 sway-input` for more information about this section.
 
 input type:keyboard {
-	xkb_layout "us,ru"
-	xkb_options "grp:caps_toggle"
-	xkb_variant ",canqwe"
-        repeat_delay 300
+      xkb_layout "us,ru"
+      xkb_options "grp:caps_toggle"
+      xkb_variant ",canqwe"
+      repeat_delay 300
+}
+
+# Because the scroll wheel on Elecom Huge sucks.
+# It actually is "jumpy" on my model, like after 6months of usage or so.
+# Real sad.
+input "1390:284:Getech_HUGE_TrackBall" {
+      scroll_method on_button_down
+      scroll_button BTN_TASK
+      scroll_button_lock enabled
 }
 
 # input type:pointer {
@@ -75,13 +90,13 @@ gaps inner 5
 floating_modifier $mod normal
 
 # target                 title     bg       text       indicator   border
-client.focused           $rose     $rose    $surface   $rose       $rose
+client.focused           "#808080"     "#808080"    "#ffffff"   "#808080"       "#808080"
 client.focused_inactive  $text     $base    $text      $subtle     $surface
 client.unfocused         $text     $base    $muted     $overlay    $overlay
 client.urgent            $text     $base    $text      $love       $love
 client.placeholder       $base     $base    $text      $overlay    $overlay
 client.background        $base
-font "BlexMono Nerd Font 10"
+font "Iosevka Comfy Motion 10"
 
 #
 # Status Bar:
@@ -99,7 +114,7 @@ font "BlexMono Nerd Font 10"
 #     colors {
 #         statusline $text
 #         background $base
-#         focused_workspace $rose $rose $surface
+#         focused_workspace "#c28c3f" "#c28c3f" $surface
 #         inactive_workspace $surface $base $text
 #     }
 
@@ -110,17 +125,20 @@ font "BlexMono Nerd Font 10"
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
-for_window [app_id="Firefox" title="Picture-in-Picture"] {
+for_window [app_id=^Firefox$ title=^Picture-in-Picture$] {
 	floating enable
 	sticky enable
 }
 
-for_window [app_id="" title="Spotify"] floating enable
+for_window [app_id="" title=^Spotify$] floating enable
 
-for_window [app_id="org.telegram.desktop"] floating enable
+for_window [app_id=^org.telegram.desktop$] floating enable
+
+for_window [app_id="emacs" title=^emenu$] floating enable
 
 exec emacs --daemon
-exec swaync
+# exec swaync
+exec dunst
 exec pipewire
 exec playerctld daemon
 

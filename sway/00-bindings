@@ -14,28 +14,27 @@ set $ws7 η
 set $ws8 θ
 set $ws9 ι
 set $ws0 λ
-set $base #faf4ed
-set $surface #fffaf3
-set $overlay #f2e9e1
-set $muted #9893a5
-set $subtle #797593
-set $text #575279
-set $love #b4637a
-set $gold #ea9d34
-set $rose #d7827e
-set $pine #286983
-set $foam #56949f
-set $iris #907aa9
-set $highlightlow #f4ede8
-set $highlightmed #dfdad9
-set $highlighthigh #cecacd
+set $base #ffffff
+set $surface #323232
+set $overlay #323232
+set $muted #323232
+set $subtle #323232
+set $text #323232
+set $love #323232
+set $gold #323232
+set $rose #323232
+set $pine #323232
+set $foam #323232
+set $iris #323232
+set $highlightlow #323232
+set $highlightmed #323232
+set $highlighthigh #323232
 set $dmenu_cmd -b -h 25 -i -nb "$base" -nf "$text" -sb "$rose" -sf "$surface"
 set $menu ~/scripts/sway_run $dmenu_cmd
 set $passmenu passmenu $dmenu_cmd
 set $passmenu_type passmenu --type $dmenu_cmd
 set $windowswitch ~/scripts/switch_window.sh -l 5 $dmenu_cmd
 set $closeewwwindow ~/scripts/close_eww_window.sh $dmenu_cmd
-set $clipman clipman pick --err-on-no-selection --tool=CUSTOM --tool-args="dmenu-wl -l 5 $dmenu_cmd" && wtype -M shift -k Insert
 mode resize {
     bindsym --to-code $left resize shrink width 10px
     bindsym --to-code $down resize grow height 10px
@@ -66,7 +65,7 @@ mode wm-layout {
 mode wm-run {
     bindsym --to-code t mode default, exec $term
     bindsym --to-code Return mode default, exec $term
-    bindsym --to-code r mode default, exec $menu
+    bindsym --to-code r mode default, exec emacsclient -e "(emenu-q/eww-comm-toggle-window)"
     bindsym --to-code w mode default, exec $windowswitch
     bindsym --to-code y mode default, exec $passmenu
     bindsym --to-code Ctrl+y mode default, exec $passmenu_type
@@ -76,6 +75,7 @@ mode wm-run {
     bindsym --to-code $mod+g mode default
     bindsym --to-code question exec ~/scripts/close_eww_window.sh --window which_key
 }
+bindsym --to-code $mod+Ctrl+k exec emacsclient -e "(emenu-q/kill-process)"
 bindsym --to-code $mod+$left focus left
 bindsym --to-code $mod+$down focus down
 bindsym --to-code $mod+$up focus up
@@ -97,7 +97,7 @@ bindsym --to-code $mod+Shift+o focus prev
 bindsym --to-code $mod+k kill
 bindsym --to-code $mod+z focus parent
 bindsym --to-code $mod+l mode wm-layout
-bindsym --to-code $mod+space focus next
+bindsym --to-code $mod+space exec emacsclient -e "(emenu-wayland-window-switch)"
 bindsym --to-code $mod+Tab workspace back_and_forth
 bindsym --to-code $mod+Ctrl+r reload
 bindsym --to-code $mod+Ctrl+c exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -105,15 +105,12 @@ bindsym --to-code $mod+Ctrl+l exec swaylock -f -c 000000
 bindsym --to-code $mod+minus scratchpad show
 bindsym --to-code $mod+Ctrl+minus move scratchpad
 bindsym --to-code $mod+plus sticky toggle
-bindsym --to-code $mod+apostrophe exec ~/scripts/mark_window
 bindsym --to-code $mod+Shift+r mode resize
 bindsym --to-code $mod+x mode wm-run
-bindsym --to-code $mod+r exec $menu
-bindsym --to-code $mod+y mode default, exec $passmenu
-bindsym --to-code $mod+Ctrl+y mode default, exec $passmenu_type
-bindsym --to-code $mod+w exec $windowswitch
+bindsym --to-code $mod+r exec emacsclient -e "(emenu-application-launcher)"
+bindsym --to-code $mod+y mode default, exec emacsclient -e "(emenu-password-store-copy)"
+bindsym --to-code $mod+w focus mode_toggle
 bindsym --to-code $mod+t exec $term
-bindsym --to-code $mod+p exec $clipman
 bindsym --to-code $mod+c exec $closeewwwindow
 bindsym --to-code $mod+Return exec $term
 bindsym --to-code $mod+1 workspace 1 $ws1
@@ -149,4 +146,3 @@ bindsym --to-code XF86AudioPlay exec playerctl play-pause
 bindsym --to-code XF86AudioPrev exec playerctl previous
 bindsym --to-code XF86AudioNext exec playerctl next
 bindsym --to-code $mod+question exec ~/scripts/close_eww_window.sh --window which_key
-

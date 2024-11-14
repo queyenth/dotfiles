@@ -1,5 +1,10 @@
 <?php
 
+$proxySetup = [
+    'host' => '127.0.0.1',
+    'port' => 8080
+];
+
 const WWO_CODE = [
     "113" => "Sunny",
     "116" => "PartlyCloudy",
@@ -76,8 +81,14 @@ const WEATHER_SYMBOL = [
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'https://wttr.in/Omsk?format=j1');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_TIMEOUT, 120);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 120);
+curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+
+$proxy = @fsockopen($proxySetup['host'], $proxySetup['port']);
+if (is_resource($proxy)) {
+    curl_setopt($ch, CURLOPT_PROXY, sprintf("http://%s:%d/", $proxySetup['host'], $proxySetup['port']));
+    fclose($proxy);
+}
 
 $data = curl_exec($ch);
 curl_close($ch);

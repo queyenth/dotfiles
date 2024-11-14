@@ -1,19 +1,63 @@
 [window]
 padding = { x = 12, y = 12 }
 dynamic_padding = true
+
 [colors.bright]
-black = "0x9893a5"
-blue = "0x56949f"
-cyan = "0xd7827e"
-green = "0x286983"
-magenta = "0x907aa9"
-red = "0xb4637a"
-white = "0x575279"
-yellow = "0xea9d34"
+black = "0x000000"
+red = "0x323232"
+green = "0x323232"
+yellow = "0x323232"
+blue = "0x323232"
+magenta = "0x323232"
+cyan = "0x323232"
+white = "0xcccccc"
+
+[colors.normal]
+black = "0x000000"
+red = "0x323232"
+green = "0x323232"
+yellow = "0x323232"
+blue = "0x323232"
+magenta = "0x323232"
+cyan = "0x323232"
+white = "0xcccccc"
+
+[colors.primary]
+background = "0xffffff"
+foreground = "0x323232"
 
 [colors.cursor]
-cursor = "0xcecacd"
-text = "0x575279"
+cursor = "0xa07f00"
+# text = "0x575279"
+
+# rose pine dawn
+# [colors.bright]
+# black = "0x9893a5"
+# blue = "0x56949f"
+# cyan = "0xd7827e"
+# green = "0x286983"
+# magenta = "0x907aa9"
+# red = "0xb4637a"
+# white = "0x575279"
+# yellow = "0xea9d34"
+
+# [colors.normal]
+# black = "0xf2e9e1"
+# blue = "0x56949f"
+# cyan = "0xd7827e"
+# green = "0x286983"
+# magenta = "0x907aa9"
+# red = "0xb4637a"
+# white = "0x575279"
+# yellow = "0xea9d34"
+
+# [colors.primary]
+# background = "0xfaf4ed"
+# foreground = "0x575279"
+
+# [colors.cursor]
+# cursor = "0xcecacd"
+# text = "0x575279"
 
 [colors.hints.end]
 background = "#fffaf3"
@@ -27,20 +71,6 @@ foreground = "#797593"
 background = "None"
 foreground = "None"
 
-[colors.normal]
-black = "0xf2e9e1"
-blue = "0x56949f"
-cyan = "0xd7827e"
-green = "0x286983"
-magenta = "0x907aa9"
-red = "0xb4637a"
-white = "0x575279"
-yellow = "0xea9d34"
-
-[colors.primary]
-background = "0xfaf4ed"
-foreground = "0x575279"
-
 [colors.selection]
 background = "0xdfdad9"
 text = "0x575279"
@@ -53,5 +83,5 @@ text = "0x575279"
 size = 10.0
 
 [font.normal]
-family = "IBM Plex Mono"
-style = "Regular"
+family = "Iosevka Comfy Motion"
+style = "SemiLight"
