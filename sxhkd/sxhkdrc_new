@@ -10,6 +10,9 @@ super + {_, ctrl + }{Left,Down,Up,Right}
 super + {_, ctrl + }{m,n,e,i}
     bspc node -{f,s} {west,south,north,east}
 
+super + alt + {m,n,e,i}
+    bspc node -p {west,south,north,east}
+
 super + alt + {1-9}
     bspc node -o 0.{1-9}
 

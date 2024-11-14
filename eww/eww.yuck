@@ -10,12 +10,15 @@
 ;; (deflisten cover_art "playerctl -F metadata mpris:artUrl")
 (deflisten cover_art "~/scripts/spotify_cover.sh")
 
-(deflisten current_kb_layout "~/scripts/sway_layout")
+;; (deflisten current_kb_layout "~/scripts/sway_layout")
+(deflisten current_kb_layout "~/scripts/kbdwa")
 ;; (deflisten labwc_state "php ~/scripts/labwc_layout.php")
 
-(deflisten workspace-sway :initial "[]" "~/.config/eww/scripts/workspace sway")
-(deflisten which-key-sway :initial "[]" "~/.config/eww/scripts/sway_which_key")
-(deflisten mode-sway :initial "{\"change\": \"default\"}" "swaymsg -t subscribe -m '[\"mode\"]'")
+(deflisten workspace-bspwm :initial "[]" "~/.config/eww/scripts/workspace bspwm")
+
+;; (deflisten workspace-sway :initial "[]" "~/.config/eww/scripts/workspace sway")
+;; (deflisten which-key-sway :initial "[]" "~/.config/eww/scripts/sway_which_key")
+;; (deflisten mode-sway :initial "{\"change\": \"default\"}" "swaymsg -t subscribe -m '[\"mode\"]'")
 
 (defpoll volume_is_muted :interval "1m"
 	 "ponymix is-muted || echo true")
@@ -55,7 +58,7 @@
 
 (defwidget control_pop []
            (box :class "control_pop" :orientation "h" :space-evenly "true" :spacing 10 :vexpand "false" :hexpand "false"
-                (button :class "lock_btn" :onclick "swaylock -f -c 000000" "")
+                (button :class "lock_btn" :onclick "i3lockr -b 50" "")
                 ;; (button :class "dnd_btn" :onclick "swaync-client -d"
                 ;;         :onmiddleclick "swaync-client -C" {(swaync-status?.dnd ?: false) ? "" : ""})
                 (button :class "dnd_btn"
@@ -129,17 +132,17 @@
            :geometry (geometry :x 150 :y 0 :width 400 :height 50 :anchor "left center")
            (agenda_pomodoro_widget))
 
-(defwidget which_key_widget []
-           (box :class "reminder_pop" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
-                (box :class "pop_module" :orientation "v" :space-evenly "false" :spacing 15 :vexpand "true" :hexpand "true"
-                     (for row in {which-key-sway}
-                          (box :class "which-key" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
-                               (for key in {row}
-                                    (label :halign "center" :class {key.class} :text "${key.which_key} => ${key.which_command}")))))))
+;; (defwidget which_key_widget []
+;;            (box :class "reminder_pop" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
+;;                 (box :class "pop_module" :orientation "v" :space-evenly "false" :spacing 15 :vexpand "true" :hexpand "true"
+;;                      (for row in {which-key-sway}
+;;                           (box :class "which-key" :orientation "h" :space-evenly "true" :spacing 25 :vexpand "true" :hexpand "true"
+;;                                (for key in {row}
+;;                                     (label :halign "center" :class {key.class} :text "${key.which_key} => ${key.which_command}")))))))
 
-(defwindow which_key :stacking "overlay" :focusable "false" :monitor 0
-           :geometry (geometry :x 0 :y 0 :width 400 :height 50 :anchor "center")
-           (which_key_widget))
+;; (defwindow which_key :stacking "overlay" :focusable "false" :monitor 0
+;;            :geometry (geometry :x 0 :y 0 :width 400 :height 50 :anchor "center")
+;;            (which_key_widget))
 
 (defwidget music []
            (eventbox :visible {song != ''} :onhover "${EWW_CMD} update music_reveal=true"
@@ -183,7 +186,7 @@
                                     :reveal power_reveal
                                     :duration "350ms"
                                     (box :class "power-options" :vexpand "false" :hexpand "false" :orientation "h"
-                                         (button :class "lock-screen" :onclick "swaylock -f -c 000000" "  ")
+                                         (button :class "lock-screen" :onclick "i3lockr -b 50" "  ")
                                          (button :class "reboot" :onclick "sudo reboot" " 󰜉 ")
                                          (button :class "shutdown" :onclick "sudo shutdown +1 eww" "  "))))))
 
@@ -198,7 +201,7 @@
 
 (defwidget bar-left []
            (box :class "left-side" :space-evenly false :spacing 10 :halign "start"
-                (button :visible {mode-sway?.change != "default"} :class "mode ${mode-sway?.change}" :onclick "swaymsg mode default" {mode-sway?.change})
+                ;; (button :visible {mode-sway?.change != "default"} :class "mode ${mode-sway?.change}" :onclick "swaymsg mode default" {mode-sway?.change})
                 (workspaces)
                 ;; (labwc-workspaces)
                 (music)))
@@ -230,7 +233,7 @@
                 (eventbox :onscroll "~/scripts/volumenotify {} 5"
                           :onclick "~/scripts/volumenotify !"
                           (label :text "${volume_is_muted == 'true' ? '' : '󰝟'} ${volume}%" :class "volume-label"))
-                (systray :class "systray" :orientation "h" :icon-size 16)
+                (systray :class "systray" :orientation "h" :icon-size 24)
                 (box :class "separator")
                 (power)))
 
@@ -242,22 +245,34 @@
                       (sidestuff)))
 
 (defwidget workspaces []
-           (eventbox :onscroll "~/scripts/sway_scroll {}"
-	    (box :class "workspaces" :orientation "h" :spacing 10 :space-evenly true :halign "start"
-		 (for workspace in {workspace-sway}
-		      (button :onclick "swaymsg workspace ${workspace.name}"
-			      :onrightclick "swaymsg move container to workspace ${workspace.name}"
-			      :class {"${workspace.focused ? 'focused' : 'occupied'} ${workspace.urgent ? 'urgent' : ''}"}
-			      {replace(workspace.name, workspace.num, "")})))))
+           (box :class "workspaces" :orientation "h" :spacing 10 :space-evenly true :halign "start"
+                (for workspace in {workspace-bspwm}
+                     (button :onclick "bspc desktop -f ${workspace.name}"
+                             :onrightclick "bspc node -d ${workspace.name}"
+                             :class {"${workspace.focused ? 'focused' : 'occupied'} ${workspace.urgent ? 'urgent' : ''}"}
+                             {workspace.name}))))
+
+;; (defwidget workspaces []
+;;            (eventbox :onscroll "~/scripts/sway_scroll {}"
+;; 	    (box :class "workspaces" :orientation "h" :spacing 10 :space-evenly true :halign "start"
+;; 		 (for workspace in {workspace-sway}
+;; 		      (button :onclick "swaymsg workspace ${workspace.name}"
+;; 			      :onrightclick "swaymsg move container to workspace ${workspace.name}"
+;; 			      :class {"${workspace.focused ? 'focused' : 'occupied'} ${workspace.urgent ? 'urgent' : ''}"}
+;; 			      {replace(workspace.name, workspace.num, "")})))))
 
 (defwindow bar
            :monitor 0
-           :windowtype "desktop"
-           :geometry (geometry :x "5px"
-                               :y "5px"
-                               :width "1910px"
-                               :height "25px"
+           ;; :windowtype "desktop"
+           :windowtype "dock"
+           :geometry (geometry :x "0px"
+                               :y "10px"
+                               :width "3820px"
+                               :height "40px"
                                :anchor "top center")
-           :stacking "bottom"
-	   :exclusive true
+           ;; :stacking "bottom"
+           :stacking "bg"
+           :reserve (struts :distance "40px" :side "top")
+           :wm-ignore false
+	   ;; :exclusive true
            (bar))

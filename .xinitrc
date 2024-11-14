@@ -34,7 +34,7 @@ wmname LG3D
 hsetroot -solid "#f9f9f9" -center ~/birds_wire.jpg
 
 # Picom
-# picom &
+picom &
 
 # Tap - escape, hold - ctrl!
 #xcape -t 300 -e 'Control_L=Escape'
