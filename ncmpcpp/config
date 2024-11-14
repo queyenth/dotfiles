@@ -1,9 +1,7 @@
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory = ~/.local/share/ncmpcpp/lyrics
 
-#mpd_host = 192.168.1.58
-#mpd_host = localhost
-mpd_host = 192.168.1.69
+mpd_host = localhost
 mpd_port = 6600
 mpd_connection_timeout = 5
 mpd_music_dir = /mnt/WDBLUE/music
@@ -34,12 +32,12 @@ song_status_format = "$7%t"
 song_list_format = "  %t $R%a %l  "
 #song_list_format = "{{%a - %t}|{%f}}{$R%l}"
 #song_list_format = "{{%a - %t}|{%f}}"
-song_columns_list_format = "(53)[white]{tr} (45)[blue]{a}"
+song_columns_list_format = "(53)[blue]{tr} (45)[green]{a}"
 song_library_format = "{{%a - %t} (%b)}|{%f}"
 current_item_prefix = $(red)$r
 current_item_suffix = $/r$(end)
-current_item_inactive_column_prefix = red
-current_item_inactive_column_suffix = red
+# current_item_inactive_column_prefix = red
+# current_item_inactive_column_suffix = red
 # now_playing_prefix = "$(red)"
 # now_playing_suffix = "$9"
 playlist_display_mode = columns

@@ -17,6 +17,8 @@ xset s on
 # Load .Xresources!
 xrdb -load ~/.Xresources
 
+xset r rate 300
+
 # Some clipboards stuff, duh
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
@@ -28,7 +30,8 @@ xsetroot -cursor_name left_ptr
 wmname LG3D
 
 # Set wallpaper!
-hsetroot -fill ~/wallpaper
+#hsetroot -fill ~/wallpaper
+hsetroot -solid "#f9f9f9" -center ~/birds_wire.jpg
 
 # Picom
 # picom &

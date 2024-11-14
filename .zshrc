@@ -27,6 +27,7 @@ alias ls="ls --color=auto"
 alias dk="docker"
 alias dkc="docker-compose"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias htop="htop -C"
 
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection cliboard -o"
@@ -54,8 +55,8 @@ export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 export PATH="/home/q/dotfiles/scripts:/home/q/.local/bin:$SPICETIFY_INSTALL:$DENO_INSTALL/bin:$PATH"
 export UID="$(id -u)"
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export QT_QPA_PLATFORM=wayland
+#export QT_AUTO_SCREEN_SCALE_FACTOR=1
+#export QT_QPA_PLATFORM=wayland
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
