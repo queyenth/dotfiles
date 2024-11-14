@@ -1,9 +1,9 @@
 # Example autostart file
 [ ! -p /tmp/labwc.fifo ] && mkfifo /tmp/labwc.fifo
-[ ! -p /tmp/labwc_workspaces ] && mkfifo /tmp/labwc_workspaces
+# [ ! -p /tmp/labwc_workspaces ] && mkfifo /tmp/labwc_workspaces
 
 # Set background color.
-swaybg -c "#f2e9e1" -i ~/Mx-butterfly.svg -m center >/dev/null 2>&1 &
+swaybg -i $(cat ~/.cache/wal/wal) -m fill >/dev/null 2>&1 &
 
 # Configure output directives such as mode, position, scale and transform.
 # Use wlr-randr to get your output names
@@ -42,5 +42,10 @@ pipewire >/dev/null 2>&1 &
 sway-audio-idle-inhibit &
 playerctld daemon >/dev/null 2>&1 &
 wl-paste -t text --watch clipman store --no-persist >/dev/null 2>&1 &
-php ~/scripts/add_reminder.php cron >/dev/null 2>&1 &
-~/scripts/spotify_cover.sh 1>/dev/null 2>&1 &
+# php ~/scripts/add_reminder.php cron >/dev/null 2>&1 &
+# ~/scripts/spotify_cover.sh 1>/dev/null 2>&1 &
+
+gsettings set org.gnome.desktop.interface gtk-theme rose-pine-dawn-gtk
+gsettings set org.gnome.desktop.interface icon-theme oomox-rose-pine-dawn
+gsettings set org.gnome.desktop.interface cursor-theme BreezeX-RosePineDawn-Linux
+gsettings set org.gnome.desktop.interface font-name "Iosevka Comfy Motion Duo SemiLight 10"

@@ -1,13 +1,13 @@
 border.width: 1
 padding.height: 2
 
-window.active.border.color: #d7827e
-window.inactive.border.color: #f2e9e1
+window.active.border.color: #c28c3f
+window.inactive.border.color: #ff6d8
 
 window.active.indicator.toggled-keybind.color: #ff0000
 
-window.active.title.bg.color: #d7827e
-window.inactive.title.bg.color: #faf4ed
+window.active.title.bg.color: #c28c3f
+window.inactive.title.bg.color: #fff6d8
 
 window.active.label.text.color: #fffaf3
 window.inactive.label.text.color: #9893a5
@@ -25,9 +25,9 @@ menu.overlap.x: 0
 menu.overlap.y: 0
 menu.width.min: 20
 menu.width.max: 200
-menu.items.bg.color: #faf4ed
-menu.items.text.color: #575279
-menu.items.active.bg.color: #d7827e
+menu.items.bg.color: #fff6d8
+menu.items.text.color: #484431
+menu.items.active.bg.color: #c28c3f
 menu.items.active.text.color: #fffaf3
 menu.items.padding.x: 7
 menu.items.padding.y: 4
@@ -37,14 +37,14 @@ menu.separator.padding.height: 3
 menu.separator.color: #9893a580
 
 # on screen display (window-cycle dialog)
-osd.bg.color: #f2e5bc
-osd.border.color: #d7827e80
+osd.bg.color: #fff6d8
+osd.border.color: #c28c3f80
 osd.border.width: 1
-osd.label.text.color: #fffaf3
+osd.label.text.color: #c28c3f
 
 # width can be set as percent (of screen width)
 # example 50% or 75% instead of 600, max 100%
-osd.window-switcher.width: 40%
+osd.window-switcher.width: 35%
 
 snapping.overlay.region.bg.color: #4c7a5d80
 snapping.overlay.edge.bg.color: #4c7a5d80

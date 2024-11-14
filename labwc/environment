@@ -43,7 +43,7 @@ QT_QPA_PLATFORM=wayland
 # XCURSOR_THEME=breeze_cursors
 # XCURSOR_THEME=capitaine-cursors
 # XCURSOR_SIZE=24
-XCURSOR_THEME=Adwaita
+XCURSOR_THEME=BreezeX-RosePineDawn-Linux
 
 ##
 ## Disable hardware cursors. Most users would not want to do this, but if you

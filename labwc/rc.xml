@@ -12,30 +12,30 @@ set of options with comments, see docs/rc.xml.all
     </placement>
 
     <theme>
-        <name></name>
+        <name>GTK</name>
         <cornerRadius>4</cornerRadius>
         <keepBorders>no</keepBorders>
         <dropShadows>yes</dropShadows>
         <font place="ActiveWindow">
-            <name>IBM Plex Mono</name>
+            <name>Iosevka Comfy Motion</name>
             <size>10</size>
             <slant>normal</slant>
             <weight>normal</weight>
         </font>
         <font place="InactiveWindow">
-            <name>IBM Plex Mono</name>
+            <name>Iosevka Comfy Motion</name>
             <size>10</size>
             <slant>italic</slant>
             <weight>normal</weight>
         </font>
         <font place="MenuItem">
-            <name>IBM Plex Mono</name>
+            <name>Iosevka Comfy Motion</name>
             <size>10</size>
             <slant>normal</slant>
             <weight>normal</weight>
         </font>
         <font place="OnScreenDisplay">
-            <name>IBM Plex Mono</name>
+            <name>Iosevka Comfy Motion</name>
             <size>10</size>
             <slant>normal</slant>
             <weight>normal</weight>
@@ -45,8 +45,8 @@ set of options with comments, see docs/rc.xml.all
     <windowSwitcher>
         <allWorkspaces>no</allWorkspaces>
         <fields>
-            <field content="type" width="25%" />
-            <field content="trimmed_identifier" width="25%" />
+            <field content="type" width="0%" />
+            <field content="trimmed_identifier" width="50%" />
             <field content="title" width="50%" />
         </fields>
     </windowSwitcher>
@@ -77,7 +77,7 @@ set of options with comments, see docs/rc.xml.all
         <numlock>off</numlock>
         <layoutScope>global</layoutScope>
         <repeatRate>25</repeatRate>
-        <repeatDelay>300</repeatDelay>
+        <repeatDelay>200</repeatDelay>
         <keybind key="W-C-t">
             <action name="ToggleAlwaysOnTop" />
         </keybind>
@@ -86,6 +86,14 @@ set of options with comments, see docs/rc.xml.all
         </keybind>
         <keybind key="W-k">
             <action name="Close" />
+        </keybind>
+        <keybind key="W-C-k">
+            <action name="Execute">
+                <command>emacsclient -e "(emenu-kill-process)"</command>
+            </action>
+        </keybind>
+        <keybind key="W-c">
+            <action name="AutoPlace" policy="center" />
         </keybind>
         <keybind key="W-y">
             <action name="Execute">

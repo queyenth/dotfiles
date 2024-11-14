@@ -1,7 +1,7 @@
 [colors]
-background = #18181b
-foreground = #dfeaec
-foreground-alt = #444444
+background = #ffffff
+foreground = #323232
+foreground-alt = #cccccc
 primary = #
 secondary = #4abfc7
 alert = #d33a68
@@ -57,7 +57,7 @@ font-0 = "FiraCode Nerd Font Mono:size=8;3"
 font-1 = Weather Icons:size=8;2
 
 modules-left = bspwm xwindow
-modules-center = 
+modules-center =
 #modules-right = mpd wireguard openweathermap xkeyboard pulseaudio date
 modules-right = player openweathermap xkeyboard pulseaudio date dunst-snooze
 
@@ -157,7 +157,7 @@ ramp-volume-2 = 
 [module/date]
 type = internal/date
 interval = 5
-date = 
+date =
 date-alt = " %d %b, %A"
 
 time = %H:%M
